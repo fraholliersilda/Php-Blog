@@ -49,7 +49,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <option value="user" <?= $user['role'] === 'user' ? 'selected' : '' ?>>User</option>
                             <option value="admin" <?= $user['role'] === 'admin' ? 'selected' : '' ?>>Admin</option>
                         </select>
-                        <button type="submit">Update Role</button>
+                        <button type="submit"  style="width: 100%;">Update Role</button>
                     </form>
 
                     <!-- Update Password Form -->
@@ -58,14 +58,14 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <input type="hidden" name="id" value="<?= $user['id'] ?>">
                         <label for="password">New Password:</label>
                         <input type="password" name="password" required>
-                        <button type="submit">Update Password</button>
+                        <button type="submit"  style="width: 100%;">Update Password</button>
                     </form>
 
                     <!-- Delete User Form -->
                     <form method="POST" action="/ATIS/actions/admin/admin_dashboard.php" onsubmit="return confirmDelete()">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="id" value="<?= $user['id'] ?>">
-                        <button type="submit" class="btn btn-danger" style="background-color: #d9534f;">Delete User</button>
+                        <button type="submit"  class="update" style="width: 100%; background-color: #A72925;">Delete User</button>
                     </form>
                 </div>
             <?php endforeach; ?>

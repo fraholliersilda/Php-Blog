@@ -14,7 +14,7 @@ session_start();
 <body>
     <div class="wrapper">
         <div class="title"><span>Admin Login</span></div>
-        <form method="POST" action="../../actions/registration/admin_login.php">
+        <form method="POST" action="../../actions/admin/admin_login.php">
             <div class="row">
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" name="email" placeholder="Admin Email" required>
@@ -27,7 +27,7 @@ session_start();
                 <input type="submit" value="Login">
             </div>
             <div class="signup-link">
-                <a href="index.php">User Login</a>
+                <a href="../registration/index.php">User Login</a>
             </div>
         </form>
         <?php include '../../actions/display_errors.php';?>

@@ -17,13 +17,7 @@ include '../actions/profile/profile.php';
 <body>
     <?php include('../navbar/navbar.php'); ?>
     <!-- errors -->
-    <?php if (isset($_SESSION["messages"]["errors"])) {
-        foreach ($_SESSION["messages"]["errors"] as $error) {
-            echo "<div class='alert alert-danger'>$error</div>";
-        }
-        unset($_SESSION["messages"]["errors"]);
-    }
-    ?>
+    <?php include('../actions/display_errors.php'); ?>
     <div class="container">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -47,7 +41,7 @@ include '../actions/profile/profile.php';
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <div class="mb-0">Full Name</div>
+                                <div class="mb-0">Username</div>
                             </div>
                             <div class="col-sm-9">
                                 <?php echo htmlspecialchars($user['username']); ?>
@@ -60,15 +54,6 @@ include '../actions/profile/profile.php';
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 <?php echo htmlspecialchars($user['email']); ?>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="mb-0">User ID</div>
-                            </div>
-                            <div class="col-sm-9 text-secondary">
-                                <?php echo htmlspecialchars($user['id']); ?>
                             </div>
                         </div>
                         <hr>

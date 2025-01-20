@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start(); 
 }
 
-require_once '../actions/db.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
 
 $is_admin = false;
 
@@ -12,7 +12,9 @@ if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 
     // Fetch user data 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
+    $stmt = $conn->prepare("SELECT u.*, r.role FROM users u
+    INNER JOIN roles r ON u.role = r.id
+    WHERE u.id = :id LIMIT 1");
     $stmt->execute(['id' => $user_id]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -39,7 +41,7 @@ if (isset($_SESSION['user_id'])) {
         </a>
         <?php if ($is_admin): ?>
             <!-- show admiin dashboard -->
-            <a href="/ATIS/pages/admin_dashboard.php" class="dashboard-nav-item <?php echo ($current_page == 'admin_dashboard.php') ? 'active' : ''; ?>">
+            <a href="/ATIS/pages/admin/admin_dashboard.php" class="dashboard-nav-item <?php echo ($current_page == 'admin_dashboard.php') ? 'active' : ''; ?>">
                 <i class="fas fa-cogs"></i> Admin Dashboard
             </a>
         <?php endif; ?>

@@ -9,22 +9,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      
     $errors = [];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? OR email=?");
+    // Check if the username or email already exists
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
     $stmt->execute([$username, $email]);
     $user = $stmt->fetch();
 
-  
     if ($user) {
         if ($user['username'] == $username) {
-            $errors [] = "Username already exists.";
+            $errors[] = "Username already exists.";
         } elseif ($user['email'] == $email) {
-            $errors [] = "Email already exists.";
+            $errors[] = "Email already exists.";
         }
     } 
 
+    // If there are no errors, proceed to insert the new user
     if (empty($errors)) {
+        // Role ID for 'user' is 2, as per your explanation
+        $role_id = 2;
+
+        // Insert the new user with the correct role ID
         $stmt = $conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
-        if ($stmt->execute([$username, $email, $password, 'user'])) {
+        if ($stmt->execute([$username, $email, $password, $role_id])) {
             header("Location: ../../pages/registration/index.php");
             exit();
         } else {
@@ -32,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    // If there are errors, redirect back to the signup page with error messages
     if (!empty($errors)) {
         $_SESSION['messages']['errors'] = $errors;
         header("Location: ../../pages/registration/signup.php"); 

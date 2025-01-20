@@ -28,7 +28,6 @@ session_start();
                 <input type="submit" value="Login">
             </div>
             <div class="signup-link">
-                ADMIN? <a href="admin_login.php">Login here.</a>  
                 Not a member? <a href="signup.php">Signup now</a>
             </div>
         </form>

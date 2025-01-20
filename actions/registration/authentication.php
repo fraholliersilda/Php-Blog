@@ -24,19 +24,4 @@ function authenticateUser($email, $password)
     return null;
 }
 
-function authenticateAdmin($email, $password) {
-    global $conn;
-
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email AND role = 'admin'");
-    $stmt->execute(['email' => $email]);
-
-    $admin = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($admin && password_verify($password, $admin['password'])) {
-        return $admin;
-    }
-    return false;
-}
-
-
 ?>

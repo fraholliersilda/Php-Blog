@@ -34,14 +34,7 @@ include '../actions/profile/edit_profile.php';
                     </div>
                 </div>
             </div>
-            <?php
-            if (isset($_SESSION["messages"]["errors"])) {
-                foreach ($_SESSION["messages"]["errors"] as $error) {
-                    echo "<div class='alert alert-danger'>$error</div>";
-                }
-                unset($_SESSION["messages"]["errors"]);
-            }
-            ?>
+            <?php include('../actions/display_errors.php'); ?>
             <div class="col-lg-8">
                 <!-- Username and Email Form -->
                 <div class="card">

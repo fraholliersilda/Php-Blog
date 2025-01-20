@@ -12,7 +12,7 @@ body {
 /* Layout for the Container (Profile Content) */
 .container-fluid {
   padding: 0;
-  margin-left: 238px; 
+  margin-left: 238px;
 }
 
 .row.gutters-sm {
@@ -34,9 +34,8 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Profile Image Section */
 .col-md-4 {
-  max-width: 300px; 
+  max-width: 300px;
 }
 
 .col-md-8 {
@@ -81,19 +80,6 @@ body {
   background: rgba(0, 0, 0, 0.1); /* Same as hover */
 }
 
-.brand-logo {
-  font-family: "Nunito", sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  color: #515151;
-}
-
-.brand-logo:hover {
-  color: #dbdbdb;
-}
-
 .dashboard-nav-list {
   display: flex;
   flex-direction: column;
@@ -130,10 +116,6 @@ body {
   text-align: center;
 }
 
-.log {
-  margin-top: auto;
-}
-
 /* Responsive Design */
 @media (max-width: 992px) {
   .dashboard-nav {
@@ -163,22 +145,23 @@ body {
   }
 }
 
-/* Card Style for the Profile Section */
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 0 solid rgba(0,0,0,.125);
+/* Edit Profile Styling */
+body {
+  background: #f7f7ff;
+  margin-top: 20px;
 }
 
-.card-body {
-  flex: 1 1 auto;
-  min-height: 1px;
-  padding: 1rem;
+.container {
+  margin-top: 30px;
+  max-width: 770px;
+}
+
+.card {
+  padding: 20px;
+}
+
+.me-2 {
+  margin-right: .5rem!important;
 }
 
 /* Profile Content */
@@ -210,76 +193,60 @@ body {
   float: right;
 }
 
-/* Edit Profile Styling */
-body {
-  background: #f7f7ff;
-  margin-top: 20px;
-}
-
-.container {
-  margin-top: 30px;
-  max-width: 770px;
-}
-
-.card {
-  padding: 20px;
-}
-
-.me-2 {
-  margin-right: .5rem!important;
-}
-
-.prov{  
-  margin-left: 280px;
-max-width: 1300px;
-}
-
 /* admin dashboard */
-.admin_dashboard{
+.admin_dashboard {
   margin-left: 270px;
-max-width: 1300px;
+  max-width: 1300px;
 }
 
 .user-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
+
 .user-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
+
 .user-card h3 {
-    margin: 0 0 10px;
+  margin: 0 0 10px;
 }
+
 .user-card p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
+
 .user-card form {
-    margin-top: 10px;
+  margin-top: 10px;
 }
+
 .user-card form label {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
+
 .user-card form input, .user-card form select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 8px;
 }
+
 .user-card form button {
-    border-radius: 4px;
-    background-color: #16a085;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+  border-radius: 4px;
+  background-color: #16a085;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
 }
+
 .user-card form button:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }

@@ -2,6 +2,7 @@
 session_start();
 require_once '../db.php';
 require_once 'authentication.php';
+require_once '../admin/authentication_admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);

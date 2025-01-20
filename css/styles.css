@@ -152,7 +152,6 @@ body {
 }
 
 .container {
-  margin-top: 30px;
   max-width: 770px;
 }
 
@@ -250,4 +249,136 @@ body {
 
 .user-card form button:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* home(blog) */
+/* Styling for the Blog Posts Section */
+.post-card {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Post content */
+.post-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Post image */
+.post-image img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Post details */
+.post-details {
+  flex: 1;
+}
+
+.post-details .card-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.post-details .card-text {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Button Styling */
+.btn-secondary {
+  background-color: #16a085;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Styling for the post form */
+.post-form {
+  margin-left: 260px; /* Adjust to give space for the navbar */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 280px); /* Ensures the form does not stretch too wide */
+  max-width: 800px; /* Optional: To limit the maximum width of the form */
+  margin-top: 20px; /* Add space at the top */
+}
+
+/* Input Fields Styling */
+.post-form input[type="text"],
+.post-form textarea,
+.post-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
+/* Textarea Specific Styling */
+.post-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Submit Button Styling */
+.post-form button {
+  background-color: #16a085;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.post-form button:hover {
+  background-color: #1abc9c;
+}
+
+/* post */
+.post{
+  margin-left: 260px;
+  max-width: 950px;
+  
+}
+
+.post h1{
+  text-align: center;
+}
+
+.post img{
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.description {
+  width: 100%;
+  line-height: 1.6;
+  font-size: 16px;
+  color: #555;
+  padding-bottom: 20px;
 }

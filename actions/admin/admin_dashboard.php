@@ -41,23 +41,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$hashedPassword, $id]);
     }elseif ($action === 'delete') {
         try {
-            // Start the transaction
+
             $conn->beginTransaction();
     
-            // Debugging: Check if the transaction is active
             if (!$conn->inTransaction()) {
                 throw new Exception("Transaction not active after beginTransaction.");
             }
     
-            // Delete related media entries first
+            // Delete media entries
             $stmt = $conn->prepare("DELETE FROM media WHERE user_id = ?");
             $stmt->execute([$id]);
-    
-            // Delete the user
+            //Delete users
             $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
             $stmt->execute([$id]);
     
-            // Reset user IDs to avoid gaps in auto-increment
             $conn->exec("SET @count = 0; UPDATE users SET id = (@count:=@count + 1); ALTER TABLE users AUTO_INCREMENT = 1;");
     
             // Commit the transaction
@@ -68,7 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $conn->rollBack();
             }
         } catch (Exception $e) {
-            // Handle any other exceptions
             $_SESSION['messages']['errors'][] = "General error: " . $e->getMessage();
         }
     }

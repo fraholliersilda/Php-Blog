@@ -1,3 +1,21 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
+
+try {
+  $query = "
+      SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path 
+      FROM posts 
+      LEFT JOIN media ON posts.cover_photo_id = media.id 
+      ORDER BY posts.created_at DESC";
+  $stmt = $conn->prepare($query);
+  $stmt->execute();
+  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  echo "Error: " . $e->getMessage();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +29,29 @@
 <body>
 <?php include('../navbar/navbar.php'); ?>
 <?php include('../actions/display_errors.php'); ?>
+
+<div class="container">
+    <h1>Blog Posts</h1>
+    <div class="row">
+        <?php foreach ($posts as $post) { ?>
+            <div class="col-md-12 post-card">
+                <div class="post-content">
+                    <div class="post-image">
+                        <img src="<?php echo $post['cover_photo_path']; ?>" alt="Cover Photo" class="card-img-top">
+                    </div>
+                    <div class="post-details">
+                        <h5 class="card-title"><?php echo $post['title']; ?></h5>
+                        <p class="card-text"><?php echo substr($post['description'], 0, 100); ?>...</p>
+                        <a href="post.php?id=<?php echo $post['id']; ?>" class="btn btn-secondary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

@@ -5,7 +5,7 @@ require_once '../db.php';
  *
  * @param string $email
  * @param string $password
- * @return array|null User data if authenticated, otherwise null.
+ * @return array|null 
  */
 function authenticateUser($email, $password)
 {

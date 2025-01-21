@@ -33,11 +33,11 @@ if (isset($_SESSION['user_id'])) {
         <a href="#" class="brand-logo"><i class="fas fa-anchor"></i> <span>PROJECT</span></a>
     </header>
     <nav class="dashboard-nav-list">
-        <a href="/ATIS/pages/home.php" class="dashboard-nav-item <?php echo ($current_page == 'home.php') ? 'active' : ''; ?>">
-            <i class="fas fa-home"></i> Home
+        <a href="/ATIS/pages/posts/blog_posts.php" class="dashboard-nav-item <?php echo ($current_page == 'blog_posts.php') ? 'active' : ''; ?>">
+            <i class="fas fa-home"></i> Blog Posts
         </a>
-        <a href="/ATIS/pages/dashboard.php" class="dashboard-nav-item <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
-            <i class="fas fa-tachometer-alt"></i> Dashboard
+        <a href="/ATIS/pages/posts/new_post.php" class="dashboard-nav-item <?php echo ($current_page == ' new_post.php') ? 'active' : ''; ?>">
+            <i class="fas fa-tachometer-alt"></i> New post
         </a>
         <?php if ($is_admin): ?>
             <!-- show admiin dashboard -->
@@ -45,7 +45,7 @@ if (isset($_SESSION['user_id'])) {
                 <i class="fas fa-cogs"></i> Admin Dashboard
             </a>
         <?php endif; ?>
-        <a href="/ATIS/pages/profile.php" class="dashboard-nav-item <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>">
+        <a href="/ATIS/pages/profile/profile.php" class="dashboard-nav-item <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>">
             <i class="fas fa-user"></i> Profile
         </a>
 

@@ -1,5 +1,5 @@
 <?php
-include '../actions/profile/edit_profile.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/edit_profile.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,16 +9,15 @@ include '../actions/profile/edit_profile.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EDIT PROFILE</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="/ATIS/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
-<?php include('../navbar/navbar.php'); ?>
-    <div class="prov">
+<?php include('../../navbar/navbar.php'); ?>
 
-        <div class="main-body">
+        <div class="prov">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card">
@@ -34,12 +33,12 @@ include '../actions/profile/edit_profile.php';
                     </div>
                 </div>
             </div>
-            <?php include('../actions/display_errors.php'); ?>
+            <?php include('../../actions/display_errors.php'); ?>
             <div class="col-lg-8">
                 <!-- Username and Email Form -->
                 <div class="card">
                     <div class="card-body">
-                        <form action="../actions/profile/saveProfile/save_username.php" method="POST"
+                        <form action="../../actions/profile/saveProfile/save_username.php" method="POST"
                             enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
@@ -77,7 +76,7 @@ include '../actions/profile/edit_profile.php';
                 <!-- Password Form -->
                 <div class="card mt-4">
                     <div class="card-body">
-                        <form action="../actions/profile/saveProfile/save_password.php" method="POST"
+                        <form action="../../actions/profile/saveProfile/save_password.php" method="POST"
                             enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
@@ -113,7 +112,7 @@ include '../actions/profile/edit_profile.php';
                 <!-- Profile Picture Form -->
                 <div class="card mt-4">
                     <div class="card-body">
-                        <form action="../actions/profile/saveProfile/save_picture.php" method="POST"
+                        <form action="../../actions/profile/saveProfile/save_picture.php" method="POST"
                             enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
@@ -142,12 +141,10 @@ include '../actions/profile/edit_profile.php';
             </div>
         </div>
 
-    </div>
-    </div>
 
 
 
-    <script src="../js/edit_profile.js"></script>
+    <script src="../../js/edit_profile.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

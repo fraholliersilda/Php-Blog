@@ -1,20 +1,8 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
-
-try {
-  $query = "
-      SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path 
-      FROM posts 
-      LEFT JOIN media ON posts.cover_photo_id = media.id 
-      ORDER BY posts.created_at DESC";
-  $stmt = $conn->prepare($query);
-  $stmt->execute();
-  $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  echo "Error: " . $e->getMessage();
-}
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/blog_posts.php';
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,13 +10,13 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-<?php include('../navbar/navbar.php'); ?>
-<?php include('../actions/display_errors.php'); ?>
+<?php include('../../navbar/navbar.php'); ?>
+<?php include('../../actions/display_errors.php'); ?>
 
 <div class="container">
     <h1>Blog Posts</h1>

@@ -9,7 +9,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// fetch user data
 $sql = "SELECT * FROM users WHERE id = :id";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
@@ -22,13 +21,15 @@ if (!$user) {
     exit();
 }
 
-// Fetch the latest profile pic
-$sql = "SELECT path, hash_name FROM media WHERE user_id = :user_id ORDER BY id DESC LIMIT 1";
+
+$sql = "SELECT path, hash_name 
+        FROM media 
+        WHERE user_id = :user_id AND photo_type = 'profile' 
+        ORDER BY id DESC LIMIT 1";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt->execute();
 $media = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// profile pic path
 $profilePicture = $media ? $media['path'] : '/ATIS/uploads/default.jpg';
 ?>

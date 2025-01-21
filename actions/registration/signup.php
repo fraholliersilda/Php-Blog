@@ -22,9 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     } 
 
-    // If there are no errors, proceed to insert the new user
     if (empty($errors)) {
-        // Role ID for 'user' is 2, as per your explanation
+        // Role ID for 'user' is 2
         $role_id = 2;
 
         // Insert the new user with the correct role ID
@@ -37,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // If there are errors, redirect back to the signup page with error messages
     if (!empty($errors)) {
         $_SESSION['messages']['errors'] = $errors;
         header("Location: ../../pages/registration/signup.php"); 

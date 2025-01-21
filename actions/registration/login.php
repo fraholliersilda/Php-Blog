@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = 'user';
-        header("Location: ../../pages/home.php");
+        header("Location: ../../pages/profile/profile.php");
         exit();
     } else {
         $_SESSION['messages']['errors'][] = "Invalid email or password!";

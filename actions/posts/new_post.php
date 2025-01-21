@@ -8,12 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $description = $_POST['description'];
 
-    if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
-        $coverPhoto = $_FILES['cover_photo'];
+    // Variable to store media ID for the cover photo
+    $mediaId = null;
 
+    if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
         try {
-            $originalName = basename($coverPhoto['name']);
-            $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+            $coverPhoto = $_FILES['cover_photo'];
+            $extension = strtolower(pathinfo($coverPhoto['name'], PATHINFO_EXTENSION));
             $hashName = md5(uniqid(time(), true)) . "." . $extension;
             $fileSize = $coverPhoto["size"];
 
@@ -34,27 +35,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             // Insert the cover photo into the media table
+            $photoType = 'cover'; // As this is the cover photo
             $mediaQuery = "INSERT INTO media (original_name, hash_name, path, size, extension, user_id, photo_type)
-                           VALUES (:original_name, :hash_name, :path, :size, :extension, :user_id, 'cover')";
+                           VALUES (:original_name, :hash_name, :path, :size, :extension, :user_id, :photo_type)";
             $stmt = $conn->prepare($mediaQuery);
             $stmt->execute([
-                ':original_name' => $originalName,
+                ':original_name' => $coverPhoto['name'],
                 ':hash_name' => $hashName,
                 ':path' => $path,
                 ':size' => $fileSize,
                 ':extension' => $extension,
                 ':user_id' => $user_id,
+                ':photo_type' => $photoType
             ]);
-            $coverPhotoId = $conn->lastInsertId();
+            $mediaId = $conn->lastInsertId(); // Store the media ID for the cover photo
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    } else {
+        echo "Error uploading the cover photo.";
+    }
 
-            // Insert into the posts table
-            $postQuery = "INSERT INTO posts (title, description, cover_photo_id)
-                          VALUES (:title, :description, :cover_photo_id)";
+    if ($mediaId !== null) {
+        try {
+            // Insert the post into the posts table
+            $postQuery = "INSERT INTO posts (title, description) VALUES (:title, :description)";
             $stmt = $conn->prepare($postQuery);
             $stmt->execute([
                 ':title' => $title,
                 ':description' => $description,
-                ':cover_photo_id' => $coverPhotoId,
+            ]);
+            $postId = $conn->lastInsertId(); // Get the ID of the newly inserted post
+
+            // Update the post to associate it with the cover photo
+            $relationQuery = "UPDATE media SET post_id = :post_id WHERE id = :media_id";
+            $stmt = $conn->prepare($relationQuery);
+            $stmt->execute([
+                ':post_id' => $postId,
+                ':media_id' => $mediaId
             ]);
 
             header("Location: /ATIS/pages/posts/blog_posts.php");
@@ -62,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Error: " . $e->getMessage();
         }
     } else {
-        echo "No valid cover photo provided.";
+        echo "No valid cover photo uploaded.";
     }
 }
 ?>

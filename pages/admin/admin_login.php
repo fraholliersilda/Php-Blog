@@ -31,7 +31,7 @@ session_start();
             </div>
         </form>
         <?php include '../../actions/display_errors.php';?>
+        
     </div>
-    
 </body>
 </html>

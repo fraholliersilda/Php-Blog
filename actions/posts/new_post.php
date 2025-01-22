@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $description = $_POST['description'];
 
-    // Variable to store media ID for the cover photo
     $mediaId = null;
 
     if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
@@ -34,8 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 throw new Exception("Failed to upload the cover photo.");
             }
 
-            // Insert the cover photo into the media table
-            $photoType = 'cover'; // As this is the cover photo
+            $photoType = 'cover';
             $mediaQuery = "INSERT INTO media (original_name, hash_name, path, size, extension, user_id, photo_type)
                            VALUES (:original_name, :hash_name, :path, :size, :extension, :user_id, :photo_type)";
             $stmt = $conn->prepare($mediaQuery);
@@ -48,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':user_id' => $user_id,
                 ':photo_type' => $photoType
             ]);
-            $mediaId = $conn->lastInsertId(); // Store the media ID for the cover photo
+            $mediaId = $conn->lastInsertId(); 
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
@@ -58,16 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($mediaId !== null) {
         try {
-            // Insert the post into the posts table
             $postQuery = "INSERT INTO posts (title, description) VALUES (:title, :description)";
             $stmt = $conn->prepare($postQuery);
             $stmt->execute([
                 ':title' => $title,
                 ':description' => $description,
             ]);
-            $postId = $conn->lastInsertId(); // Get the ID of the newly inserted post
+            $postId = $conn->lastInsertId(); 
 
-            // Update the post to associate it with the cover photo
             $relationQuery = "UPDATE media SET post_id = :post_id WHERE id = :media_id";
             $stmt = $conn->prepare($relationQuery);
             $stmt->execute([

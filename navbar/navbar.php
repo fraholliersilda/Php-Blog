@@ -36,15 +36,32 @@ if (isset($_SESSION['user_id'])) {
         <a href="/ATIS/pages/posts/blog_posts.php" class="dashboard-nav-item <?php echo ($current_page == 'blog_posts.php') ? 'active' : ''; ?>">
             <i class="fas fa-home"></i> Blog Posts
         </a>
+        <?php if (!$is_admin): ?>
+            <!-- show new poat only if is normal user -->
         <a href="/ATIS/pages/posts/new_post.php" class="dashboard-nav-item <?php echo ($current_page == ' new_post.php') ? 'active' : ''; ?>">
             <i class="fas fa-tachometer-alt"></i> New post
         </a>
-        <?php if ($is_admin): ?>
-            <!-- show admiin dashboard -->
-            <a href="/ATIS/pages/admin/admin_dashboard.php" class="dashboard-nav-item <?php echo ($current_page == 'admin_dashboard.php') ? 'active' : ''; ?>">
-                <i class="fas fa-cogs"></i> Admin Dashboard
-            </a>
         <?php endif; ?>
+
+        <?php if ($is_admin): ?>
+    <div class="dropdown">
+        <button class="dashboard-nav-item" style="background-color: #16a085; width: 100%; color: white; border: none;">
+            <i class="fas fa-cogs"></i>Admin Dashboard 
+            <i class="fa-solid fa-caret-down"  style="margin-left: 2px;"></i>
+        </button>
+        <div class="dropdown-menu" style="background-color: #16a085;  width: 100%;">
+            <a href="/ATIS/pages/admin/admins.php" class="dashboard-nav-item <?php echo ($current_page == 'admins.php') ? 'active' : ''; ?>" style="color: white;">
+                <i class="fas fa-user-shield"></i> Admins
+            </a>
+            <a href="/ATIS/pages/admin/users.php" class="dashboard-nav-item <?php echo ($current_page == 'users.php') ? 'active' : ''; ?>" style="color: white;">
+                <i class="fas fa-users"></i> Users
+            </a>
+        </div>
+    </div>
+<?php endif; ?>
+
+
+
         <a href="/ATIS/pages/profile/profile.php" class="dashboard-nav-item <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>">
             <i class="fas fa-user"></i> Profile
         </a>

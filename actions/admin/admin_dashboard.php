@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $conn->beginTransaction();
 
-            // Delete media entries
             $stmt = $conn->prepare("DELETE FROM media WHERE user_id = ?");
             $stmt->execute([$id]);
 
@@ -51,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$username, $email, $hashedPassword]);
     }
 
-    header("Location: ../../pages/admin/admin_dashboard.php");
+    header("Location: ../../pages/admin/users.php");
     exit();
 } else {
-    header("Location: ../../pages/admin/admin_dashboard.php");
+    header("Location: ../../pages/admin/users.php");
     exit();
 }

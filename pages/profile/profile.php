@@ -29,7 +29,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/profile.php';
                                 class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <h4><?php echo htmlspecialchars($user['username']); ?></h4>
-                                <p class="text-secondary mb-1">User Role: Basic User</p>
                                 <p class="text-muted font-size-sm"><?php echo htmlspecialchars($user['email']); ?></p>
                             </div>
                         </div>
@@ -70,6 +69,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/profile.php';
         </div>
     </div>
 
+    <script src="../../js/script.js"></script>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

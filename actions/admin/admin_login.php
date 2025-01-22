@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $admin['id'];
             $_SESSION['role'] = 'admin';
 
-            header("Location: ../../pages/admin/admin_dashboard.php");
+            header("Location: ../../pages/profile/profile.php");
             exit();
         }
 

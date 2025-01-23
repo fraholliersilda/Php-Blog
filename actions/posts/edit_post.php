@@ -1,32 +1,14 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/controlFunction.php';
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+checkLoggedIn();
 
-$is_admin = false;
+$is_admin = isAdmin();
+$user_id = $_SESSION['user_id'];
 
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
-
-    $stmt = $conn->prepare("SELECT u.*, r.role FROM users u
-                            INNER JOIN roles r ON u.role = r.id
-                            WHERE u.id = :id LIMIT 1");
-    $stmt->execute(['id' => $user_id]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($user) {
-        $is_admin = ($user['role'] === 'admin');
-    }
-} else {
-    header("Location: /ATIS/pages/registration/index.php");
-    exit();
-}
-
-if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
+if (isset($_POST['id'])) {
     $post_id = $_POST['id'];
-    $user_id = $_SESSION['user_id'];
 
     $stmt = $conn->prepare("
         SELECT p.*, m.user_id as media_user_id, m.path as cover_photo_path
@@ -41,7 +23,6 @@ if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
             $title = $_POST['title'];
             $description = $_POST['description'];
 
-            // cover photo upload
             if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
                 $coverPhoto = $_FILES['cover_photo'];
                 $extension = strtolower(pathinfo($coverPhoto['name'], PATHINFO_EXTENSION));
@@ -66,9 +47,7 @@ if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
                     exit();
                 }
 
-                // Insert or update the cover photo 
-                $photoType = 'cover';
-                $stmt = $conn->prepare("UPDATE media SET original_name = :original_name, hash_name = :hash_name,path = :path, size = :size, extension = :extension, user_id = :user_id, post_id = :post_id, photo_type = :photo_type WHERE post_id = :post_id AND photo_type = :photo_type ");
+                $stmt = $conn->prepare("UPDATE media SET original_name = :original_name, hash_name = :hash_name, path = :path, size = :size, extension = :extension, user_id = :user_id, post_id = :post_id, photo_type = :photo_type WHERE post_id = :post_id AND photo_type = :photo_type");
                 $stmt->execute([
                     ':original_name' => $coverPhoto['name'],
                     ':hash_name' => $hashName,
@@ -77,7 +56,7 @@ if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
                     ':extension' => $extension,
                     ':user_id' => $user_id,
                     ':post_id' => $post_id,
-                    ':photo_type' => $photoType
+                    ':photo_type' => 'cover'
                 ]);
             }
 
@@ -88,18 +67,16 @@ if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
                 'id' => $post_id
             ]);
 
-            header("Location: /ATIS/pages/posts/blog_posts.php");
+            header("Location: /ATIS/views/posts/blog");
             exit();
         } else {
             echo "You do not have permission to edit this post.";
-            exit();
         }
     } else {
         echo "Post not found.";
-        exit();
     }
 } else {
-    header("Location: /ATIS/pages/posts/blog_posts.php");
+    header("Location: /ATIS/views/posts/blog");
     exit();
 }
 ?>

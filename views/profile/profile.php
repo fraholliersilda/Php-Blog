@@ -15,9 +15,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/profile.php';
 </head>
 
 <body>
-    <?php include('../../navbar/navbar.php'); ?>
-    <!-- errors -->
-    <?php include('../../actions/display_errors.php'); ?>
+<?php include BASE_PATH . '/navbar/navbar.php'; ?>
+<?php include BASE_PATH . '/actions/display_errors.php'; ?>
     <div class="container">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -58,7 +57,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/profile.php';
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn btn-info" target="_self" href="edit_profile.php"
+                                <a class="btn btn-info" target="_self" href="edit"
                                     style="background-color:#1abc9c; color: white; border-color: #1abc9c;">Edit
                                     Profile</a>
                             </div>

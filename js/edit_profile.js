@@ -9,7 +9,7 @@ function handleCancel(event) {
             return;
         }
     }
-    window.location.href = '/ATIS/pages/profile/profile.php';
+    window.location.href = '/ATIS/views/profile/profile';
 }
 
 window.addEventListener("DOMContentLoaded", function () {

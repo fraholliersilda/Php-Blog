@@ -18,14 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindParam(':id', $id);
 
             if ($stmt->execute()) {
-                header("Location: /ATIS/pages/profile/profile.php");
+                header("Location: /ATIS/views/profile/profile");
                 exit();
             } else {
                 throw new Exception("Failed to update username or email.");
             }
         } catch (Exception $e) {
             $_SESSION['mesasges']['errors'][] = $e->getMessage();
-            header("Location: /ATIS/pages/profile/edit_profile.php");
+            header("Location: /ATIS/views/profile/edit");
             exit();
         }
     }

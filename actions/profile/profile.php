@@ -3,7 +3,7 @@ session_start();
 require_once($_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php');
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /ATIS/pages/registration/index.php");
+    header("Location: /ATIS/views/registration/login");
     exit();
 }
 
@@ -17,7 +17,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$user) {
     session_destroy();
-    header("Location: /ATIS/pages/registration/index.php");
+    header("Location: /ATIS/views/registration/login");
     exit();
 }
 

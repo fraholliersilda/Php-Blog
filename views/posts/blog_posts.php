@@ -9,14 +9,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/blog_posts.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="/ATIS/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
-    <?php include('../../navbar/navbar.php'); ?>
-    <?php include('../../actions/display_errors.php'); ?>
+<?php include BASE_PATH . '/navbar/navbar.php'; ?>
+<?php include BASE_PATH . '/actions/display_errors.php'; ?>
 
     <div class="container">
         <h1><b>BLOG POSTS</b></h1>
@@ -32,11 +32,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/blog_posts.php';
                                 <h5 class="card-title"><?php echo htmlspecialchars($post['title']); ?></h5>
                                 <p class="card-text"><em>By: <?php echo htmlspecialchars($post['username']); ?></em></p>
                                 <p class="card-text"><?php echo substr($post['description'], 0, 150); ?>...</p>
-                                <a href="post.php?id=<?php echo $post['id']; ?>" class="btn btn-secondary">Read More</a>
+                                <a href="/ATIS/views/posts/post/<?php echo $post['id']; ?>" class="btn btn-secondary">Read More</a>
 
                                 <?php if ($is_admin || $_SESSION['user_id'] === $post['user_id']) { ?>
                                     <!-- Show delete and edit options for admin and the post owner -->
-                                    <a href="edit_post.php?id=<?php echo $post['id']; ?>" class="btn btn-primary">Edit</a>
+                                    <a href="/ATIS/views/posts/edit/<?php echo $post['id']; ?>" class="btn btn-primary">Edit</a>
                                     <form action="../../actions/posts/delete_post.php" method="post" style="display: inline;">
         <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
         <button type="submit" class="btn btn-danger" onclick="confirmDeletePost(event)">Delete</button>

@@ -22,10 +22,10 @@ $admins = fetchUsersByRole($conn, 'admin');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-    <?php include('../../navbar/navbar.php'); ?>
+<?php include BASE_PATH . '/navbar/navbar.php'; ?>
+<?php include BASE_PATH . '/actions/display_errors.php'; ?>
     <div class="admin_dashboard">
         <h1><b>Admins</b></h1>
-        <?php include('../../actions/display_errors.php'); ?>
         <div class="user-cards">
             <?php foreach ($admins as $admin): ?>
                 <?php if ($admin['id'] === $_SESSION['user_id']): ?>

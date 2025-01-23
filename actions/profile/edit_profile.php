@@ -4,7 +4,7 @@ session_start();
 include($_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php');
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: /ATIS/pages/registration/index.php");
+    header("Location: /ATIS/views/registration/login");
     exit;
 }
 
@@ -17,7 +17,7 @@ $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$user) {
-    header("Location: /ATIS/pages/registration/index.php");
+    header("Location: /ATIS/views/registration/login");
     exit;
 }
 

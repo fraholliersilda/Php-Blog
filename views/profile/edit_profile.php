@@ -15,7 +15,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/edit_profile.php';
 </head>
 
 <body>
-<?php include('../../navbar/navbar.php'); ?>
+<?php include BASE_PATH . '/navbar/navbar.php'; ?>
+<?php include BASE_PATH . '/actions/display_errors.php'; ?>
 
         <div class="prov">
             <div class="row">
@@ -33,7 +34,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/edit_profile.php';
                     </div>
                 </div>
             </div>
-            <?php include('../../actions/display_errors.php'); ?>
             <div class="col-lg-8">
                 <!-- Username and Email Form -->
                 <div class="card">

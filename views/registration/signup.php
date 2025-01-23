@@ -30,11 +30,11 @@ session_start();
       <div class="row button">
         <input type="submit" value="Sign Up" />
       </div>
-      <div class="signup-link">Already a member? <a href="index.php">Login now</a></div>
+      <div class="signup-link">Already a member? <a href="login">Login now</a></div>
     </form>
 
-    
-    <?php include '../../actions/display_errors.php';?>
+
+    <?php include BASE_PATH . '/actions/display_errors.php'; ?>
 
   </div>
 </body>

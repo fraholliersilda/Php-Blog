@@ -13,8 +13,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/new_post.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-<?php include('../../navbar/navbar.php'); ?>
-<?php include('../../actions/display_errors.php'); ?>
+<?php include BASE_PATH . '/navbar/navbar.php'; ?>
+<?php include BASE_PATH . '/actions/display_errors.php'; ?>
 
 <form method="POST" enctype="multipart/form-data" class="post-form" action="../../actions/posts/new_post.php">
     <label for="title">Title:</label><br>

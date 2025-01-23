@@ -482,29 +482,73 @@ body {
   background-color: #1abc9c;
 }
 
-/* post */
-.post{
-  margin-left: 70px;
+
+
+/* Post Page Styling */
+.post {
+ margin-left: 50px;
+  max-width: 1400px; 
+  background-color: #ffffff; 
 }
 
-.post h1{
-  text-align: center;
+/* Title Styling */
+.post h1 {
+  font-size: 2.5rem; /* Larger font size for the title */
+  margin-bottom: 15px; /* Space below the title */
+  color: #333; /* Darker color for the title */
+  text-align: center; /* Center the title */
 }
 
-.post img{
+/* Author Styling */
+.post .author {
+  font-size: 1.2rem; /* Font size for the author */
+  color: #777; /* Lighter color for the author */
+}
+
+/* Image Styling */
+.post img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Rounded corners for the image */
+  margin-bottom: 20px; /* Space below the image */
 }
 
-.description {
-  width: 100%;
-  line-height: 1.6;
-  font-size: 16px;
-  color: #555;
-  padding-bottom: 20px;
+/* Description Styling */
+.post .description {
+  font-size: 1.3rem; /* Font size for the description */
+  color: #555; /* Color for the description text */
+  margin-top: 10px; /* Space above the description */
 }
+
+/* Blockquote Styling */
+.post blockquote {
+  border-left: 4px solid #16a085; /* Left border for blockquotes */
+  padding-left: 20px; /* Padding inside the blockquote */
+  margin: 20px 0; /* Margin above and below */
+  font-style: italic; /* Italic text for quotes */
+  color: #555; /* Color for the quote text */
+}
+
+/* Responsive Design for Post Page */
+@media (max-width: 768px) {
+  .post {
+    margin: 20px; /* Reduce margin on smaller screens */
+    padding: 20px; /* Reduce padding on smaller screens */
+  }
+
+  .post h1 {
+    font-size: 2rem; /* Smaller title on mobile */
+  }
+
+  .post .author {
+    font-size: 0.9rem; /* Smaller author text on mobile */
+  }
+
+  .post .description {
+    font-size: 1rem; /* Smaller description text on mobile */
+  }
+}
+
 
 /* edit_post */
 .edit-post-title{

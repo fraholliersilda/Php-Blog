@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $admin = authenticateAdmin($email, $password);
     if ($admin) {
-        header("Location: ../../pages/registration/index.php");
+        header("Location: ../../views/registration/login");
         $_SESSION['messages']['errors'][] = "YOU ARE ADMIN! ";
         exit();
     }else{
@@ -21,15 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = 'user';
-        header("Location: ../../pages/profile/profile.php");
+        header("Location: ../../views/profile/profile");
         exit();
     } else {
         $_SESSION['messages']['errors'][] = "Invalid email or password!";
-        header("Location: ../../pages/registration/index.php");
+        header("Location: ../../views/registration/login");
         exit();
     }}
 } else {
-    header("Location: ../../pages/registration/index.php");
+    header("Location: ../../views/registration/login");
     exit();
 }
 ?>

@@ -70,14 +70,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     throw new Exception("Failed to insert file metadata.");
                 }
 
-                header("Location: /ATIS/pages/profile/profile.php");
+                header("Location: /ATIS/views/profile/profile");
                 exit();
             } else {
                 throw new Exception("File upload error code: " . $profilePicture['error']);
             }
         } catch (Exception $e) {
             $_SESSION["messages"]["errors"][] = $e->getMessage();
-            header("Location: /ATIS/pages/profile/edit_profile.php");
+            header("Location: /ATIS/views/profile/edit");
             exit();
         }
     }

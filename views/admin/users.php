@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../profile/profile.php");
+    header("Location: ../profile/profile");
     exit();
 }
 
@@ -22,10 +22,10 @@ $users = fetchUsersByRole($conn, 'user');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-    <?php include('../../navbar/navbar.php'); ?>
+<?php include BASE_PATH . '/navbar/navbar.php'; ?>
+<?php include BASE_PATH . '/actions/display_errors.php'; ?>
     <div class="admin_dashboard">
         <h1><b>Users</b></h1>
-        <?php include('../../actions/display_errors.php'); ?>
         <div class="user-cards">
             <?php foreach ($users as $user): ?>
                 <div class="user-card">

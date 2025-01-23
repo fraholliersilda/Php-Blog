@@ -1,9 +1,14 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
 
-$id = $_GET['id']; 
-
 session_start();
+
+// Check if `id` parameter is provided in the URL
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    die('Error: No post ID provided.');
+}
+
+$id = $_GET['id'];
 
 try {
     $query = "SELECT posts.title, posts.description, media.path AS cover_photo_path, users.username
@@ -16,6 +21,7 @@ try {
     $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$post) {
+        header("HTTP/1.0 404 Not Found");
         echo "Post not found.";
         exit;
     }

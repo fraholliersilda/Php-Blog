@@ -23,17 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $admin['id'];
             $_SESSION['role'] = 'admin';
 
-            header("Location: ../../pages/profile/profile.php");
+            header("Location: ../../views/profile/profile");
             exit();
         }
 
     } else {
         $_SESSION['messages']['errors'][] = "NOT admin email or password!";
-        header("Location: ../../pages/admin/admin_login.php");
+        header("Location: ../../views/admin/login");
         exit();
     }
 } else {
-    header("Location: ../../pages/registration/index.php");
+    header("Location: ../../views/registration/login");
     exit();
 }
 ?>

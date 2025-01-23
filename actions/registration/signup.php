@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Insert the new user with the correct role ID
         $stmt = $conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
         if ($stmt->execute([$username, $email, $password, $role_id])) {
-            header("Location: ../../pages/registration/index.php");
+            header("Location: ../../views/registration/login");
             exit();
         } else {
             $errors[] = "Error creating account.";
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (!empty($errors)) {
         $_SESSION['messages']['errors'] = $errors;
-        header("Location: ../../pages/registration/signup.php"); 
+        header("Location: ../../views/registration/signup"); 
         exit();
     }
 }

@@ -3,7 +3,7 @@ session_start();
 require_once '../db.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../../pages/profile/profile.php");
+    header("Location: ../../views/profile/profile");
     exit();
 }
 
@@ -50,9 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$username, $email, $hashedPassword]);
     }
 
-    header("Location: ../../pages/admin/users.php");
+    header("Location: ../../views/admin/users");
     exit();
 } else {
-    header("Location: ../../pages/admin/users.php");
+    header("Location: ../../views/admin/users");
     exit();
 }

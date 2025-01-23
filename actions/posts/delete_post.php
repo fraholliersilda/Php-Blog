@@ -1,17 +1,15 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/controlFunction.php';
 
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+checkLoggedIn();
 
-$is_admin = isset($_SESSION['is_admin']) ? $_SESSION['is_admin'] : false;
+$is_admin = isAdmin();
+$user_id = $_SESSION['user_id'];
 
-if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
+if (isset($_POST['id'])) {
     $post_id = $_POST['id'];
-    $user_id = $_SESSION['user_id'];
 
-    // user_id from the media table to check if the user is the owner
     $stmt = $conn->prepare("SELECT m.user_id
                             FROM posts p
                             LEFT JOIN media m ON p.id = m.post_id
@@ -20,7 +18,6 @@ if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
     $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($post) {
-        // admin or users own posts
         if ($is_admin || $post['user_id'] === $user_id) {
             $delete_stmt = $conn->prepare("DELETE FROM posts WHERE id = :id");
             $delete_stmt->execute(['id' => $post_id]);
@@ -28,7 +25,7 @@ if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
             $delete_media_stmt = $conn->prepare("DELETE FROM media WHERE post_id = :id");
             $delete_media_stmt->execute(['id' => $post_id]);
 
-            header("Location: /ATIS/pages/posts/blog_posts.php");
+            header("Location: /ATIS/views/posts/blog");
             exit();
         } else {
             echo "You do not have permission to delete this post.";
@@ -37,7 +34,7 @@ if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
         echo "Post not found.";
     }
 } else {
-    header("Location: /ATIS/pages/posts/blog_posts.php");
+    header("Location: /ATIS/views/posts/blog");
     exit();
 }
 ?>

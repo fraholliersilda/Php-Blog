@@ -26,7 +26,7 @@ if(!empty($_POST['old_password']) && !empty($_POST['new_password'])){
             $stmt->bindParam(':id', $id);
 
             if($stmt->execute()){
-                header("Location: /ATIS/pages/profile/profile.php");
+                header("Location: /ATIS/views/profile/profile");
                 exit();
             }else{
                 throw  new Exception("Failed to update password.");
@@ -36,7 +36,7 @@ if(!empty($_POST['old_password']) && !empty($_POST['new_password'])){
         }
     } catch(Exception $e){
         $_SESSION["messages"]["errors"][] = $e->getMessage();
-        header("Location: /ATIS/pages/profile/edit_profile.php");
+        header("Location: /ATIS/views/profile/edit");
         exit();
     }
 }

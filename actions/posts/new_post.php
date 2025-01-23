@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':media_id' => $mediaId
             ]);
 
-            header("Location: /ATIS/pages/posts/blog_posts.php");
+            header("Location: /ATIS/views/posts/blog");
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }

@@ -37,7 +37,7 @@ if (isset($_SESSION['user_id'])) {
             <i class="fas fa-home"></i> Blog Posts
         </a>
         <?php if (!$is_admin): ?>
-            <!-- show new poat only if is normal user -->
+            <!-- show new post only if normal user -->
         <a href="/ATIS/pages/posts/new_post.php" class="dashboard-nav-item <?php echo ($current_page == ' new_post.php') ? 'active' : ''; ?>">
             <i class="fas fa-tachometer-alt"></i> New post
         </a>

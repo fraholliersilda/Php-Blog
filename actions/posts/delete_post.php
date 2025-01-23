@@ -11,7 +11,7 @@ if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
     $post_id = $_POST['id'];
     $user_id = $_SESSION['user_id'];
 
-    // Fetch the post along with the user_id from the media table to check if the user is the owner
+    // user_id from the media table to check if the user is the owner
     $stmt = $conn->prepare("SELECT m.user_id
                             FROM posts p
                             LEFT JOIN media m ON p.id = m.post_id
@@ -20,9 +20,8 @@ if (isset($_SESSION['user_id']) && isset($_POST['id'])) {
     $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($post) {
-        // user admin or owner
+        // admin or users own posts
         if ($is_admin || $post['user_id'] === $user_id) {
-            // Delete the post from the posts table
             $delete_stmt = $conn->prepare("DELETE FROM posts WHERE id = :id");
             $delete_stmt->execute(['id' => $post_id]);
 

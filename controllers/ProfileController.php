@@ -38,6 +38,11 @@ class ProfileController
             $stmt->execute();
             $profilePicture = $stmt->fetch(PDO::FETCH_ASSOC);
     
+            // Check if there is no profile picture, set default.jpg if not
+            if (!$profilePicture) {
+                $profilePicture = ['path' => '/ATIS/uploads/default.jpg'];
+            } 
+    
             // Pass the user data and profile picture to the view
             $this->render('profile/profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
@@ -71,6 +76,11 @@ class ProfileController
             $stmt->bindParam(':user_id', $userId);
             $stmt->execute();
             $profilePicture = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                // Check if there is no profile picture, set default.jpg if not
+                if (!$profilePicture) {
+                    $profilePicture = ['path' => '/ATIS/uploads/default.jpg'];
+                }
     
             // Pass the user data and profile picture to the edit view
             $this->render('profile/edit_profile', ['user' => $user, 'profilePicture' => $profilePicture]);

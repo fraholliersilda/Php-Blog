@@ -1,7 +1,3 @@
-<?php
-// session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +10,7 @@
 <body>
     <div class="wrapper">
         <div class="title"><span>Login Form</span></div>
-        <form method="POST" action="../../actions/registration/login.php">
+        <form method="POST" action="/ATIS/views/registration/login">
             <div class="row">
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" name="email" placeholder="Email" required>

@@ -1,7 +1,3 @@
-<?php
-// session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +10,7 @@
 <body>
   <div class="wrapper">
     <div class="title"><span>SignUp Form</span></div>
-    <form method="POST" action="../../actions/registration/signup.php">
+    <form method="POST" action="/ATIS/views/registration/signup">
       <div class="row">
         <i class="fas fa-user"></i>
         <input type="text" name="username" placeholder="Username" required />

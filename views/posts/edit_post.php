@@ -51,7 +51,7 @@ if (isset($_GET['id'])) {
 <?php include BASE_PATH . '/navbar/navbar.php'; ?>
 <?php include BASE_PATH . '/actions/display_errors.php'; ?>
     <h1 class="edit-post-title">Edit Post</h1>
-    <form action="../../actions/posts/edit_post.php" method="POST" enctype="multipart/form-data" class="edit-post-form">
+    <form action="/ATIS/views/posts/edit" method="POST" enctype="multipart/form-data" class="edit-post-form">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($post['id']); ?>">
         <div class="form-group">
             <label for="title" class="form-label">Title:</label>

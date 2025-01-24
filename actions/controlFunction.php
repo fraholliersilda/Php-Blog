@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/db.php';
 
 /**
  * Check if the user is logged in.

@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
-session_start();
+require_once BASE_PATH . '/actions/db.php';
+// session_start();
 
 $user_id = $_SESSION['user_id'];
 

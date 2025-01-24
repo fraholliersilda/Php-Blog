@@ -1,7 +1,3 @@
-<?php
-include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/profile.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +20,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/profile.php';
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
 
-                            <img src="<?php echo htmlspecialchars($profilePicture); ?>" alt="Admin"
+                            <img src="<?php echo htmlspecialchars($profilePicture['path']); ?>" alt="Admin"
                                 class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <h4><?php echo htmlspecialchars($user['username']); ?></h4>

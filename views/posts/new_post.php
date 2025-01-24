@@ -16,7 +16,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/new_post.php';
 <?php include BASE_PATH . '/navbar/navbar.php'; ?>
 <?php include BASE_PATH . '/actions/display_errors.php'; ?>
 
-<form method="POST" enctype="multipart/form-data" class="post-form" action="../../actions/posts/new_post.php">
+<form method="POST" enctype="multipart/form-data" class="post-form" action="/ATIS/views/posts/new">
     <label for="title">Title:</label><br>
     <input type="text" id="title" name="title" required><br>
 

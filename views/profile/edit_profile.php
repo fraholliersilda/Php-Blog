@@ -1,7 +1,3 @@
-<?php
-include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/edit_profile.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +20,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/edit_profile.php';
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="<?php echo htmlspecialchars($profilePicture); ?>" alt="Admin"
+                                <img src="<?php echo htmlspecialchars($profilePicture['path']); ?>" alt="Admin"
                                     class="rounded-circle" width="150">
                                 <h4><?php echo $user['username']; ?></h4>
                                 <p class="text-secondary mb-1">Full Stack Developer</p>
@@ -38,7 +34,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/edit_profile.php';
                 <!-- Username and Email Form -->
                 <div class="card">
                     <div class="card-body">
-                        <form action="../../actions/profile/saveProfile/save_username.php" method="POST"
+                        <form action="/ATIS/index.php" method="POST"
                             enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
@@ -76,7 +72,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/edit_profile.php';
                 <!-- Password Form -->
                 <div class="card mt-4">
                     <div class="card-body">
-                        <form action="../../actions/profile/saveProfile/save_password.php" method="POST"
+                        <form action="/ATIS/index.php" method="POST"
                             enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
@@ -112,7 +108,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/profile/edit_profile.php';
                 <!-- Profile Picture Form -->
                 <div class="card mt-4">
                     <div class="card-body">
-                        <form action="../../actions/profile/saveProfile/save_picture.php" method="POST"
+                        <form action="/ATIS/index.php" method="POST"
                             enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 

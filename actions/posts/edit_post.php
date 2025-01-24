@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/controlFunction.php';
+require_once BASE_PATH . '/actions/db.php';
+require_once BASE_PATH . '/actions/controlFunction.php';
 
 checkLoggedIn();
 

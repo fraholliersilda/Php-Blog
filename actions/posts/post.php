@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
 
-session_start();
+// session_start();
 
 // Check if `id` parameter is provided in the URL
 if (!isset($_GET['id']) || empty($_GET['id'])) {

@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
 
-session_start();
+// session_start();
 
 $posts = []; 
 

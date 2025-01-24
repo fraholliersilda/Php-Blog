@@ -34,8 +34,9 @@
                 <!-- Username and Email Form -->
                 <div class="card">
                     <div class="card-body">
-                        <form action="/ATIS/index.php" method="POST"
+                        <form action="/ATIS/views/profile/edit" method="POST"
                             enctype="multipart/form-data">
+                            <input type="hidden" name="action" value="updateUsername">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
                             <div class="row mb-3">
@@ -72,8 +73,9 @@
                 <!-- Password Form -->
                 <div class="card mt-4">
                     <div class="card-body">
-                        <form action="/ATIS/index.php" method="POST"
+                        <form action="/ATIS/views/profile/edit" method="POST"
                             enctype="multipart/form-data">
+                            <input type="hidden" name="action" value="updatePassword">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
                             <div class="row mb-3">
@@ -108,8 +110,9 @@
                 <!-- Profile Picture Form -->
                 <div class="card mt-4">
                     <div class="card-body">
-                        <form action="/ATIS/index.php" method="POST"
+                        <form action="/ATIS/views/profile/edit" method="POST"
                             enctype="multipart/form-data">
+                            <input type="hidden" name="action" value="updateProfilePicture">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
                             <div class="row mb-3">

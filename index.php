@@ -13,8 +13,8 @@ $path = str_replace('/ATIS', '', $request); // Remove base path for cleaner rout
 
 // Include the controller
 require_once BASE_PATH . '/controllers/ProfileController.php';
-
 require_once BASE_PATH . '/db.php';
+
 // Instantiate the ProfileController
 $profileController = new App\controllers\ProfileController($conn);
 
@@ -31,11 +31,33 @@ $routes = [
         '/views/registration/login' => 'views/registration/login.php',
         '/views/registration/signup' => 'views/registration/signup.php',
     ],
-    'POST' => [
-        '/views/registration/login' => 'views/registration/login_submit.php',
-        '/views/posts/new' => 'actions/posts/new_post.php',
-        '/views/posts/edit' => 'actions/posts/edit_post.php',
-    ],
+'POST' => [
+    '/views/registration/login' => 'views/registration/login_submit.php',
+    '/views/posts/new' => 'actions/posts/new_post.php',
+    '/views/posts/edit' => 'actions/posts/edit_post.php',
+    '/views/profile/edit' => function() use ($profileController) {
+        if (isset($_POST['action'])) {
+            switch ($_POST['action']) {
+                case 'updateUsername':
+                    $profileController->updateUsername($_POST);
+                    break;
+                case 'updatePassword':
+                    $profileController->updatePassword($_POST);
+                    break;
+                case 'updateProfilePicture':
+                    $profileController->updateProfilePicture($_POST, $_FILES);
+                    break;
+                default:
+                    http_response_code(400); // Bad Request
+                    echo 'Invalid action';
+                    break;
+            }
+        } else {
+            http_response_code(400); // Bad Request
+            echo 'No action specified';
+        }
+    },
+],
 ];
 
 // Route for dynamic post pages (view post)
@@ -80,3 +102,4 @@ if (isset($routes[$method][$path])) {
     http_response_code(404);
     echo 'Page not found';
 }
+?>

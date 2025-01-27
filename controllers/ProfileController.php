@@ -14,7 +14,6 @@ class ProfileController
         $this->conn = $conn;
     }
 
-    // Method to view the profile
     public function viewProfile()
     {
         $userId = $_SESSION['user_id'] ?? null;
@@ -22,28 +21,24 @@ class ProfileController
             header("Location: /ATIS/views/registration/login");
             exit();
         }
-    
+
         try {
-            // Fetch user details from the database
             $sql = "SELECT * FROM users WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $userId);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-            // Fetch the profile picture
+
             $sql = "SELECT path FROM media WHERE user_id = :user_id AND photo_type = 'profile' ORDER BY id DESC LIMIT 1";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':user_id', $userId);
             $stmt->execute();
             $profilePicture = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-            // Check if there is no profile picture, set default.jpg if not
+
             if (!$profilePicture) {
                 $profilePicture = ['path' => '/ATIS/uploads/default.jpg'];
-            } 
-    
-            // Pass the user data and profile picture to the view
+            }
+
             $this->render('profile/profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
             $_SESSION['messages']['errors'][] = $e->getMessage();
@@ -51,9 +46,8 @@ class ProfileController
             exit();
         }
     }
-    
 
-    // Method to edit the profile
+
     public function editProfile()
     {
         $userId = $_SESSION['user_id'] ?? null;
@@ -61,28 +55,24 @@ class ProfileController
             header("Location: /ATIS/views/registration/login");
             exit();
         }
-    
+
         try {
-            // Fetch user details for editing
             $sql = "SELECT * FROM users WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $userId);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-            // Fetch the profile picture
+
             $sql = "SELECT path FROM media WHERE user_id = :user_id AND photo_type = 'profile' ORDER BY id DESC LIMIT 1";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':user_id', $userId);
             $stmt->execute();
             $profilePicture = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                // Check if there is no profile picture, set default.jpg if not
-                if (!$profilePicture) {
-                    $profilePicture = ['path' => '/ATIS/uploads/default.jpg'];
-                }
-    
-            // Pass the user data and profile picture to the edit view
+            if (!$profilePicture) {
+                $profilePicture = ['path' => '/ATIS/uploads/default.jpg'];
+            }
+
             $this->render('profile/edit_profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
             $_SESSION['messages']['errors'][] = $e->getMessage();
@@ -90,9 +80,8 @@ class ProfileController
             exit();
         }
     }
-    
 
-    // Method to update the profile username and email
+
     public function updateUsername($data)
     {
         session_start();
@@ -106,7 +95,6 @@ class ProfileController
                 throw new Exception("All fields are required.");
             }
 
-            // Update username and email in the database
             $sql = "UPDATE users SET username = :username, email = :email WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':username', $username);
@@ -126,7 +114,6 @@ class ProfileController
         }
     }
 
-    // Method to update the password
     public function updatePassword($data)
     {
         session_start();
@@ -140,7 +127,6 @@ class ProfileController
                 throw new Exception("All fields are required.");
             }
 
-            // Fetch the current password from the database
             $sql = "SELECT password FROM users WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -150,7 +136,6 @@ class ProfileController
             if (password_verify($old_password, $user['password'])) {
                 $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
 
-                // Update the password in the database
                 $sql = "UPDATE users SET password = :password WHERE id = :id";
                 $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':password', $hashedPassword);
@@ -172,7 +157,6 @@ class ProfileController
         }
     }
 
-    // Method to update the profile picture
     public function updateProfilePicture($data, $files)
     {
         session_start();
@@ -185,14 +169,12 @@ class ProfileController
                 throw new Exception("Invalid user ID or file missing.");
             }
 
-            // Check if the user already has a profile picture
             $sql = "SELECT id, path FROM media WHERE user_id = :user_id AND photo_type = 'profile' ORDER BY id DESC LIMIT 1";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':user_id', $id);
             $stmt->execute();
             $existingProfile = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Handle file upload
             $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/ATIS/uploads/";
             if (!is_dir($targetDir)) {
                 mkdir($targetDir, 0777, true);
@@ -222,7 +204,6 @@ class ProfileController
                 }
             }
 
-            // Insert the new profile picture metadata into the database
             $sql = "INSERT INTO media (original_name, hash_name, path, size, extension, user_id, photo_type)
                     VALUES (:original_name, :hash_name, :path, :size, :extension, :user_id, 'profile')";
             $stmt = $this->conn->prepare($sql);
@@ -246,10 +227,9 @@ class ProfileController
         }
     }
 
-    // Method to render views
     private function render($view, $data = [])
     {
-        extract($data); // Extract the data array as variables in the view
+        extract($data);
         require BASE_PATH . "/views/{$view}.php";
     }
 }

@@ -10,7 +10,6 @@
 </head>
 <body>
 <?php include BASE_PATH . '/navbar/navbar.php'; ?>
-<?php include BASE_PATH . '/actions/display_errors.php'; ?>
     <div class="admin_dashboard">
         <h1><b>Users</b></h1>
         <div class="user-cards">

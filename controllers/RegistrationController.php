@@ -2,7 +2,6 @@
 namespace App\Controllers;
 
 use PDO;
-use Exception;
 
 class RegistrationController
 {
@@ -12,26 +11,31 @@ class RegistrationController
     {
         $this->conn = $conn;
     }
-
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = trim($_POST['email']);
             $password = trim($_POST['password']);
-
+    
             $user = $this->authenticateUser($email, $password);
+    
+
             if ($user) {
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['role'] = 'user';
-                redirect('/views/profile/profile'); // Use redirect function
+                $_SESSION['role'] = $user['role']; 
+                redirect('/views/profile/profile'); 
             } else {
-                $_SESSION['messages']['errors'][] = "Invalid email or password!";
-                redirect('/views/registration/login'); // Use redirect function
+                if (!isset($_SESSION['messages']['errors'])) {
+                    $_SESSION['messages']['errors'][] = "Invalid email or password!";
+                }
+                redirect('/views/registration/login'); 
             }
         } else {
-            redirect('/views/registration/login'); // Use redirect function
+            redirect('/views/registration/login'); 
         }
     }
+    
+    
 
     public function signup()
     {
@@ -42,7 +46,6 @@ class RegistrationController
 
             $errors = [];
 
-            // Check if the username or email already exists
             $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
             $stmt->execute([$username, $email]);
             $user = $stmt->fetch();
@@ -56,13 +59,11 @@ class RegistrationController
             }
 
             if (empty($errors)) {
-                // Role ID for 'user' is 2
-                $role_id = 2;
+                $role_id = 2;//for users
 
-                // Insert the new user with the correct role ID
                 $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
                 if ($stmt->execute([$username, $email, $password, $role_id])) {
-                    redirect('/views/registration/login'); // Use redirect function
+                    redirect('/views/registration/login'); 
                 } else {
                     $errors[] = "Error creating account.";
                 }
@@ -70,21 +71,52 @@ class RegistrationController
 
             if (!empty($errors)) {
                 $_SESSION['messages']['errors'] = $errors;
-                redirect('/views/registration/signup'); // Use redirect function
+                redirect('/views/registration/signup'); 
             }
         }
     }
 
-    private function authenticateUser($email, $password)
+    public function logout()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
-        $stmt->execute(['email' => $email]);
-
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($user && password_verify($password, $user['password'])) {
-            return $user;
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
 
-        return null;
+        session_destroy();
+    
+        header("Location: " . BASE_URL . "/views/registration/login");
+        exit();
     }
+    
+    private function authenticateUser($email, $password)
+    {
+        $stmt = $this->conn->prepare("
+            SELECT users.*, roles.role
+            FROM users
+            JOIN roles ON users.role = roles.id
+            WHERE users.email = :email
+            LIMIT 1
+        ");
+        $stmt->execute(['email' => $email]);
+    
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($user) {
+            if ($user['role'] === 'admin') {
+                $_SESSION['messages']['errors'][] = "You are admin!";
+                return null;
+            }
+    
+            if (password_verify($password, $user['password'])) {
+                return $user;
+            } else {
+                $_SESSION['messages']['errors'][] = "Invalid email or password!";
+            }
+        }
+    
+        return null; 
+    }
+    
+
+
+
 }

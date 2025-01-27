@@ -1,7 +1,3 @@
-<?php
-// session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +26,6 @@
                 <a href="../registration/login">User Login</a>
             </div>
         </form>
-        <?php include BASE_PATH . '/actions/display_errors.php'; ?>
         
     </div>
 </body>

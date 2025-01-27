@@ -12,7 +12,6 @@
 
 <body>
 <?php include BASE_PATH . '/navbar/navbar.php'; ?>
-<?php include BASE_PATH . '/actions/display_errors.php'; ?>
 
     <div class="container">
         <h1><b>BLOG POSTS</b></h1>

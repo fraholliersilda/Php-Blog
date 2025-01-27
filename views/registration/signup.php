@@ -29,9 +29,6 @@
       <div class="signup-link">Already a member? <a href="login">Login now</a></div>
     </form>
 
-
-    <?php include BASE_PATH . '/actions/display_errors.php'; ?>
-
   </div>
 </body>
 </html>

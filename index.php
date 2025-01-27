@@ -37,6 +37,7 @@ $adminController = new App\Controllers\AdminController($conn);
 // Define route map
 $routes = [
     'GET' => [
+        '/logout' => fn() => $registrationController->logout(),
         '/views/admin/login' => 'views/admin/admin_login.php',
         '/views/posts/new' => 'views/posts/new_post.php',
         '/views/posts/blog' => fn() => $postsController->listPosts(),

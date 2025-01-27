@@ -10,7 +10,6 @@
 </head>
 <body>
 <?php include BASE_PATH . '/navbar/navbar.php'; ?>
-<?php include BASE_PATH . '/actions/display_errors.php'; ?>
 
 <div class="container">
     <h1 class="post-title"><?= htmlspecialchars($post['title']); ?></h1>

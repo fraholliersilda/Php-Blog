@@ -14,7 +14,6 @@ class PostsController extends BaseController
         parent::__construct($conn);
     }
 
-    // List all posts
     public function listPosts()
     {
         $posts = [];
@@ -31,11 +30,10 @@ class PostsController extends BaseController
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
-    
-        // Pass $posts to the view
+
         include BASE_PATH . '/views/posts/blog_posts.php';
     }
-    
+
     public function viewPost($postId)
     {
         try {
@@ -59,115 +57,93 @@ class PostsController extends BaseController
         }
     }
 
-    // Edit a post
     public function editPost($postId)
-{
-    try {
-        // Fetch the current post and its associated media (cover photo)
-        $query = "SELECT p.*, m.id AS media_id, m.user_id AS media_user_id, m.path AS cover_photo_path
+    {
+        try {
+            $query = "SELECT p.*, m.id AS media_id, m.user_id AS media_user_id, m.path AS cover_photo_path
                   FROM posts p
                   LEFT JOIN media m ON p.id = m.post_id AND m.photo_type = 'cover'
                   WHERE p.id = :id LIMIT 1";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute(['id' => $postId]);
-        $post = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute(['id' => $postId]);
+            $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($post) {
-            // Update post details (title, description)
-            if (isset($_POST['title']) && isset($_POST['description'])) {
-                $updateQuery = "UPDATE posts SET title = :title, description = :description WHERE id = :id";
-                $stmt = $this->conn->prepare($updateQuery);
-                $stmt->execute([
-                    ':title' => $_POST['title'],
-                    ':description' => $_POST['description'],
-                    ':id' => $postId
-                ]);
+            if ($post) {
+                if (isset($_POST['title']) && isset($_POST['description'])) {
+                    $updateQuery = "UPDATE posts SET title = :title, description = :description WHERE id = :id";
+                    $stmt = $this->conn->prepare($updateQuery);
+                    $stmt->execute([
+                        ':title' => $_POST['title'],
+                        ':description' => $_POST['description'],
+                        ':id' => $postId
+                    ]);
 
-                // Handle cover photo update if a new one is provided
-                if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
-                    // Handle new cover photo upload
-                    $mediaId = $this->uploadCoverPhoto($_FILES['cover_photo'], $postId);
+                    if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
+                        $mediaId = $this->uploadCoverPhoto($_FILES['cover_photo'], $postId);
 
-                    // Delete the old cover photo if it exists
-                    if ($post['media_id']) {
-                        // Delete the old media file
-                        $deleteFile = $_SERVER['DOCUMENT_ROOT'] . $post['cover_photo_path'];
-                        if (file_exists($deleteFile)) {
-                            unlink($deleteFile);
+                        if ($post['media_id']) {
+                            $deleteFile = $_SERVER['DOCUMENT_ROOT'] . $post['cover_photo_path'];
+                            if (file_exists($deleteFile)) {
+                                unlink($deleteFile);
+                            }
+
+                            $deleteMediaStmt = $this->conn->prepare("DELETE FROM media WHERE id = :media_id");
+                            $deleteMediaStmt->execute(['media_id' => $post['media_id']]);
                         }
 
-                        // Delete the old media record
-                        $deleteMediaStmt = $this->conn->prepare("DELETE FROM media WHERE id = :media_id");
-                        $deleteMediaStmt->execute(['media_id' => $post['media_id']]);
+                        header("Location: /ATIS/views/posts/post/$postId");
+                        exit();
                     }
-
-                    // After successful update, redirect to the post view page
-                    header("Location: /ATIS/views/posts/post/$postId");
-                    exit();
                 }
+
+                include BASE_PATH . '/views/posts/edit_post.php';
+            } else {
+                echo "Post not found.";
             }
-
-            // Pass the post data to the view for editing if no update occurred yet
-            include BASE_PATH . '/views/posts/edit_post.php';
-        } else {
-            echo "Post not found.";
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
         }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
     }
-}
 
+    public function deletePost($postId)
+    {
+        $this->checkLoggedIn();
+        $isAdmin = $this->isAdmin();
+        $userId = $_SESSION['user_id'];
 
-    // Delete a post
-   // Delete a post
-public function deletePost($postId)
-{
-    $this->checkLoggedIn();
-    $isAdmin = $this->isAdmin();
-    $userId = $_SESSION['user_id'];
-
-    // Fetch the post and associated media details
-    $stmt = $this->conn->prepare("SELECT p.id, m.id AS media_id, m.path AS cover_photo_path, m.user_id as user_id
+        $stmt = $this->conn->prepare("SELECT p.id, m.id AS media_id, m.path AS cover_photo_path, m.user_id as user_id
                                   FROM posts p 
                                   LEFT JOIN media m ON p.id = m.post_id AND m.photo_type = 'cover'
                                   LEFT JOIN users u ON m.user_id = u.id 
                                   WHERE p.id = :id");
-    $stmt->execute(['id' => $postId]);
-    $post = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute(['id' => $postId]);
+        $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($post) {
-        // Check if the user has permission to delete the post
-        if ($isAdmin || $post['user_id'] === $userId) {
-            // Delete the post from the database
-            $deletePostStmt = $this->conn->prepare("DELETE FROM posts WHERE id = :id");
-            $deletePostStmt->execute(['id' => $postId]);
+        if ($post) {
+            if ($isAdmin || $post['user_id'] === $userId) {
+                $deletePostStmt = $this->conn->prepare("DELETE FROM posts WHERE id = :id");
+                $deletePostStmt->execute(['id' => $postId]);
 
-            // If the post had a cover photo, delete it
-            if ($post['media_id']) {
-                // Delete the cover photo file from the server
-                $deleteFile = $_SERVER['DOCUMENT_ROOT'] . $post['cover_photo_path'];
-                if (file_exists($deleteFile)) {
-                    unlink($deleteFile);
+                if ($post['media_id']) {
+                    $deleteFile = $_SERVER['DOCUMENT_ROOT'] . $post['cover_photo_path'];
+                    if (file_exists($deleteFile)) {
+                        unlink($deleteFile);
+                    }
+
+                    $deleteMediaStmt = $this->conn->prepare("DELETE FROM media WHERE id = :media_id");
+                    $deleteMediaStmt->execute(['media_id' => $post['media_id']]);
                 }
 
-                // Delete the media record from the database
-                $deleteMediaStmt = $this->conn->prepare("DELETE FROM media WHERE id = :media_id");
-                $deleteMediaStmt->execute(['media_id' => $post['media_id']]);
+                header("Location: /ATIS/views/posts/blog");
+                exit();
+            } else {
+                echo "You do not have permission to delete this post.";
             }
-
-            // Redirect after successful deletion
-            header("Location: /ATIS/views/posts/blog");
-            exit();
         } else {
-            echo "You do not have permission to delete this post.";
+            echo "Post not found.";
         }
-    } else {
-        echo "Post not found.";
     }
-}
 
-
-    // Create a new post
     public function createPost($title, $description, $coverPhoto)
     {
         $this->checkLoggedIn();
@@ -199,7 +175,6 @@ public function deletePost($postId)
         }
     }
 
-    // Handle cover photo upload
     private function uploadCoverPhoto($coverPhoto, $postId = null)
     {
         $extension = strtolower(pathinfo($coverPhoto['name'], PATHINFO_EXTENSION));
@@ -222,30 +197,25 @@ public function deletePost($postId)
             throw new Exception("Failed to upload the cover photo.");
         }
 
-        // Check if the post already has a cover photo in the media table
         if ($postId) {
             $checkMediaQuery = "SELECT id FROM media WHERE post_id = :post_id AND photo_type = 'cover'";
             $stmt = $this->conn->prepare($checkMediaQuery);
             $stmt->execute([':post_id' => $postId]);
             $existingMedia = $stmt->fetch();
 
-            // If a cover photo exists, delete the old one
             if ($existingMedia) {
                 $mediaId = $existingMedia['id'];
-                // Delete the old file from the server
                 $deleteFile = $_SERVER['DOCUMENT_ROOT'] . $existingMedia['path'];
                 if (file_exists($deleteFile)) {
                     unlink($deleteFile);
                 }
 
-                // Delete the old media record from the database
                 $deleteMediaQuery = "DELETE FROM media WHERE id = :media_id";
                 $stmt = $this->conn->prepare($deleteMediaQuery);
                 $stmt->execute([':media_id' => $mediaId]);
             }
         }
 
-        // Insert the new cover photo into the media table
         $photoType = 'cover';
         $mediaQuery = "INSERT INTO media (original_name, hash_name, path, size, extension, user_id, photo_type, post_id)
                        VALUES (:original_name, :hash_name, :path, :size, :extension, :user_id, :photo_type, :post_id)";

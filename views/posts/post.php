@@ -1,7 +1,3 @@
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/post.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,15 +13,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/post.php';
 <?php include BASE_PATH . '/actions/display_errors.php'; ?>
 
 <div class="container">
-    <div class="post">
-        <h1 class="text-center"><b><?php echo htmlspecialchars($post['title']); ?></b></h1>
-        <img src="<?php echo htmlspecialchars($post['cover_photo_path']); ?>" alt="Cover Photo" class="img-responsive" style="border-radius: 8px; margin-bottom: 20px;">
-        <p class="author text-muted">By: <?php echo htmlspecialchars($post['username']); ?></p>
-        <p class="description"><?php echo htmlspecialchars($post['description']); ?></p>
+    <h1 class="post-title"><?= htmlspecialchars($post['title']); ?></h1>
+    <div class="post-author">
+        <p><em>By: <?= htmlspecialchars($post['username']); ?></em></p>
     </div>
+    <div class="post-image">
+        <img src="<?= htmlspecialchars($post['cover_photo_path']); ?>" alt="Cover Photo" class="img-fluid">
+    </div>
+    <div class="post-description">
+        <p><?= nl2br(htmlspecialchars($post['description'])); ?></p>
+    </div>
+    
+    <!-- Optional: You can add a back link to return to the blog list -->
+    <a href="/ATIS/views/posts/blog" class="btn btn-primary" style="background-color: #16a085; margin-bottom:10px">Back to Blog</a>
 </div>
 
-<script src="../../js/script.js"></script>  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

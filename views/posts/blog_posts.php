@@ -1,7 +1,3 @@
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/blog_posts.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,36 +17,33 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/blog_posts.php';
     <div class="container">
         <h1><b>BLOG POSTS</b></h1>
         <div class="row">
-            <?php if (!empty($posts)) { ?>
-                <?php foreach ($posts as $post) { ?>
-                    <div class="col-md-12 post-card">
-                        <div class="post-content">
-                            <div class="post-image">
-                                <img src="<?php echo $post['cover_photo_path']; ?>" alt="Cover Photo" class="card-img-top">
-                            </div>
-                            <div class="post-details">
-                                <h5 class="card-title"><?php echo htmlspecialchars($post['title']); ?></h5>
-                                <p class="card-text"><em>By: <?php echo htmlspecialchars($post['username']); ?></em></p>
-                                <p class="card-text"><?php echo substr($post['description'], 0, 150); ?>...</p>
-                                <a href="/ATIS/views/posts/post/<?php echo $post['id']; ?>" class="btn btn-secondary">Read More</a>
-
-                                <?php if ($is_admin || $_SESSION['user_id'] === $post['user_id']) { ?>
-                                    <!-- Show delete and edit options for admin and the post owner -->
-                                    <a href="/ATIS/views/posts/edit/<?php echo $post['id']; ?>" class="btn btn-primary">Edit</a>
-                                    <form action="../../actions/posts/delete_post.php" method="post" style="display: inline;">
-        <input type="hidden" name="id" value="<?php echo $post['id']; ?>">
+      <?php if (!empty($posts)) { ?>
+    <?php foreach ($posts as $post) { ?>
+        <div class="col-md-12 post-card">
+            <div class="post-content">
+                <div class="post-image">
+                    <img src="<?= htmlspecialchars($post['cover_photo_path']); ?>" alt="Cover Photo" class="card-img-top">
+                </div>
+                <div class="post-details">
+                    <h5 class="card-title"><?= htmlspecialchars($post['title']); ?></h5>
+                    <p class="card-text"><em>By: <?= htmlspecialchars($post['username']); ?></em></p>
+                    <p class="card-text"><?= htmlspecialchars(substr($post['description'], 0, 150)); ?>...</p>
+                    <a href="<?= BASE_URL ?>/views/posts/post/<?= $post['id']; ?>" class="btn btn-secondary">Read More</a>
+                    <?php if ($is_admin || $_SESSION['user_id'] === $post['user_id']) { ?>
+                        <a href="/ATIS/views/posts/edit/<?php echo $post['id']; ?>" class="btn btn-primary">Edit</a>
+                        <form action="<?= BASE_URL ?>/posts/delete/<?= $post['id'] ?>" method="post" style="display: inline;">
+        <input type="hidden" name="id" value="<?= $post['id']; ?>">
         <button type="submit" class="btn btn-danger" onclick="confirmDeletePost(event)">Delete</button>
     </form>
-                                <?php } ?>
-
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-            <?php } else { ?>
-                <p>No posts available.</p>
-            <?php } ?>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
+    <?php } ?>
+<?php } else { ?>
+    <p>No posts found.</p>
+<?php } ?>
+
     </div>
 
 

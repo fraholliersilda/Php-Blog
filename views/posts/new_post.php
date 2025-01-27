@@ -1,7 +1,3 @@
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/posts/new_post.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

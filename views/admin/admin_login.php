@@ -14,8 +14,8 @@
 <body>
     <div class="wrapper">
         <div class="title"><span>Admin Login</span></div>
-        <form method="POST" action="../../actions/admin/admin_login.php">
-            <div class="row">
+        <form method="POST" action="/ATIS/views/admin/login">
+<div class="row">
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" name="email" placeholder="Admin Email" required>
             </div>

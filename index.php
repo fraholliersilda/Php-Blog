@@ -25,23 +25,25 @@ $path = str_replace(BASE_URL, '', $request);
 require_once BASE_PATH . '/controllers/ProfileController.php';
 require_once BASE_PATH . '/controllers/RegistrationController.php';
 require_once BASE_PATH . '/controllers/PostsController.php';
+require_once BASE_PATH . '/controllers/AdminController.php';
 require_once BASE_PATH . '/db.php';
 
 // Instantiate controllers
 $profileController = new App\Controllers\ProfileController($conn);
 $registrationController = new App\Controllers\RegistrationController($conn);
 $postsController = new App\Controllers\PostsController($conn);
+$adminController = new App\Controllers\AdminController($conn);
 
 // Define route map
 $routes = [
     'GET' => [
         '/views/admin/login' => 'views/admin/admin_login.php',
-        '/views/admin/admins' => 'views/admin/admins.php',
-        '/views/admin/users' => 'views/admin/users.php',
         '/views/posts/new' => 'views/posts/new_post.php',
         '/views/posts/blog' => fn() => $postsController->listPosts(),
         '/views/posts/post/{id}' => fn($id) => $postsController->viewPost($id),
         '/views/posts/edit/{id}' =>fn($id) => $postsController->editPost($id),
+        '/views/admin/admins' => fn() => $adminController->listAdmins(),
+        '/views/admin/users' => fn() => $adminController->listUsers(),
         '/views/profile/edit' => fn() => $profileController->editProfile(),
         '/views/profile/profile' => fn() => $profileController->viewProfile(),
         '/views/registration/login' => 'views/registration/login.php',
@@ -49,10 +51,12 @@ $routes = [
     ],
     'POST' => [
         '/views/registration/login' => fn() => $registrationController->login(),
+        '/views/admin/login' => fn() => $adminController->login(),
         '/views/registration/signup' => fn() => $registrationController->signup(),
         '/views/posts/new' => fn() => $postsController->createPost($_POST['title'], $_POST['description'], $_FILES['cover_photo']),
         '/views/posts/edit/{id}' =>  fn() => $postsController->editPost($_POST['id']),
         '/posts/delete/{id}' => fn($id) => $postsController->deletePost($id),
+        '/views/admin/users' => fn() => $adminController->handleUserActions(),
         '/views/profile/edit' => fn() => handleProfileActions($profileController),
     ],
 ];

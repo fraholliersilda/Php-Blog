@@ -1,16 +1,3 @@
-<?php
-// session_start();
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../profile/profile");
-    exit();
-}
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/db.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/actions/fetch_users.php';
-
-$users = fetchUsersByRole($conn, 'user');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,12 +15,14 @@ $users = fetchUsersByRole($conn, 'user');
         <h1><b>Users</b></h1>
         <div class="user-cards">
             <?php foreach ($users as $user): ?>
+                <?php if ($user['id'] === $_SESSION['user_id']): ?>
+                    <?php continue; ?><?php endif; ?>
                 <div class="user-card">
                     <h3><?= htmlspecialchars($user['username']) ?></h3>
                     <p>Email: <?= htmlspecialchars($user['email']) ?></p>
 
                     <!-- Update Username and Email Form -->
-                    <form method="POST" action="/ATIS/actions/admin/admin_dashboard.php">
+                    <form method="POST" action="/ATIS/views/admin/users">
                         <input type="hidden" name="action" value="update_user">
                         <input type="hidden" name="id" value="<?= $user['id'] ?>">
                         <label for="username">Username:</label>
@@ -44,7 +33,7 @@ $users = fetchUsersByRole($conn, 'user');
                     </form>
 
                     <!-- Delete User Form -->
-                    <form method="POST" action="/ATIS/actions/admin/admin_dashboard.php" onsubmit="return confirmDelete()">
+                    <form method="POST" action="/ATIS/views/admin/users" onsubmit="return confirmDelete()">
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="id" value="<?= $user['id'] ?>">
                         <button type="submit" style="background-color: #A72925;">Delete User</button>

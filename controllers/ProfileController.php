@@ -7,7 +7,6 @@ use Exception;
 use Requests\ProfileRequest;
 
 require_once __DIR__ . '/BaseController.php';
-
 class ProfileController extends BaseController
 {
     public function __construct($conn)
@@ -15,8 +14,7 @@ class ProfileController extends BaseController
         parent::__construct($conn);
     }
 
-
-    public function viewProfile()
+   public function viewProfile()
     {
         $this->checkLoggedIn();
 
@@ -40,8 +38,8 @@ class ProfileController extends BaseController
             exit();
         }
     }
-
-    public function editProfile()
+ 
+ public function editProfile()
     {
         $this->checkLoggedIn();
 
@@ -193,6 +191,7 @@ class ProfileController extends BaseController
             }
 
             require_once __DIR__ . '/../Requests/ProfileRequest.php';
+
             $error = ProfileRequest::validateFile($profilePicture);
             if ($error) {
                 throw new Exception($error);

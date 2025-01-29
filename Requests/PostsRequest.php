@@ -3,6 +3,12 @@ namespace Requests;
 
 class PostsRequest
 {
+
+    // public $rules = [
+    //     'title' => [
+    //         'required', 'isFile'
+    //     ]
+    // ];
     public static function validate($data)
     {
         $errors = [];
@@ -17,6 +23,10 @@ class PostsRequest
 
         if (!isset($_FILES['cover_photo']) || $_FILES['cover_photo']['error'] !== UPLOAD_ERR_OK) {
             $errors['cover_photo'] = 'Cover photo is required.';
+            ucfirst('hello world'); //Hello world
+            str_replace('_', ' ', 'cover_photo');// cover photo
+
+            ucfirst(str_replace('_', ' ', 'cover_photo')); // Cover photo
         } else {
             $fileError = self::validateFile($_FILES['cover_photo']);
             if ($fileError) {

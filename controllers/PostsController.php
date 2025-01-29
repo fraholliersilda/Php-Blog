@@ -61,6 +61,7 @@ class PostsController extends BaseController
     public function editPost($postId)
     {
         require_once __DIR__ . '/../Requests/PostsRequest.php';
+        // $data = (new PostsRequest)->validated();
         try {
             $query = "SELECT p.*, m.id AS media_id, m.user_id AS media_user_id, m.path AS cover_photo_path
                       FROM posts p

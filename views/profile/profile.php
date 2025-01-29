@@ -12,7 +12,6 @@
 
 <body>
 <?php include BASE_PATH . '/navbar/navbar.php'; ?>
-<?php include BASE_PATH . '/actions/display_errors.php'; ?>
     <div class="container">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">

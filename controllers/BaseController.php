@@ -5,7 +5,7 @@ use PDO;
 
 class BaseController
 {
-    public $conn;
+   public $conn;
 
     public function __construct($conn)
     {

@@ -14,32 +14,31 @@ function redirect($path) {
     exit();
 }
 
-// Parse request
+
 $request = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];
 
-// Remove base URL for cleaner routing
+
 $path = str_replace(BASE_URL, '', $request);
 
-// Include necessary files
+
 require_once BASE_PATH . '/controllers/ProfileController.php';
 require_once BASE_PATH . '/controllers/RegistrationController.php';
 require_once BASE_PATH . '/controllers/PostsController.php';
 require_once BASE_PATH . '/controllers/AdminController.php';
 require_once BASE_PATH . '/db.php';
 
-// Instantiate controllers
 $profileController = new App\Controllers\ProfileController($conn);
 $registrationController = new App\Controllers\RegistrationController($conn);
 $postsController = new App\Controllers\PostsController($conn);
 $adminController = new App\Controllers\AdminController($conn);
 
-// Define route map
+
 $routes = [
     'GET' => [
         '/logout' => fn() => $registrationController->logout(),
-        '/views/admin/login' => 'views/admin/admin_login.php',
-        '/views/posts/new' => 'views/posts/new_post.php',
+        '/views/admin/login' => fn() => $adminController->showAdminLogin(),
+        '/views/posts/new' => fn() => $postsController->showNewPost(),
         '/views/posts/blog' => fn() => $postsController->listPosts(),
         '/views/posts/post/{id}' => fn($id) => $postsController->viewPost($id),
         '/views/posts/edit/{id}' =>fn($id) => $postsController->editPost($id),
@@ -47,8 +46,8 @@ $routes = [
         '/views/admin/users' => fn() => $adminController->listUsers(),
         '/views/profile/edit' => fn() => $profileController->editProfile(),
         '/views/profile/profile' => fn() => $profileController->viewProfile(),
-        '/views/registration/login' => 'views/registration/login.php',
-        '/views/registration/signup' => 'views/registration/signup.php',
+        '/views/registration/login' => fn() => $registrationController->showLogin(),
+        '/views/registration/signup' => fn() => $registrationController->showSignup(),
     ],
     'POST' => [
         '/views/registration/login' => fn() => $registrationController->login(),
@@ -62,7 +61,7 @@ $routes = [
     ],
 ];
 
-// Handle profile actions
+
 function handleProfileActions($controller) {
     if (isset($_POST['action'])) {
         switch ($_POST['action']) {
@@ -76,29 +75,32 @@ function handleProfileActions($controller) {
                 $controller->updateProfilePicture($_POST, $_FILES);
                 break;
             default:
-                http_response_code(400); // Bad Request
+                http_response_code(400); 
                 echo 'Invalid action';
         }
     } else {
-        http_response_code(400); // Bad Request
+        http_response_code(400); 
         echo 'No action specified';
     }
 }
 
-// Process request
+$routeFound = false;
 foreach ($routes[$method] as $route => $action) {
     $pattern = preg_replace('/\{[a-zA-Z]+\}/', '([a-zA-Z0-9_-]+)', $route);
     if (preg_match("#^$pattern$#", $path, $matches)) {
-        array_shift($matches); // Remove the full match
+        array_shift($matches); 
         if (is_callable($action)) {
             $action(...$matches);
         } else {
             require BASE_PATH . '/' . $action;
         }
+        $routeFound = true;
         exit;
     }
 }
 
-// Route not found
-http_response_code(404);
-echo 'Page not found';
+// Route not found - Redirect to 404 page
+if (!$routeFound) {
+    require BASE_PATH . '/views/404page.php';
+    exit;
+}

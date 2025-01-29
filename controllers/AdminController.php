@@ -121,6 +121,12 @@ class AdminController extends BaseController
             exit();
         }
     }
+
+    public function showAdminLogin(){
+        include BASE_PATH . '/views/admin/admin_login.php';
+        exit();
+    }
+
     private function authenticateAdmin($email, $password)
     {
         $stmt = $this->conn->prepare("

@@ -5,33 +5,25 @@ namespace App\Controllers;
 use PDO;
 use Exception;
 
-class ProfileController
-{
-    private $conn;
+require_once __DIR__ . '/BaseController.php';
 
+class ProfileController extends BaseController
+{
     public function __construct($conn)
     {
-        $this->conn = $conn;
+        parent::__construct($conn); 
     }
 
     public function viewProfile()
     {
-        $userId = $_SESSION['user_id'] ?? null;
-        if (!$userId) {
-            header("Location: /ATIS/views/registration/login");
-            exit();
-        }
+        $this->checkLoggedIn();
 
         try {
-            $sql = "SELECT * FROM users WHERE id = :id";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id', $userId);
-            $stmt->execute();
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $user = $this->getLoggedInUser();
 
             $sql = "SELECT path FROM media WHERE user_id = :user_id AND photo_type = 'profile' ORDER BY id DESC LIMIT 1";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':user_id', $userId);
+            $stmt->bindParam(':user_id', $user['id']);
             $stmt->execute();
             $profilePicture = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -47,25 +39,16 @@ class ProfileController
         }
     }
 
-
     public function editProfile()
     {
-        $userId = $_SESSION['user_id'] ?? null;
-        if (!$userId) {
-            header("Location: /ATIS/views/registration/login");
-            exit();
-        }
+        $this->checkLoggedIn();
 
         try {
-            $sql = "SELECT * FROM users WHERE id = :id";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id', $userId);
-            $stmt->execute();
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $user = $this->getLoggedInUser();
 
             $sql = "SELECT path FROM media WHERE user_id = :user_id AND photo_type = 'profile' ORDER BY id DESC LIMIT 1";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':user_id', $userId);
+            $stmt->bindParam(':user_id', $user['id']);
             $stmt->execute();
             $profilePicture = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -81,11 +64,8 @@ class ProfileController
         }
     }
 
-
     public function updateUsername($data)
     {
-        session_start();
-
         $id = $data["id"] ?? null;
         $username = trim($data['username'] ?? '');
         $email = trim($data['email'] ?? '');
@@ -116,8 +96,6 @@ class ProfileController
 
     public function updatePassword($data)
     {
-        session_start();
-
         $id = $data["id"] ?? null;
         $old_password = trim($data['old_password'] ?? '');
         $new_password = trim($data['new_password'] ?? '');
@@ -159,8 +137,6 @@ class ProfileController
 
     public function updateProfilePicture($data, $files)
     {
-        session_start();
-
         $id = $data["id"] ?? null;
         $profilePicture = $files['profile_picture'] ?? null;
 

@@ -3,39 +3,43 @@ namespace App\Controllers;
 
 use PDO;
 
-class RegistrationController
-{
-    private $conn;
+require_once __DIR__ . '/BaseController.php';
 
+class RegistrationController extends BaseController
+{
     public function __construct(PDO $conn)
     {
-        $this->conn = $conn;
+        parent::__construct($conn); 
     }
+
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = trim($_POST['email']);
             $password = trim($_POST['password']);
-    
+
             $user = $this->authenticateUser($email, $password);
-    
 
             if ($user) {
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['role'] = $user['role']; 
-                redirect('/views/profile/profile'); 
+                $_SESSION['role'] = $user['role'];
+                redirect('/views/profile/profile');
             } else {
                 if (!isset($_SESSION['messages']['errors'])) {
                     $_SESSION['messages']['errors'][] = "Invalid email or password!";
                 }
-                redirect('/views/registration/login'); 
+                redirect('/views/registration/login');
             }
         } else {
-            redirect('/views/registration/login'); 
+            redirect('/views/registration/login');
         }
     }
-    
-    
+
+    public function showLogin(){
+        include BASE_PATH . '/views/registration/login.php';
+        exit();
+    }
+
 
     public function signup()
     {
@@ -59,11 +63,11 @@ class RegistrationController
             }
 
             if (empty($errors)) {
-                $role_id = 2;//for users
+                $role_id = 2; // For users
 
                 $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
                 if ($stmt->execute([$username, $email, $password, $role_id])) {
-                    redirect('/views/registration/login'); 
+                    redirect('/views/registration/login');
                 } else {
                     $errors[] = "Error creating account.";
                 }
@@ -71,9 +75,15 @@ class RegistrationController
 
             if (!empty($errors)) {
                 $_SESSION['messages']['errors'] = $errors;
-                redirect('/views/registration/signup'); 
+                redirect('/views/registration/signup');
             }
         }
+    }
+
+
+    public function showSignup(){
+        include BASE_PATH . '/views/registration/signup.php';
+        exit();
     }
 
     public function logout()
@@ -87,7 +97,7 @@ class RegistrationController
         header("Location: " . BASE_URL . "/views/registration/login");
         exit();
     }
-    
+
     private function authenticateUser($email, $password)
     {
         $stmt = $this->conn->prepare("
@@ -98,25 +108,21 @@ class RegistrationController
             LIMIT 1
         ");
         $stmt->execute(['email' => $email]);
-    
+
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user) {
             if ($user['role'] === 'admin') {
                 $_SESSION['messages']['errors'][] = "You are admin!";
                 return null;
             }
-    
+
             if (password_verify($password, $user['password'])) {
                 return $user;
             } else {
                 $_SESSION['messages']['errors'][] = "Invalid email or password!";
             }
         }
-    
+
         return null; 
     }
-    
-
-
-
 }

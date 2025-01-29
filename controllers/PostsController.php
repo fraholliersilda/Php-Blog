@@ -48,7 +48,7 @@ class PostsController extends BaseController
             $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($post) {
-                include BASE_PATH . '/views/posts/post.php'; // Pass $post to the view
+                include BASE_PATH . '/views/posts/post.php'; 
             } else {
                 echo "Post not found.";
             }
@@ -173,6 +173,11 @@ class PostsController extends BaseController
         } else {
             echo "No valid cover photo uploaded.";
         }
+    }
+
+    public function showNewPost(){
+        include BASE_PATH . '/views/posts/new_post.php';
+        exit();
     }
 
     private function uploadCoverPhoto($coverPhoto, $postId = null)

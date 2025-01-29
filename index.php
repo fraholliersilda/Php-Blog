@@ -3,12 +3,12 @@ session_start();
 define('BASE_PATH', __DIR__);
 define('BASE_URL', '/ATIS');
 
-// Helper function to check if the user is authenticated
+// user authenticated?
 function isAuthenticated() {
     return isset($_SESSION['user_id']);
 }
 
-// Helper function to handle redirects
+//handle redirects
 function redirect($path) {
     header("Location: " . BASE_URL . $path);
     exit();
@@ -57,32 +57,11 @@ $routes = [
         '/views/posts/edit/{id}' =>  fn() => $postsController->editPost($_POST['id']),
         '/posts/delete/{id}' => fn($id) => $postsController->deletePost($id),
         '/views/admin/users' => fn() => $adminController->handleUserActions(),
-        '/views/profile/edit' => fn() => handleProfileActions($profileController),
+        '/views/profile/edit' => fn() => $profileController -> updateProfile($_POST, $_FILES)
     ],
 ];
 
 
-function handleProfileActions($controller) {
-    if (isset($_POST['action'])) {
-        switch ($_POST['action']) {
-            case 'updateUsername':
-                $controller->updateUsername($_POST);
-                break;
-            case 'updatePassword':
-                $controller->updatePassword($_POST);
-                break;
-            case 'updateProfilePicture':
-                $controller->updateProfilePicture($_POST, $_FILES);
-                break;
-            default:
-                http_response_code(400); 
-                echo 'Invalid action';
-        }
-    } else {
-        http_response_code(400); 
-        echo 'No action specified';
-    }
-}
 
 $routeFound = false;
 foreach ($routes[$method] as $route => $action) {

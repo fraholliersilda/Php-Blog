@@ -203,6 +203,44 @@ class ProfileController extends BaseController
         }
     }
 
+    public function updateProfile($data, $files)
+{
+    $id = $data["id"] ?? null;
+    $action = $data['action'] ?? null;
+
+    try {
+        if (!$id || !$action) {
+            throw new Exception("Invalid user ID or no action specified.");
+        }
+
+        switch ($action) {
+            case 'updateUsername':
+                $this->updateUsername($data);
+                break;
+
+            case 'updatePassword':
+                $this->updatePassword($data);
+                break;
+
+            case 'updateProfilePicture':
+                $this->updateProfilePicture($data, $files);
+                break;
+
+            default:
+                throw new Exception("Invalid action.");
+        }
+
+        header("Location: /ATIS/views/profile/profile");
+        exit();
+
+    } catch (Exception $e) {
+        $_SESSION["messages"]["errors"][] = $e->getMessage();
+        header("Location: /ATIS/views/profile/edit");
+        exit();
+    }
+}
+
+
     private function render($view, $data = [])
     {
         extract($data);

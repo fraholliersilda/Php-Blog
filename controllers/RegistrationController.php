@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use PDO;
+use Requests\RegistrationRequest;
 
 require_once __DIR__ . '/BaseController.php';
 
@@ -15,73 +16,89 @@ class RegistrationController extends BaseController
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
+            $data = [
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+            ];
+            require_once __DIR__ . '/../Requests/RegistrationRequest.php';
+            $errors = RegistrationRequest::validateLogin($data);
 
-            $user = $this->authenticateUser($email, $password);
-
-            if ($user) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['role'] = $user['role'];
-                redirect('/views/profile/profile');
-            } else {
-                if (!isset($_SESSION['messages']['errors'])) {
-                    $_SESSION['messages']['errors'][] = "Invalid email or password!";
-                }
+            if (!empty($errors)) {
+                $_SESSION['messages']['errors'] = $errors;
                 redirect('/views/registration/login');
+            } else {
+
+                $user = $this->authenticateUser($data['email'], $data['password']);
+
+                if ($user) {
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['role'] = $user['role'];
+                    redirect('/views/profile/profile');
+                } else {
+                    $_SESSION['messages']['errors'][] = "Invalid email or password!";
+                    redirect('/views/registration/login');
+                }
             }
         } else {
             redirect('/views/registration/login');
         }
     }
 
-    public function showLogin(){
+    public function showLogin()
+    {
         include BASE_PATH . '/views/registration/login.php';
         exit();
     }
 
-
     public function signup()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = $_POST['username'];
-            $email = $_POST['email'];
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $data = [
+                'username' => $_POST['username'],
+                'email' => $_POST['email'],
+                'password' => $_POST['password'],
+            ];
+            require_once __DIR__ . '/../Requests/RegistrationRequest.php';
 
-            $errors = [];
-
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-            $stmt->execute([$username, $email]);
-            $user = $stmt->fetch();
-
-            if ($user) {
-                if ($user['username'] == $username) {
-                    $errors[] = "Username already exists.";
-                } elseif ($user['email'] == $email) {
-                    $errors[] = "Email already exists.";
-                }
-            }
-
-            if (empty($errors)) {
-                $role_id = 2; // For users
-
-                $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
-                if ($stmt->execute([$username, $email, $password, $role_id])) {
-                    redirect('/views/registration/login');
-                } else {
-                    $errors[] = "Error creating account.";
-                }
-            }
+            $errors = RegistrationRequest::validateSignup($data);
 
             if (!empty($errors)) {
                 $_SESSION['messages']['errors'] = $errors;
                 redirect('/views/registration/signup');
+            } else {
+                $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
+                $stmt->execute([$data['username'], $data['email']]);
+                $user = $stmt->fetch();
+
+                if ($user) {
+                    if ($user['username'] == $data['username']) {
+                        $errors[] = "Username already exists.";
+                    } elseif ($user['email'] == $data['email']) {
+                        $errors[] = "Email already exists.";
+                    }
+                }
+
+                if (empty($errors)) {
+                    $password = password_hash($data['password'], PASSWORD_DEFAULT);
+                    $role_id = 2; 
+                    $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
+                    if ($stmt->execute([$data['username'], $data['email'], $password, $role_id])) {
+                        redirect('/views/registration/login');
+                    } else {
+                        $errors[] = "Error creating account.";
+                    }
+                }
+
+                if (!empty($errors)) {
+                    $_SESSION['messages']['errors'] = $errors;
+                    redirect('/views/registration/signup');
+                }
             }
         }
     }
 
-
-    public function showSignup(){
+    public function showSignup()
+    {
         include BASE_PATH . '/views/registration/signup.php';
         exit();
     }

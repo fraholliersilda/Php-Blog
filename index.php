@@ -53,7 +53,7 @@ $routes = [
         '/views/registration/login' => fn() => $registrationController->login(),
         '/views/admin/login' => fn() => $adminController->login(),
         '/views/registration/signup' => fn() => $registrationController->signup(),
-        '/views/posts/new' => fn() => $postsController->createPost($_POST['title'], $_POST['description'], $_FILES['cover_photo']),
+       '/views/posts/new' => fn() => $postsController->createPost(),
         '/views/posts/edit/{id}' =>  fn() => $postsController->editPost($_POST['id']),
         '/posts/delete/{id}' => fn($id) => $postsController->deletePost($id),
         '/views/admin/users' => fn() => $adminController->handleUserActions(),

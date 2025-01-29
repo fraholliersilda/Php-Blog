@@ -4,6 +4,7 @@ namespace App\Controllers;
 use PDO;
 use PDOException;
 use Exception;
+use Requests\PostsRequest; // Include the PostsRequest class
 
 require_once __DIR__ . '/BaseController.php';
 
@@ -48,7 +49,7 @@ class PostsController extends BaseController
             $post = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($post) {
-                include BASE_PATH . '/views/posts/post.php'; 
+                include BASE_PATH . '/views/posts/post.php';
             } else {
                 echo "Post not found.";
             }
@@ -59,43 +60,54 @@ class PostsController extends BaseController
 
     public function editPost($postId)
     {
+        require_once __DIR__ . '/../Requests/PostsRequest.php';
         try {
             $query = "SELECT p.*, m.id AS media_id, m.user_id AS media_user_id, m.path AS cover_photo_path
-                  FROM posts p
-                  LEFT JOIN media m ON p.id = m.post_id AND m.photo_type = 'cover'
-                  WHERE p.id = :id LIMIT 1";
+                      FROM posts p
+                      LEFT JOIN media m ON p.id = m.post_id AND m.photo_type = 'cover'
+                      WHERE p.id = :id LIMIT 1";
             $stmt = $this->conn->prepare($query);
             $stmt->execute(['id' => $postId]);
             $post = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
             if ($post) {
                 if (isset($_POST['title']) && isset($_POST['description'])) {
-                    $updateQuery = "UPDATE posts SET title = :title, description = :description WHERE id = :id";
-                    $stmt = $this->conn->prepare($updateQuery);
-                    $stmt->execute([
-                        ':title' => $_POST['title'],
-                        ':description' => $_POST['description'],
-                        ':id' => $postId
-                    ]);
-
-                    if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
-                        $mediaId = $this->uploadCoverPhoto($_FILES['cover_photo'], $postId);
-
-                        if ($post['media_id']) {
-                            $deleteFile = $_SERVER['DOCUMENT_ROOT'] . $post['cover_photo_path'];
-                            if (file_exists($deleteFile)) {
-                                unlink($deleteFile);
-                            }
-
-                            $deleteMediaStmt = $this->conn->prepare("DELETE FROM media WHERE id = :media_id");
-                            $deleteMediaStmt->execute(['media_id' => $post['media_id']]);
+                    // Validate the inputs using PostsRequest class
+                    $errors = PostsRequest::validate($_POST); // Now $errors is an array
+    
+                    if ($errors) {
+                        // Handle the errors, display them on the form
+                        foreach ($errors as $error) {
+                            echo "<p>$error</p>";
                         }
-
-                        header("Location: /ATIS/views/posts/post/$postId");
-                        exit();
+                    } else {
+                        $updateQuery = "UPDATE posts SET title = :title, description = :description WHERE id = :id";
+                        $stmt = $this->conn->prepare($updateQuery);
+                        $stmt->execute([
+                            ':title' => $_POST['title'],
+                            ':description' => $_POST['description'],
+                            ':id' => $postId
+                        ]);
+    
+                        if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
+                            $mediaId = $this->uploadCoverPhoto($_FILES['cover_photo'], $postId);
+    
+                            if ($post['media_id']) {
+                                $deleteFile = $_SERVER['DOCUMENT_ROOT'] . $post['cover_photo_path'];
+                                if (file_exists($deleteFile)) {
+                                    unlink($deleteFile);
+                                }
+    
+                                $deleteMediaStmt = $this->conn->prepare("DELETE FROM media WHERE id = :media_id");
+                                $deleteMediaStmt->execute(['media_id' => $post['media_id']]);
+                            }
+    
+                            header("Location: /ATIS/views/posts/post/$postId");
+                            exit();
+                        }
                     }
                 }
-
+    
                 include BASE_PATH . '/views/posts/edit_post.php';
             } else {
                 echo "Post not found.";
@@ -104,6 +116,8 @@ class PostsController extends BaseController
             echo "Error: " . $e->getMessage();
         }
     }
+    
+    
 
     public function deletePost($postId)
     {
@@ -112,9 +126,9 @@ class PostsController extends BaseController
         $userId = $_SESSION['user_id'];
 
         $stmt = $this->conn->prepare("SELECT p.id, m.id AS media_id, m.path AS cover_photo_path, m.user_id as user_id
-                                  FROM posts p 
+                                  FROM posts p
                                   LEFT JOIN media m ON p.id = m.post_id AND m.photo_type = 'cover'
-                                  LEFT JOIN users u ON m.user_id = u.id 
+                                  LEFT JOIN users u ON m.user_id = u.id
                                   WHERE p.id = :id");
         $stmt->execute(['id' => $postId]);
         $post = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -144,38 +158,58 @@ class PostsController extends BaseController
         }
     }
 
-    public function createPost($title, $description, $coverPhoto)
+    public function createPost()
     {
         $this->checkLoggedIn();
-        $userId = $_SESSION['user_id'];
-
-        if ($coverPhoto) {
-            $mediaId = $this->uploadCoverPhoto($coverPhoto);
-        } else {
-            $mediaId = null;
-        }
-
-        if ($mediaId !== null) {
-            try {
-                $postQuery = "INSERT INTO posts (title, description) VALUES (:title, :description)";
-                $stmt = $this->conn->prepare($postQuery);
-                $stmt->execute([':title' => $title, ':description' => $description]);
-                $postId = $this->conn->lastInsertId();
-
-                $relationQuery = "UPDATE media SET post_id = :post_id WHERE id = :media_id";
-                $stmt = $this->conn->prepare($relationQuery);
-                $stmt->execute([':post_id' => $postId, ':media_id' => $mediaId]);
-
-                header("Location: /ATIS/views/posts/blog");
-            } catch (Exception $e) {
-                echo "Error: " . $e->getMessage();
+        require_once __DIR__ . '/../Requests/PostsRequest.php';
+    
+        // Validate the inputs using PostsRequest class
+        $errors = PostsRequest::validate($_POST);
+    
+        if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
+            $coverPhotoError = PostsRequest::validateFile($_FILES['cover_photo']);
+            if ($coverPhotoError) {
+                $errors['cover_photo'] = $coverPhotoError;
             }
         } else {
-            echo "No valid cover photo uploaded.";
+            $errors['cover_photo'] = "Cover photo is required.";
+        }
+    
+        if (!empty($errors)) {
+            $_SESSION['error_messages'] = $errors;
+            header("Location: /ATIS/views/posts/new");
+            exit();
+        }
+    
+        try {
+            // Insert post into the database
+            $postQuery = "INSERT INTO posts (title, description) VALUES (:title, :description)";
+            $stmt = $this->conn->prepare($postQuery);
+            $stmt->execute([
+                ':title' => $_POST['title'],
+                ':description' => $_POST['description']
+            ]);
+            $postId = $this->conn->lastInsertId();
+    
+            // Upload the cover photo and associate it with the new post
+            $mediaId = $this->uploadCoverPhoto($_FILES['cover_photo'], $postId);
+    
+            if ($mediaId !== null) {
+                header("Location: /ATIS/views/posts/blog");
+                exit();
+            } else {
+                $_SESSION['error_messages']['cover_photo'] = "Failed to upload cover photo.";
+                header("Location: /ATIS/views/posts/new");
+                exit();
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
         }
     }
-
-    public function showNewPost(){
+    
+    
+    public function showNewPost()
+    {
         include BASE_PATH . '/views/posts/new_post.php';
         exit();
     }

@@ -30,11 +30,22 @@
                 </div>
             </div>
             <div class="col-lg-8">
+                <!-- Display Errors -->
+                <?php if (!empty($_SESSION['messages']['errors'])): ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php foreach ($_SESSION['messages']['errors'] as $error): ?>
+                                <li><?php echo htmlspecialchars($error); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <?php unset($_SESSION['messages']['errors']); ?> 
+                <?php endif; ?>
+
                 <!-- Username and Email Form -->
                 <div class="card">
                     <div class="card-body">
-                        <form action="/ATIS/views/profile/edit" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="/ATIS/views/profile/edit" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="action" value="updateUsername">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
@@ -43,8 +54,7 @@
                                     <h6 class="mb-0">Username</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="text" class="form-control" name="username"
-                                        value="<?php echo htmlspecialchars($user['username']); ?>">
+                                    <input type="text" class="form-control" name="username" value="<?php echo htmlspecialchars($user['username']); ?>">
                                 </div>
                             </div>
 
@@ -53,16 +63,14 @@
                                     <h6 class="mb-0">Email</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="email" class="form-control" name="email"
-                                        value="<?php echo htmlspecialchars($user['email']); ?>">
+                                    <input type="email" class="form-control" name="email" value="<?php echo htmlspecialchars($user['email']); ?>">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="submit" class="btn btn-primary px-4" value="Save Username And Email"
-                                        style="background-color:#1abc9c; color: white; border-color: #1abc9c;">
+                                    <input type="submit" class="btn btn-primary px-4" value="Save Username And Email" style="background-color:#1abc9c; color: white; border-color: #1abc9c;">
                                 </div>
                             </div>
                         </form>
@@ -72,8 +80,7 @@
                 <!-- Password Form -->
                 <div class="card mt-4">
                     <div class="card-body">
-                        <form action="/ATIS/views/profile/edit" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="/ATIS/views/profile/edit" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="action" value="updatePassword">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
@@ -98,8 +105,7 @@
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="submit" class="btn btn-primary px-4" value="Save Password"
-                                        style="background-color:#1abc9c; color: white; border-color: #1abc9c;">
+                                    <input type="submit" class="btn btn-primary px-4" value="Save Password" style="background-color:#1abc9c; color: white; border-color: #1abc9c;">
                                 </div>
                             </div>
                         </form>
@@ -109,8 +115,7 @@
                 <!-- Profile Picture Form -->
                 <div class="card mt-4">
                     <div class="card-body">
-                        <form action="/ATIS/views/profile/edit" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="/ATIS/views/profile/edit" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="action" value="updateProfilePicture">
                             <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
 
@@ -126,10 +131,8 @@
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9 text-secondary">
-                                    <input type="submit" class="btn btn-primary px-4" value="Save Profile Picture"
-                                        style="background-color:#1abc9c; color: white; border-color: #1abc9c;">
-                                    <input type="button" class="btn btn-secondary px-4" value="Cancel"
-                                        onclick="handleCancel(event)">
+                                    <input type="submit" class="btn btn-primary px-4" value="Save Profile Picture" style="background-color:#1abc9c; color: white; border-color: #1abc9c;">
+                                    <input type="button" class="btn btn-secondary px-4" value="Cancel" onclick="handleCancel(event)">
                                 </div>
                             </div>
                         </form>
@@ -139,9 +142,7 @@
             </div>
         </div>
 
-
-
-    <script src="../../js/script.js"></script>  
+    <script src="../../js/script.js"></script>
     <script src="../../js/edit_profile.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

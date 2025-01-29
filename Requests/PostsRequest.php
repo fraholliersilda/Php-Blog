@@ -42,6 +42,6 @@ class PostsRequest
             return 'File size must be 5MB or less.';
         }
 
-        return null; // No errors
+        return null; 
     }
 }

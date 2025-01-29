@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use PDO;
 use Exception;
+use Requests\ProfileRequest;
 
 require_once __DIR__ . '/BaseController.php';
 
@@ -11,8 +12,9 @@ class ProfileController extends BaseController
 {
     public function __construct($conn)
     {
-        parent::__construct($conn); 
+        parent::__construct($conn);
     }
+
 
     public function viewProfile()
     {
@@ -64,7 +66,52 @@ class ProfileController extends BaseController
         }
     }
 
-    public function updateUsername($data)
+    public function updateProfile($data, $files)
+    {
+        $id = $data["id"] ?? null;
+        $action = $data['action'] ?? null;
+
+        try {
+            if (!$id || !$action) {
+                throw new Exception("Invalid user ID or no action specified.");
+            }
+
+            require_once __DIR__ . '/../Requests/ProfileRequest.php';
+            $errors = ProfileRequest::validate($data, $action);
+
+            if ($errors) {
+                $_SESSION["messages"]["errors"] = $errors;
+                header("Location: /ATIS/views/profile/edit");
+                exit();
+            }
+
+            switch ($action) {
+                case 'updateUsername':
+                    $this->updateUsername($data);
+                    break;
+
+                case 'updatePassword':
+                    $this->updatePassword($data);
+                    break;
+
+                case 'updateProfilePicture':
+                    $this->updateProfilePicture($data, $files);
+                    break;
+
+                default:
+                    throw new Exception("Invalid action.");
+            }
+
+            header("Location: /ATIS/views/profile/profile");
+            exit();
+        } catch (Exception $e) {
+            $_SESSION["messages"]["errors"][] = $e->getMessage();
+            header("Location: /ATIS/views/profile/edit");
+            exit();
+        }
+    }
+
+    private function updateUsername($data)
     {
         $id = $data["id"] ?? null;
         $username = trim($data['username'] ?? '');
@@ -94,7 +141,7 @@ class ProfileController extends BaseController
         }
     }
 
-    public function updatePassword($data)
+    private function updatePassword($data)
     {
         $id = $data["id"] ?? null;
         $old_password = trim($data['old_password'] ?? '');
@@ -135,7 +182,7 @@ class ProfileController extends BaseController
         }
     }
 
-    public function updateProfilePicture($data, $files)
+    private function updateProfilePicture($data, $files)
     {
         $id = $data["id"] ?? null;
         $profilePicture = $files['profile_picture'] ?? null;
@@ -143,6 +190,12 @@ class ProfileController extends BaseController
         try {
             if (!$id || !$profilePicture) {
                 throw new Exception("Invalid user ID or file missing.");
+            }
+
+            require_once __DIR__ . '/../Requests/ProfileRequest.php';
+            $error = ProfileRequest::validateFile($profilePicture);
+            if ($error) {
+                throw new Exception($error);
             }
 
             $sql = "SELECT id, path FROM media WHERE user_id = :user_id AND photo_type = 'profile' ORDER BY id DESC LIMIT 1";
@@ -160,10 +213,6 @@ class ProfileController extends BaseController
             $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
             $hashName = md5(uniqid(time(), true)) . "." . $extension;
             $fileSize = $profilePicture["size"];
-
-            if (!in_array($extension, ["jpg", "jpeg", "png", "gif"])) {
-                throw new Exception("Only JPG, JPEG, PNG & GIF files are allowed.");
-            }
 
             $targetFile = $targetDir . $hashName;
 
@@ -202,44 +251,6 @@ class ProfileController extends BaseController
             exit();
         }
     }
-
-    public function updateProfile($data, $files)
-{
-    $id = $data["id"] ?? null;
-    $action = $data['action'] ?? null;
-
-    try {
-        if (!$id || !$action) {
-            throw new Exception("Invalid user ID or no action specified.");
-        }
-
-        switch ($action) {
-            case 'updateUsername':
-                $this->updateUsername($data);
-                break;
-
-            case 'updatePassword':
-                $this->updatePassword($data);
-                break;
-
-            case 'updateProfilePicture':
-                $this->updateProfilePicture($data, $files);
-                break;
-
-            default:
-                throw new Exception("Invalid action.");
-        }
-
-        header("Location: /ATIS/views/profile/profile");
-        exit();
-
-    } catch (Exception $e) {
-        $_SESSION["messages"]["errors"][] = $e->getMessage();
-        header("Location: /ATIS/views/profile/edit");
-        exit();
-    }
-}
-
 
     private function render($view, $data = [])
     {

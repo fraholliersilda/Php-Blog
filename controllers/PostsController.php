@@ -4,7 +4,7 @@ namespace App\Controllers;
 use PDO;
 use PDOException;
 use Exception;
-use Requests\PostsRequest; // Include the PostsRequest class
+use Requests\PostsRequest;
 
 require_once __DIR__ . '/BaseController.php';
 
@@ -163,7 +163,6 @@ class PostsController extends BaseController
         $this->checkLoggedIn();
         require_once __DIR__ . '/../Requests/PostsRequest.php';
     
-        // Validate the inputs using PostsRequest class
         $errors = PostsRequest::validate($_POST);
     
         if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
@@ -182,7 +181,6 @@ class PostsController extends BaseController
         }
     
         try {
-            // Insert post into the database
             $postQuery = "INSERT INTO posts (title, description) VALUES (:title, :description)";
             $stmt = $this->conn->prepare($postQuery);
             $stmt->execute([
@@ -191,7 +189,6 @@ class PostsController extends BaseController
             ]);
             $postId = $this->conn->lastInsertId();
     
-            // Upload the cover photo and associate it with the new post
             $mediaId = $this->uploadCoverPhoto($_FILES['cover_photo'], $postId);
     
             if ($mediaId !== null) {

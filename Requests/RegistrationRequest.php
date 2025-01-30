@@ -1,59 +1,27 @@
 <?php
 namespace Requests;
+require_once 'BaseRequest.php';
 
-class RegistrationRequest
+class RegistrationRequest extends BaseRequest
 {
     public static function validateSignup($data)
     {
-        $errors = [];
+        $rules = [
+            'username' => ['required', 'string', 'min:3'],
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string', 'min:8', 'max:255']
+        ];
 
-        if (empty($data['username'])) {
-            $errors[] = 'Username is required';
-        }
-
-        if (empty($data['email'])) {
-            $errors[] = 'Email is required';
-        } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'Invalid email format';
-        }
-
-        if (empty($data['password'])) {
-            $errors[] = 'Password is required';
-        } else {
-            if (strlen($data['password']) < 8) {
-                $errors[] = 'Password should be at least 8 characters long';
-            }
-            if (!preg_match('/[A-Z]/', $data['password'])) {
-                $errors[] = 'Password should contain at least one uppercase letter';
-            }
-            if (!preg_match('/[a-z]/', $data['password'])) {
-                $errors[] = 'Password should contain at least one lowercase letter';
-            }
-            if (!preg_match('/[0-9]/', $data['password'])) {
-                $errors[] = 'Password should contain at least one digit';
-            }
-            if (!preg_match('/[\W_]/', $data['password'])) {
-                $errors[] = 'Password should contain at least one special symbol';
-            }
-        }
-
-        return $errors;
+        return self::validateRules($data, $rules);
     }
 
     public static function validateLogin($data)
     {
-        $errors = [];
+        $rules = [
+            'email' => ['required', 'string', 'email'],
+            'password' => ['required', 'string']
+        ];
 
-        if (empty($data['email'])) {
-            $errors[] = 'Email is required';
-        } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $errors[] = 'Invalid email format';
-        }
-
-        if (empty($data['password'])) {
-            $errors[] = 'Password is required';
-        }
-
-        return $errors;
+        return self::validateRules($data, $rules);
     }
 }

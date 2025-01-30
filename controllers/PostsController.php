@@ -61,7 +61,6 @@ class PostsController extends BaseController
     public function editPost($postId)
     {
         require_once __DIR__ . '/../Requests/PostsRequest.php';
-        // $data = (new PostsRequest)->validated();
         try {
             $query = "SELECT p.*, m.id AS media_id, m.user_id AS media_user_id, m.path AS cover_photo_path
                       FROM posts p
@@ -117,8 +116,6 @@ class PostsController extends BaseController
             echo "Error: " . $e->getMessage();
         }
     }
-    
-    
 
     public function deletePost($postId)
     {
@@ -167,9 +164,10 @@ class PostsController extends BaseController
         $errors = PostsRequest::validate($_POST);
     
         if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
-            $coverPhotoError = PostsRequest::validateFile($_FILES['cover_photo']);
-            if ($coverPhotoError) {
-                $errors['cover_photo'] = $coverPhotoError;
+
+            $fileErrors = PostsRequest::validate($_FILES['cover_photo']);
+            if ($fileErrors) {
+                $errors['cover_photo'] = $fileErrors;
             }
         } else {
             $errors['cover_photo'] = "Cover photo is required.";
@@ -270,4 +268,5 @@ class PostsController extends BaseController
 
         return $this->conn->lastInsertId();
     }
-}
+    }
+

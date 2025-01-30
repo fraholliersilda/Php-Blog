@@ -7,6 +7,7 @@ use Exception;
 use Requests\ProfileRequest;
 
 require_once __DIR__ . '/BaseController.php';
+
 class ProfileController extends BaseController
 {
     public function __construct($conn)
@@ -14,7 +15,7 @@ class ProfileController extends BaseController
         parent::__construct($conn);
     }
 
-   public function viewProfile()
+    public function viewProfile()
     {
         $this->checkLoggedIn();
 
@@ -38,8 +39,9 @@ class ProfileController extends BaseController
             exit();
         }
     }
- 
- public function editProfile()
+
+
+    public function editProfile()
     {
         $this->checkLoggedIn();
 
@@ -190,11 +192,19 @@ class ProfileController extends BaseController
                 throw new Exception("Invalid user ID or file missing.");
             }
 
-            require_once __DIR__ . '/../Requests/ProfileRequest.php';
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+            $maxFileSize = 2 * 1024 * 1024;
 
-            $error = ProfileRequest::validateFile($profilePicture);
-            if ($error) {
-                throw new Exception($error);
+            $originalName = basename($profilePicture["name"]);
+            $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+            $fileSize = $profilePicture["size"];
+
+            if (!in_array($extension, $allowedExtensions)) {
+                throw new Exception("Unsupported file type. Only JPG, JPEG, PNG, and GIF are allowed.");
+            }
+
+            if ($fileSize > $maxFileSize) {
+                throw new Exception("File size exceeds the 2MB limit.");
             }
 
             $sql = "SELECT id, path FROM media WHERE user_id = :user_id AND photo_type = 'profile' ORDER BY id DESC LIMIT 1";
@@ -208,11 +218,7 @@ class ProfileController extends BaseController
                 mkdir($targetDir, 0777, true);
             }
 
-            $originalName = basename($profilePicture["name"]);
-            $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
             $hashName = md5(uniqid(time(), true)) . "." . $extension;
-            $fileSize = $profilePicture["size"];
-
             $targetFile = $targetDir . $hashName;
 
             if (!move_uploaded_file($profilePicture["tmp_name"], $targetFile)) {

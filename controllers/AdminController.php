@@ -66,7 +66,6 @@ class AdminController extends BaseController
         $username = trim($_POST['username']);
         $email = trim($_POST['email']);
 
-        // Update user's username and email
         $stmt = $this->conn->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
         $stmt->execute([$username, $email, $id]);
     }

@@ -2,9 +2,7 @@
 namespace App\Controllers;
 
 use PDO;
-use Requests\RegistrationRequest;
-use Requests\PostsRequest;
-use Requests\ProfileRequest;
+
 
 class BaseController
 {

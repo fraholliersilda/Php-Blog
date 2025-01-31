@@ -1,5 +1,7 @@
 <?php
+
 namespace Requests;
+
 require_once 'BaseRequest.php';
 
 class UpdateUsernameRequest extends BaseRequest
@@ -14,3 +16,4 @@ class UpdateUsernameRequest extends BaseRequest
         return self::validateRules($data, $rules);
     }
 }
+

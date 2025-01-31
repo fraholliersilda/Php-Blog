@@ -1,5 +1,7 @@
 <?php
+
 namespace Requests;
+
 require_once 'BaseRequest.php';
 
 class RegistrationRequest extends BaseRequest
@@ -8,7 +10,7 @@ class RegistrationRequest extends BaseRequest
     {
         $rules = [
             'username' => ['required', 'string', 'min:3'],
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required', 'string', 'email'], // Ensure 'email' rule is implemented
             'password' => ['required', 'string', 'min:8', 'max:255']
         ];
 

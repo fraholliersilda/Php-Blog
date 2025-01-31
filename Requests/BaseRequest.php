@@ -1,10 +1,16 @@
 <?php
+
 namespace Requests;
+require_once  BASE_PATH .'/Exceptions/ValidationException.php';
 
 class BaseRequest
 {
     public static function validateRules($data, $rules)
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $errors = [];
 
         foreach ($rules as $field => $fieldRules) {
@@ -24,12 +30,13 @@ class BaseRequest
             }
         }
 
-        // if(errors) {
-        //     // put errors in session
-        //     //Throw ValidationException
-        // }
+        if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            $firstError = array_values($errors)[0];
+            throw new \Exceptions\ValidationException($firstError);
+        }
 
-        return count($errors) > 0 ? $errors : null;
+        return null;
     }
 
     protected static function applyRule($value, $field, $rule, $param)
@@ -58,6 +65,13 @@ class BaseRequest
             case 'maxFileSize':
                 $maxFileSize = $param * 1024 * 1024;
                 return $_FILES[$field]['size'] > $maxFileSize ? ucfirst(str_replace('_', ' ', $field)) . " must be smaller than $param MB." : null;
+
+                case 'email':
+                    return !filter_var($value, FILTER_VALIDATE_EMAIL) ? ucfirst(str_replace('_', ' ', $field)) . ' must be a valid email address.' : null;          
+                    
+                    case 'different':
+                        return isset($param) && $value === $param ? ucfirst(str_replace('_', ' ', $field)) . ' must be different from ' . str_replace('_', ' ', $param) . '.' : null;
+                    
 
             default:
                 return null;

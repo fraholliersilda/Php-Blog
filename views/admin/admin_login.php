@@ -25,6 +25,15 @@
             <div class="signup-link">
                 <a href="../registration/login">User Login</a>
             </div>
+
+<?php
+        if (isset($_SESSION['messages']['errors']) && !empty($_SESSION['messages']['errors'])) {
+            foreach ($_SESSION['messages']['errors'] as $error) {
+                echo "<div class='error-message'>{$error}</div>";
+            }
+            unset($_SESSION['messages']['errors']);
+        }
+      ?>
         </form>
         
     </div>

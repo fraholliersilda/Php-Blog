@@ -1,5 +1,7 @@
 <?php
+
 namespace Requests;
+
 require_once 'BaseRequest.php';
 
 class UpdateProfilePictureRequest extends BaseRequest

@@ -3,6 +3,8 @@ session_start();
 define('BASE_PATH', __DIR__);
 define('BASE_URL', '/ATIS');
 
+use Exceptions\ValidationException;
+
 // user authenticated?
 function isAuthenticated() {
     return isset($_SESSION['user_id']);
@@ -20,6 +22,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 
 $path = str_replace(BASE_URL, '', $request);
+
 
 
 require_once BASE_PATH . '/controllers/ProfileController.php';
@@ -78,9 +81,12 @@ foreach ($routes[$method] as $route => $action) {
         }
         catch(ValidationException $exception) {
             // return back
+            $_SESSION['errors'] = $exception->getMessage();
+            redirect($_SERVER['HTTP_REFERER']);
         }
          catch(Exception $exception) {
-            // throw 500
+            $_SESSION['error'] = 'Something went wrong. Please try again later.';
+            redirect('/views/500.php');
         }
         exit;
     }

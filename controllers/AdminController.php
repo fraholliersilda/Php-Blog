@@ -5,6 +5,7 @@ use PDO;
 use PDOException;
 use Requests\RegistrationRequest;
 use Requests\UpdateUsernameRequest;
+use Exceptions\ValidationException;
 
 class AdminController extends BaseController
 {
@@ -13,12 +14,21 @@ class AdminController extends BaseController
         parent::__construct($conn);
     }
 
+    // Check if the current user is an admin
     private function checkAdmin()
     {
         if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             header("Location: /ATIS/views/profile/profile");
             exit();
         }
+    }
+
+    // Helper method for handling validation errors
+    private function handleValidationError($e)
+    {
+        $_SESSION['messages']['errors'][] = $e->getMessage();
+        header("Location: /ATIS/views/admin/users");
+        exit();
     }
 
     public function fetchUsersByRole($role)
@@ -71,10 +81,11 @@ class AdminController extends BaseController
             'email' => trim($_POST['email'])
         ];
 
-        require_once __DIR__ . '/../Requests/UpdateUsernameRequest.php';
-        $errors = UpdateUsernameRequest::validate($data);
-        if ($errors) {
-            return $errors;
+        try {
+            require_once __DIR__ . '/../Requests/UpdateUsernameRequest.php';
+            UpdateUsernameRequest::validate($data);
+        } catch (ValidationException $e) {
+            $this->handleValidationError($e);
         }
 
         $id = intval($_POST['id']);
@@ -116,10 +127,11 @@ class AdminController extends BaseController
                 'password' => trim($_POST['password'])
             ];
 
-            require_once __DIR__ . '/../Requests/RegistrationRequest.php';
-            $errors = RegistrationRequest::validateLogin($data);
-            if ($errors) {
-                $_SESSION['messages']['errors'] = $errors;
+            try {
+                require_once __DIR__ . '/../Requests/RegistrationRequest.php';
+                RegistrationRequest::validateLogin($data);
+            } catch (ValidationException $e) {
+                $_SESSION['messages']['errors'][] = $e->getMessage();  
                 header("Location: /ATIS/views/admin/login");
                 exit();
             }
@@ -150,11 +162,7 @@ class AdminController extends BaseController
 
     private function authenticateAdmin($email, $password)
     {
-        $stmt = $this->conn->prepare("
-            SELECT u.id, u.password, r.role FROM users u
-            INNER JOIN roles r ON u.role = r.id
-            WHERE u.email = :email AND r.role = 'admin'
-        ");
+        $stmt = $this->conn->prepare("SELECT u.id, u.password, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.email = :email AND r.role = 'admin'");
         $stmt->execute(['email' => $email]);
 
         $admin = $stmt->fetch(PDO::FETCH_ASSOC);

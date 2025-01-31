@@ -29,6 +29,17 @@
             <img src="<?php echo htmlspecialchars($post['cover_photo_path']); ?>" alt="Current Cover Photo" class="cover-photo" width="150">
         <?php endif; ?>
     </div>
+
+    <?php if (!empty($_SESSION['error_messages'])): ?>
+    <div class="error-messages">
+        <?php foreach ($_SESSION['error_messages'] as $message): ?>
+            <p><?php echo htmlspecialchars($message); ?></p>
+        <?php endforeach; ?>
+    </div>
+    <?php unset($_SESSION['error_messages']); ?>
+<?php endif; ?>
+<br>
+
     <div>
         <button type="submit" class="submit-button">Update Post</button>
     </div>

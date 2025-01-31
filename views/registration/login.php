@@ -15,11 +15,11 @@
         <form method="POST" action="/ATIS/views/registration/login">
             <div class="row">
                 <i class="fa-solid fa-envelope"></i>
-                <input type="email" name="email" placeholder="Email" required>
+                <input type="email" name="email" placeholder="Email" >
             </div>
             <div class="row">
                 <i class="fas fa-lock"></i>
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password" >
             </div>
 
             <div class="row button">

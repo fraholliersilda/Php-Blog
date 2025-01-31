@@ -2,7 +2,9 @@
 namespace App\Controllers;
 
 use PDO;
+use Exception;
 use Requests\RegistrationRequest;
+use Exceptions\ValidationException;
 
 require_once __DIR__ . '/BaseController.php';
 
@@ -20,16 +22,14 @@ class RegistrationController extends BaseController
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
             ];
-            require_once __DIR__ . '/../Requests/RegistrationRequest.php';
-            $errors = RegistrationRequest::validateLogin($data);
+    
+            try {
+                require_once __DIR__ . '/../Requests/RegistrationRequest.php';
 
-            if (!empty($errors)) {
-                $_SESSION['messages']['errors'] = $errors;
-                redirect('/views/registration/login');
-            } else {
-
+                RegistrationRequest::validateLogin($data);
+    
                 $user = $this->authenticateUser($data['email'], $data['password']);
-
+    
                 if ($user) {
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['role'] = $user['role'];
@@ -38,11 +38,18 @@ class RegistrationController extends BaseController
                     $_SESSION['messages']['errors'][] = "Invalid email or password!";
                     redirect('/views/registration/login');
                 }
+            } catch (ValidationException $e) {
+                $_SESSION['messages']['errors'] = [$e->getMessage()];
+                redirect('/views/registration/login');
+            } catch (Exception $e) {
+                $_SESSION['messages']['errors'][] = $e->getMessage();
+                redirect('/views/registration/login');
             }
         } else {
             redirect('/views/registration/login');
         }
     }
+    
 
     public function showLogin()
     {
@@ -58,18 +65,17 @@ class RegistrationController extends BaseController
                 'email' => $_POST['email'],
                 'password' => $_POST['password'],
             ];
-            require_once __DIR__ . '/../Requests/RegistrationRequest.php';
-
-            $errors = RegistrationRequest::validateSignup($data);
-
-            if (!empty($errors)) {
-                $_SESSION['messages']['errors'] = $errors;
-                redirect('/views/registration/signup');
-            } else {
+    
+            try {
+                require_once __DIR__ . '/../Requests/RegistrationRequest.php';
+                RegistrationRequest::validateSignup($data);
+    
                 $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
                 $stmt->execute([$data['username'], $data['email']]);
                 $user = $stmt->fetch();
-
+    
+                $errors = [];
+    
                 if ($user) {
                     if ($user['username'] == $data['username']) {
                         $errors[] = "Username already exists.";
@@ -77,10 +83,11 @@ class RegistrationController extends BaseController
                         $errors[] = "Email already exists.";
                     }
                 }
-
+    
                 if (empty($errors)) {
                     $password = password_hash($data['password'], PASSWORD_DEFAULT);
                     $role_id = 2; 
+    
                     $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
                     if ($stmt->execute([$data['username'], $data['email'], $password, $role_id])) {
                         redirect('/views/registration/login');
@@ -88,14 +95,22 @@ class RegistrationController extends BaseController
                         $errors[] = "Error creating account.";
                     }
                 }
-
+    
                 if (!empty($errors)) {
                     $_SESSION['messages']['errors'] = $errors;
                     redirect('/views/registration/signup');
                 }
+    
+            } catch (ValidationException $e) {
+                $_SESSION['messages']['errors'] = [$e->getMessage()];
+                redirect('/views/registration/signup');
+            } catch (Exception $e) {
+                $_SESSION['messages']['errors'][] = $e->getMessage();
+                redirect('/views/registration/signup');
             }
         }
     }
+    
 
     public function showSignup()
     {

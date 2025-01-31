@@ -305,7 +305,7 @@ svg {
   }
 }
 
-@-webkit-keyframes wobble-ver-right {
+@keyframes wobble-ver-right {
   0%, 100% {
     -webkit-transform: translateY(0) rotate(0);
     transform: translateY(0) rotate(0);

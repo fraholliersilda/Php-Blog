@@ -14,7 +14,6 @@ class AdminController extends BaseController
         parent::__construct($conn);
     }
 
-    // Check if the current user is an admin
     private function checkAdmin()
     {
         if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -23,7 +22,6 @@ class AdminController extends BaseController
         }
     }
 
-    // Helper method for handling validation errors
     private function handleValidationError($e)
     {
         $_SESSION['messages']['errors'][] = $e->getMessage();

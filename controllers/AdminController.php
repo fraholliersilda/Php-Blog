@@ -3,6 +3,8 @@ namespace App\Controllers;
 
 use PDO;
 use PDOException;
+use Requests\RegistrationRequest;
+use Requests\UpdateUsernameRequest;
 
 class AdminController extends BaseController
 {
@@ -40,7 +42,6 @@ class AdminController extends BaseController
         require BASE_PATH . '/views/admin/users.php';
     }
 
-
     public function handleUserActions()
     {
         $this->checkLoggedIn();
@@ -48,7 +49,10 @@ class AdminController extends BaseController
             $action = $_POST['action'];
 
             if ($action === 'update_user') {
-                $this->updateUser();
+                $errors = $this->updateUser();
+                if ($errors) {
+                    $_SESSION['messages']['errors'] = $errors;
+                }
             } elseif ($action === 'delete') {
                 $this->deleteUser();
             }
@@ -62,12 +66,25 @@ class AdminController extends BaseController
 
     private function updateUser()
     {
+        $data = [
+            'username' => trim($_POST['username']),
+            'email' => trim($_POST['email'])
+        ];
+
+        require_once __DIR__ . '/../Requests/UpdateUsernameRequest.php';
+        $errors = UpdateUsernameRequest::validate($data);
+        if ($errors) {
+            return $errors;
+        }
+
         $id = intval($_POST['id']);
-        $username = trim($_POST['username']);
-        $email = trim($_POST['email']);
+        $username = $data['username'];
+        $email = $data['email'];
 
         $stmt = $this->conn->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
         $stmt->execute([$username, $email, $id]);
+
+        return null;
     }
 
     private function deleteUser()
@@ -94,22 +111,26 @@ class AdminController extends BaseController
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
+            $data = [
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password'])
+            ];
 
+            require_once __DIR__ . '/../Requests/RegistrationRequest.php';
+            $errors = RegistrationRequest::validateLogin($data);
+            if ($errors) {
+                $_SESSION['messages']['errors'] = $errors;
+                header("Location: /ATIS/views/admin/login");
+                exit();
+            }
 
-            $admin = $this->authenticateAdmin($email, $password);
+            $admin = $this->authenticateAdmin($data['email'], $data['password']);
 
             if ($admin) {
-                $role = $admin['role'];
-
-                if ($role === 'admin') {
-                    $_SESSION['user_id'] = $admin['id'];
-                    $_SESSION['role'] = 'admin';
-
-                    header("Location: /ATIS/views/profile/profile");
-                    exit();
-                }
+                $_SESSION['user_id'] = $admin['id'];
+                $_SESSION['role'] = 'admin';
+                header("Location: /ATIS/views/profile/profile");
+                exit();
             } else {
                 $_SESSION['messages']['errors'][] = "Invalid email or password!";
                 header("Location: /ATIS/views/admin/login");
@@ -121,7 +142,8 @@ class AdminController extends BaseController
         }
     }
 
-    public function showAdminLogin(){
+    public function showAdminLogin()
+    {
         include BASE_PATH . '/views/admin/admin_login.php';
         exit();
     }
@@ -143,6 +165,4 @@ class AdminController extends BaseController
 
         return null;
     }
-
-
 }

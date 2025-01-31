@@ -2,10 +2,13 @@
 namespace App\Controllers;
 
 use PDO;
+use Requests\RegistrationRequest;
+use Requests\PostsRequest;
+use Requests\ProfileRequest;
 
 class BaseController
 {
-   public $conn;
+    public $conn;
 
     public function __construct($conn)
     {
@@ -37,4 +40,5 @@ class BaseController
         $user = $this->getLoggedInUser();
         return $user && $user['role'] === 'admin';
     }
+
 }

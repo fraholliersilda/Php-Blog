@@ -17,6 +17,16 @@
                 <?php if ($user['id'] === $_SESSION['user_id']): ?>
                     <?php continue; ?><?php endif; ?>
                 <div class="user-card">
+                <?php if (!empty($_SESSION['messages']['errors'])): ?>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <?php foreach ($_SESSION['messages']['errors'] as $error): ?>
+                                <li><?php echo htmlspecialchars($error); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <?php unset($_SESSION['messages']['errors']); ?> 
+                <?php endif; ?>
                     <h3><?= htmlspecialchars($user['username']) ?></h3>
                     <p>Email: <?= htmlspecialchars($user['email']) ?></p>
 

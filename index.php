@@ -68,12 +68,20 @@ foreach ($routes[$method] as $route => $action) {
     $pattern = preg_replace('/\{[a-zA-Z]+\}/', '([a-zA-Z0-9_-]+)', $route);
     if (preg_match("#^$pattern$#", $path, $matches)) {
         array_shift($matches); 
-        if (is_callable($action)) {
-            $action(...$matches);
-        } else {
-            require BASE_PATH . '/' . $action;
+        try {
+            if (is_callable($action)) {
+                $action(...$matches);
+            } else {
+                require BASE_PATH . '/' . $action;
+            }
+            $routeFound = true;
         }
-        $routeFound = true;
+        catch(ValidationException $exception) {
+            // return back
+        }
+         catch(Exception $exception) {
+            // throw 500
+        }
         exit;
     }
 }

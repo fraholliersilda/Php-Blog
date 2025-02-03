@@ -1,3 +1,6 @@
+<?php
+require_once 'errorHandler.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,11 +18,11 @@
         <form method="POST" action="/ATIS/views/registration/login">
             <div class="row">
                 <i class="fa-solid fa-envelope"></i>
-                <input type="email" name="email" placeholder="Email" >
+                <input type="email" name="email" placeholder="Email">
             </div>
             <div class="row">
                 <i class="fas fa-lock"></i>
-                <input type="password" name="password" placeholder="Password" >
+                <input type="password" name="password" placeholder="Password">
             </div>
 
             <div class="row button">
@@ -28,14 +31,14 @@
             <div class="signup-link">
                 Not a member? <a href="signup">Signup now</a>
             </div>
+
             <?php
-        if (isset($_SESSION['messages']['errors']) && !empty($_SESSION['messages']['errors'])) {
-            foreach ($_SESSION['messages']['errors'] as $error) {
-                echo "<div class='error-message'>{$error}</div>";
+            if (isset($_SESSION['messages']['errors']) && !empty($_SESSION['messages']['errors'])) {
+                echo '<div class="error-message">';
+                displayErrors();
+                echo '</div>';
             }
-            unset($_SESSION['messages']['errors']);
-        }
-      ?>
+            ?>
 
         </form>
 

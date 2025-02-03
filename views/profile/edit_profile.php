@@ -1,3 +1,6 @@
+<?php 
+require_once 'errorHandler.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,17 +33,10 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <!-- Display Errors -->
-                <?php if (!empty($_SESSION['messages']['errors'])): ?>
-                    <div class="alert alert-danger">
-                        <ul>
-                            <?php foreach ($_SESSION['messages']['errors'] as $error): ?>
-                                <li><?php echo htmlspecialchars($error); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                    <?php unset($_SESSION['messages']['errors']); ?> 
-                <?php endif; ?>
+            <!-- Display errors using displayErrors function -->
+            <?php
+                displayErrors();
+            ?>
 
                 <!-- Username and Email Form -->
                 <div class="card">

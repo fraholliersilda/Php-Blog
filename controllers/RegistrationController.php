@@ -7,6 +7,7 @@ use Requests\RegistrationRequest;
 use Exceptions\ValidationException;
 
 require_once 'redirect.php';
+require_once 'errorHandler.php';
 
 class RegistrationController extends BaseController
 {
@@ -37,10 +38,10 @@ class RegistrationController extends BaseController
                     redirect("/ATIS/views/registration/login");
                 }
             } catch (ValidationException $e) {
-                $_SESSION['messages']['errors'] = [$e->getMessage()];
+                setErrors([$e->getMessage()]);
                 redirect("/ATIS/views/registration/login");
             } catch (Exception $e) {
-                $_SESSION['messages']['errors'][] = $e->getMessage();
+                setErrors([$e->getMessage()]);
                 redirect("/ATIS/views/registration/login");
             }
         } else {
@@ -89,20 +90,20 @@ class RegistrationController extends BaseController
                     if ($stmt->execute([$data['username'], $data['email'], $password, $role_id])) {
                         redirect("/ATIS/views/registration/login");
                     } else {
-                        $errors[] = "Error creating account.";
+                        setErrors(["Error creating account."]);
                     }
                 }
     
                 if (!empty($errors)) {
-                    $_SESSION['messages']['errors'] = $errors;
+                    setErrors([$errors]);
                     redirect("/ATIS/views/registration/signup");
                 }
     
             } catch (ValidationException $e) {
-                $_SESSION['messages']['errors'] = [$e->getMessage()];
+                setErrors([$e->getMessage()]);
                 redirect("/ATIS/views/registration/signup");
             } catch (Exception $e) {
-                $_SESSION['messages']['errors'][] = $e->getMessage();
+                setErrors([ $e->getMessage()]);
                 redirect("/ATIS/views/registration/signup");
             }
         }
@@ -139,14 +140,14 @@ class RegistrationController extends BaseController
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($user) {
             if ($user['role'] === 'admin') {
-                $_SESSION['messages']['errors'][] = "You are admin!";
+                setErrors(["You are admin!"]);
                 return null;
             }
 
             if (password_verify($password, $user['password'])) {
                 return $user;
             } else {
-                $_SESSION['messages']['errors'][] = "Invalid email or password!";
+                setErrors(["Invalid email or password!"]);
             }
         }
 

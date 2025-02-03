@@ -10,6 +10,7 @@ use Requests\UpdateProfilePictureRequest;
 use Exceptions\ValidationException;
 
 require_once 'redirect.php';
+require_once 'errorHandler.php';
 
 class ProfileController extends BaseController
 {
@@ -28,7 +29,7 @@ class ProfileController extends BaseController
             $profilePicture = $this->getProfilePicture($user['id']);
             $this->render('profile/profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
-            $_SESSION['messages']['errors'][] = $e->getMessage();
+            setErrors([$e->getMessage()]);
             redirect("/ATIS/views/profile/edit");
         }
     }
@@ -43,7 +44,7 @@ class ProfileController extends BaseController
             $profilePicture = $this->getProfilePicture($user['id']);
             $this->render('profile/edit_profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
-            $_SESSION['messages']['errors'][] = $e->getMessage();
+            setErrors([$e->getMessage()]);
             redirect("/ATIS/views/profile/profile");
         }
     }
@@ -76,10 +77,10 @@ class ProfileController extends BaseController
             }
             redirect("/ATIS/views/profile/profile");
         } catch (ValidationException $e) {
-            $_SESSION["messages"]["errors"][] = $e->getMessage();
+            setErrors([$e->getMessage()]);
             redirect("/ATIS/views/profile/edit");
         } catch (Exception $e) {
-            $_SESSION["messages"]["errors"][] = $e->getMessage();
+            setErrors([$e->getMessage()]);
             redirect("/ATIS/views/profile/edit");
 
         }
@@ -106,8 +107,7 @@ class ProfileController extends BaseController
         } catch (ValidationException $e) {
             throw $e; 
         } catch (Exception $e) {
-
-            $_SESSION['messages']['errors'][] = $e->getMessage();
+            setErrors([$e->getMessage()]);
             redirect("/ATIS/views/profile/edit");
         }
     }
@@ -145,7 +145,7 @@ class ProfileController extends BaseController
         } catch (ValidationException $e) {
             throw $e; 
         } catch (Exception $e) {
-            $_SESSION["messages"]["errors"][] = $e->getMessage();
+            setErrors([$e->getMessage()]);
             redirect("/ATIS/views/profile/edit");
         }
     }
@@ -200,7 +200,7 @@ class ProfileController extends BaseController
         } catch (ValidationException $e) {
             throw $e; 
         } catch (Exception $e) {
-            $_SESSION["messages"]["errors"][] = $e->getMessage();
+            setErrors([$e->getMessage()]);
             redirect("/ATIS/views/profile/edit");
         }
     }    

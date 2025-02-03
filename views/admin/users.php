@@ -1,3 +1,7 @@
+<?php 
+require_once 'errorHandler.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,14 +22,10 @@
                     <?php continue; ?><?php endif; ?>
                 <div class="user-card">
                
-<?php
-        if (isset($_SESSION['messages']['errors']) && !empty($_SESSION['messages']['errors'])) {
-            foreach ($_SESSION['messages']['errors'] as $error) {
-                echo "<div class='error-message'>{$error}</div>";
-            }
-            unset($_SESSION['messages']['errors']);
-        }
-      ?>
+            <!-- Display errors using displayErrors function -->
+            <?php
+                displayErrors();
+            ?>
                     <h3><?= htmlspecialchars($user['username']) ?></h3>
                     <p>Email: <?= htmlspecialchars($user['email']) ?></p>
 

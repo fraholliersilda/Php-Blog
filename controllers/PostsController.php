@@ -8,6 +8,7 @@ use Requests\PostsRequest;
 use Exceptions\ValidationException;
 
 require_once 'redirect.php';
+require_once 'errorHandler.php';
 
 class PostsController extends BaseController
 {
@@ -30,7 +31,7 @@ class PostsController extends BaseController
             $stmt->execute();
             $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            setErrors(["Error: " . $e->getMessage()]);
         }
 
         include BASE_PATH . '/views/posts/blog_posts.php';
@@ -52,10 +53,10 @@ class PostsController extends BaseController
             if ($post) {
                 include BASE_PATH . '/views/posts/post.php';
             } else {
-                echo "Post not found.";
+                setErrors(["Post not found."]);
             }
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            setErrors(["Error: " . $e->getMessage()]);
         }
     }
 
@@ -99,15 +100,15 @@ class PostsController extends BaseController
                             redirect("/ATIS/views/posts/post/$postId");
                         }
                     } catch (ValidationException $e) {
-                        $_SESSION['error_messages'] = ['validation' => $e->getMessage()];
+                        setErrors([ $e->getMessage()]);
                     }
                 }
                 include BASE_PATH . '/views/posts/edit_post.php';
             } else {
-                echo "Post not found.";
+                setErrors(["Post not found"]);
             }
         } catch (PDOException $e) {
-            echo "Database Error: " . $e->getMessage();
+            setErrors(["Database Error: " . $e->getMessage()]);
         }
     }
     
@@ -132,11 +133,11 @@ class PostsController extends BaseController
         header("Location: /ATIS/views/posts/blog");
         exit();
     } catch (ValidationException $e) {
-        $_SESSION['error_messages'] = ['validation' => $e->getMessage()];
+        setErrors([$e->getMessage()]);
         header("Location: /ATIS/views/posts/new");
         exit();
     } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
+        setErrors( [$e->getMessage()]);
     }
 }
     
@@ -171,10 +172,10 @@ class PostsController extends BaseController
 
                 redirect("/ATIS/views/posts/blog");
             } else {
-                echo "You do not have permission to delete this post.";
+                setErrors(["You do not have permission to delete this post."]);
             }
         } else {
-            echo "Post not found.";
+            setErrors(["Post not found."]);
         }
     }
     

@@ -31,7 +31,7 @@ class BaseRequest
         }
 
         if (!empty($errors)) {
-            $_SESSION['errors'] = $errors;
+            setErrors([$errors]);
             $firstError = array_values($errors)[0];
             throw new ValidationException($firstError);
         }

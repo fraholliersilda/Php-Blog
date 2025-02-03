@@ -1,3 +1,6 @@
+<?php 
+require_once 'errorHandler.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,14 +30,14 @@
         <input type="submit" value="Sign Up" />
       </div>
       <div class="signup-link">Already a member? <a href="login">Login now</a></div>
-      <?php
-        if (isset($_SESSION['messages']['errors']) && !empty($_SESSION['messages']['errors'])) {
-            foreach ($_SESSION['messages']['errors'] as $error) {
-                echo "<div class='error-message'>{$error}</div>";
+            <!-- Display errors using displayErrors function -->
+            <?php
+            if (isset($_SESSION['messages']['errors']) && !empty($_SESSION['messages']['errors'])) {
+                echo '<div class="error-message">';
+                displayErrors();
+                echo '</div>';
             }
-            unset($_SESSION['messages']['errors']);
-        }
-      ?>
+            ?>
     </form>
 
   </div>

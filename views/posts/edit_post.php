@@ -1,3 +1,6 @@
+<?php 
+require_once 'errorHandler.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,14 +33,10 @@
         <?php endif; ?>
     </div>
 
-    <?php if (!empty($_SESSION['error_messages'])): ?>
-    <div class="error-messages">
-        <?php foreach ($_SESSION['error_messages'] as $message): ?>
-            <p><?php echo htmlspecialchars($message); ?></p>
-        <?php endforeach; ?>
-    </div>
-    <?php unset($_SESSION['error_messages']); ?>
-<?php endif; ?>
+              <!-- Display errors using displayErrors function -->
+              <?php
+                displayErrors();
+            ?>
 <br>
 
     <div>

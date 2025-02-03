@@ -8,6 +8,7 @@ use Requests\UpdateUsernameRequest;
 use Exceptions\ValidationException;
 
 require_once 'redirect.php';
+require_once 'errorHandler.php';
 
 class AdminController extends BaseController
 {
@@ -19,8 +20,7 @@ class AdminController extends BaseController
     private function checkAdmin()
     {
         if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-            header("Location: /ATIS/views/profile/profile");
-            exit();
+            redirect("/ATIS/views/profile/profile");
         }
     }
 
@@ -55,7 +55,7 @@ class AdminController extends BaseController
             if ($action === 'update_user') {
                 $errors = $this->updateUser();
                 if ($errors) {
-                    $_SESSION['messages']['errors'] = $errors;
+                    setErrors([$errors]);
                 }
             } elseif ($action === 'delete') {
                 $this->deleteUser();
@@ -76,7 +76,7 @@ class AdminController extends BaseController
         try {
             UpdateUsernameRequest::validate($data);
         } catch (ValidationException $e) {
-            $_SESSION['messages']['errors'][] = $e->getMessage();
+            setErrors([$e->getMessage()]);
             redirect("/ATIS/views/admin/users");
         }
 
@@ -107,7 +107,7 @@ class AdminController extends BaseController
             if ($this->conn->inTransaction()) {
                 $this->conn->rollBack();
             }
-            $_SESSION['messages']['errors'][] = "Database error: " . $e->getMessage();
+            setErrors(["Database error" . $e->getMessage()]);
         }
     }
 
@@ -122,7 +122,7 @@ class AdminController extends BaseController
             try {
                 RegistrationRequest::validateLogin($data);
             } catch (ValidationException $e) {
-                $_SESSION['messages']['errors'][] = $e->getMessage();  
+                setErrors([$e->getMessage()]);
                 redirect("/ATIS/views/admin/login");
             }
 
@@ -133,7 +133,7 @@ class AdminController extends BaseController
                 $_SESSION['role'] = 'admin';
                 redirect("/ATIS/views/profile/profile");
             } else {
-                $_SESSION['messages']['errors'][] = "Invalid email or password!";
+                setErrors(["Invalid email or password"]);
                 redirect("/ATIS/views/admin/login");
             }
         } else {

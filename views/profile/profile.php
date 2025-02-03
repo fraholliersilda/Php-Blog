@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<?php include BASE_PATH . '/navbar/navbar.php'; ?>
+    <?php include BASE_PATH . '/navbar/navbar.php'; ?>
     <div class="container">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <script src="../../js/script.js"></script>  
+    <script src="../../js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>

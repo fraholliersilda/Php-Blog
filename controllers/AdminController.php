@@ -7,6 +7,8 @@ use Requests\RegistrationRequest;
 use Requests\UpdateUsernameRequest;
 use Exceptions\ValidationException;
 
+require_once 'redirect.php';
+
 class AdminController extends BaseController
 {
     public function __construct($conn)
@@ -58,11 +60,9 @@ class AdminController extends BaseController
             } elseif ($action === 'delete') {
                 $this->deleteUser();
             }
-            header("Location: /ATIS/views/admin/users");
-            exit();
+            redirect("/ATIS/views/admin/users");
         } else {
-            header("Location: /ATIS/views/admin/users");
-            exit();
+            redirect("/ATIS/views/admin/users");
         }
     }
 
@@ -77,8 +77,7 @@ class AdminController extends BaseController
             UpdateUsernameRequest::validate($data);
         } catch (ValidationException $e) {
             $_SESSION['messages']['errors'][] = $e->getMessage();
-            header("Location: /ATIS/views/admin/users");
-            exit();
+            redirect("/ATIS/views/admin/users");
         }
 
         $id = intval($_POST['id']);
@@ -124,8 +123,7 @@ class AdminController extends BaseController
                 RegistrationRequest::validateLogin($data);
             } catch (ValidationException $e) {
                 $_SESSION['messages']['errors'][] = $e->getMessage();  
-                header("Location: /ATIS/views/admin/login");
-                exit();
+                redirect("/ATIS/views/admin/login");
             }
 
             $admin = $this->authenticateAdmin($data['email'], $data['password']);
@@ -133,16 +131,13 @@ class AdminController extends BaseController
             if ($admin) {
                 $_SESSION['user_id'] = $admin['id'];
                 $_SESSION['role'] = 'admin';
-                header("Location: /ATIS/views/profile/profile");
-                exit();
+                redirect("/ATIS/views/profile/profile");
             } else {
                 $_SESSION['messages']['errors'][] = "Invalid email or password!";
-                header("Location: /ATIS/views/admin/login");
-                exit();
+                redirect("/ATIS/views/admin/login");
             }
         } else {
-            header("Location: /ATIS/views/registration/login");
-            exit();
+            redirect("/ATIS/views/registration/login");
         }
     }
 

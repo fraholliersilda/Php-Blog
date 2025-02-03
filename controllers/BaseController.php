@@ -3,6 +3,7 @@ namespace Controllers;
 
 use PDO;
 
+require_once 'redirect.php';
 
 class BaseController
 {
@@ -16,8 +17,7 @@ class BaseController
     public function checkLoggedIn()
     {
         if (!isset($_SESSION['user_id'])) {
-            header("Location: /ATIS/views/registration/login");
-            exit();
+            redirect("/ATIS/views/registration/login");
         }
     }
 

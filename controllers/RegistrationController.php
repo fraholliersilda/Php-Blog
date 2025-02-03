@@ -6,6 +6,7 @@ use Exception;
 use Requests\RegistrationRequest;
 use Exceptions\ValidationException;
 
+require_once 'redirect.php';
 
 class RegistrationController extends BaseController
 {
@@ -31,19 +32,19 @@ class RegistrationController extends BaseController
                 if ($user) {
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['role'] = $user['role'];
-                    redirect('/views/profile/profile');
+                    redirect("/ATIS/views/profile/profile");
                 } else {
-                    redirect('/views/registration/login');
+                    redirect("/ATIS/views/registration/login");
                 }
             } catch (ValidationException $e) {
                 $_SESSION['messages']['errors'] = [$e->getMessage()];
-                redirect('/views/registration/login');
+                redirect("/ATIS/views/registration/login");
             } catch (Exception $e) {
                 $_SESSION['messages']['errors'][] = $e->getMessage();
-                redirect('/views/registration/login');
+                redirect("/ATIS/views/registration/login");
             }
         } else {
-            redirect('/views/registration/login');
+            redirect("/ATIS/views/registration/login");
         }
     }
     
@@ -86,7 +87,7 @@ class RegistrationController extends BaseController
     
                     $stmt = $this->conn->prepare("INSERT INTO users (username, email, password, role) VALUES (?, ?, ?, ?)");
                     if ($stmt->execute([$data['username'], $data['email'], $password, $role_id])) {
-                        redirect('/views/registration/login');
+                        redirect("/ATIS/views/registration/login");
                     } else {
                         $errors[] = "Error creating account.";
                     }
@@ -94,15 +95,15 @@ class RegistrationController extends BaseController
     
                 if (!empty($errors)) {
                     $_SESSION['messages']['errors'] = $errors;
-                    redirect('/views/registration/signup');
+                    redirect("/ATIS/views/registration/signup");
                 }
     
             } catch (ValidationException $e) {
                 $_SESSION['messages']['errors'] = [$e->getMessage()];
-                redirect('/views/registration/signup');
+                redirect("/ATIS/views/registration/signup");
             } catch (Exception $e) {
                 $_SESSION['messages']['errors'][] = $e->getMessage();
-                redirect('/views/registration/signup');
+                redirect("/ATIS/views/registration/signup");
             }
         }
     }
@@ -121,9 +122,7 @@ class RegistrationController extends BaseController
         }
 
         session_destroy();
-    
-        header("Location: " . BASE_URL . "/views/registration/login");
-        exit();
+        redirect("/ATIS/views/registration/login");
     }
 
     private function authenticateUser($email, $password)

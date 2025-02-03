@@ -7,18 +7,14 @@ session_start();
 define('BASE_PATH', __DIR__);
 define('BASE_URL', '/ATIS');
 
-use Exceptions\ValidationException;
+
 
 // user authenticated?
 function isAuthenticated() {
     return isset($_SESSION['user_id']);
 }
 
-//handle redirects
-function redirect($path) {
-    header("Location: " . BASE_URL . $path);
-    exit();
-}
+
 
 
 $request = $_SERVER['REQUEST_URI'];
@@ -26,8 +22,8 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 
 $path = str_replace(BASE_URL, '', $request);
-
-
+require_once 'redirect.php';
+use Exceptions\ValidationException;
 use Controllers\ProfileController;
 use Controllers\RegistrationController;
 use Controllers\PostsController;
@@ -95,7 +91,7 @@ foreach ($routes[$method] as $route => $action) {
         }
          catch(Exception $exception) {
             $_SESSION['error'] = 'Something went wrong. Please try again later.';
-            redirect('/views/500.php');
+            redirect("/ATIS/views/500.php");
         }
         exit;
     }

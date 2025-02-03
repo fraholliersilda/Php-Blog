@@ -3,11 +3,12 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/db.php';
+require_once 'redirect.php';
+
 function checkLoggedIn()
 {
     if (!isset($_SESSION['user_id'])) {
-        header("Location: /ATIS/views/registration/login");
-        exit();
+        redirect("/ATIS/views/registration/login");
     }
 }
 

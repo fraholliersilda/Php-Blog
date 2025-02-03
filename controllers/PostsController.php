@@ -7,6 +7,7 @@ use Exception;
 use Requests\PostsRequest;
 use Exceptions\ValidationException;
 
+require_once 'redirect.php';
 
 class PostsController extends BaseController
 {
@@ -95,8 +96,7 @@ class PostsController extends BaseController
                                 $deleteMediaStmt = $this->conn->prepare("DELETE FROM media WHERE id = :media_id");
                                 $deleteMediaStmt->execute(['media_id' => $post['media_id']]);
                             }
-                            header("Location: /ATIS/views/posts/post/$postId");
-                            exit();
+                            redirect("/ATIS/views/posts/post/$postId");
                         }
                     } catch (ValidationException $e) {
                         $_SESSION['error_messages'] = ['validation' => $e->getMessage()];
@@ -169,8 +169,7 @@ class PostsController extends BaseController
                     $deleteMediaStmt->execute(['media_id' => $post['media_id']]);
                 }
 
-                header("Location: /ATIS/views/posts/blog");
-                exit();
+                redirect("/ATIS/views/posts/blog");
             } else {
                 echo "You do not have permission to delete this post.";
             }

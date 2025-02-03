@@ -9,6 +9,7 @@ use Requests\UpdatePasswordRequest;
 use Requests\UpdateProfilePictureRequest;
 use Exceptions\ValidationException;
 
+require_once 'redirect.php';
 
 class ProfileController extends BaseController
 {
@@ -28,8 +29,7 @@ class ProfileController extends BaseController
             $this->render('profile/profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
             $_SESSION['messages']['errors'][] = $e->getMessage();
-            header("Location: /ATIS/views/profile/edit");
-            exit();
+            redirect("/ATIS/views/profile/edit");
         }
     }
 
@@ -44,8 +44,7 @@ class ProfileController extends BaseController
             $this->render('profile/edit_profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
             $_SESSION['messages']['errors'][] = $e->getMessage();
-            header("Location: /ATIS/views/profile/profile");
-            exit();
+            redirect("/ATIS/views/profile/profile");
         }
     }
 
@@ -75,18 +74,14 @@ class ProfileController extends BaseController
                 default:
                     throw new Exception("Unknown action: $action");
             }
-    
-            header("Location: /ATIS/views/profile/profile");
-            exit();
+            redirect("/ATIS/views/profile/profile");
         } catch (ValidationException $e) {
-
             $_SESSION["messages"]["errors"][] = $e->getMessage();
-            header("Location: /ATIS/views/profile/edit");
-            exit();
+            redirect("/ATIS/views/profile/edit");
         } catch (Exception $e) {
             $_SESSION["messages"]["errors"][] = $e->getMessage();
-            header("Location: /ATIS/views/profile/edit");
-            exit();
+            redirect("/ATIS/views/profile/edit");
+
         }
     }
     
@@ -113,8 +108,7 @@ class ProfileController extends BaseController
         } catch (Exception $e) {
 
             $_SESSION['messages']['errors'][] = $e->getMessage();
-            header("Location: /ATIS/views/profile/edit");
-            exit();
+            redirect("/ATIS/views/profile/edit");
         }
     }
     
@@ -152,8 +146,7 @@ class ProfileController extends BaseController
             throw $e; 
         } catch (Exception $e) {
             $_SESSION["messages"]["errors"][] = $e->getMessage();
-            header("Location: /ATIS/views/profile/edit");
-            exit();
+            redirect("/ATIS/views/profile/edit");
         }
     }
     
@@ -208,8 +201,7 @@ class ProfileController extends BaseController
             throw $e; 
         } catch (Exception $e) {
             $_SESSION["messages"]["errors"][] = $e->getMessage();
-            header("Location: /ATIS/views/profile/edit");
-            exit();
+            redirect("/ATIS/views/profile/edit");
         }
     }    
 

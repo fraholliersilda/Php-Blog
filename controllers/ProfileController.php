@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace Controllers;
 
 use PDO;
 use Exception;
@@ -9,7 +9,6 @@ use Requests\UpdatePasswordRequest;
 use Requests\UpdateProfilePictureRequest;
 use Exceptions\ValidationException;
 
-require_once __DIR__ . '/BaseController.php';
 
 class ProfileController extends BaseController
 {
@@ -98,7 +97,6 @@ class ProfileController extends BaseController
         $email = trim($data['email'] ?? '');
     
         try {
-            require_once __DIR__ . '/../Requests/UpdateUsernameRequest.php';
             UpdateUsernameRequest::validate($data); 
 
             $sql = "UPDATE users SET username = :username, email = :email WHERE id = :id";
@@ -127,7 +125,6 @@ class ProfileController extends BaseController
         $new_password = trim($data['new_password'] ?? '');
     
         try {
-            require_once __DIR__ . '/../Requests/UpdatePasswordRequest.php';
             UpdatePasswordRequest::validate($data); 
 
             $sql = "SELECT password FROM users WHERE id = :id";
@@ -167,23 +164,12 @@ class ProfileController extends BaseController
         $profilePicture = $files['profile_picture'] ?? null;
     
         try {
-            require_once __DIR__ . '/../Requests/UpdateProfilePictureRequest.php';
             UpdateProfilePictureRequest::validate($data); 
-    
-            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-            $maxFileSize = 5 * 1024 * 1024;  // 5MB
     
             $originalName = basename($profilePicture["name"]);
             $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
             $fileSize = $profilePicture["size"];
     
-            if (!in_array($extension, $allowedExtensions)) {
-                throw new Exception("Unsupported file type. Only JPG, JPEG, PNG, and GIF are allowed.");
-            }
-    
-            if ($fileSize > $maxFileSize) {
-                throw new Exception("File size exceeds the 5MB limit.");
-            }
     
             $existingProfile = $this->getProfilePicture($id);
     

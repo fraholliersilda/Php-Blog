@@ -1,0 +1,14 @@
+{
+    "name": "project/atis",
+    "description": "A dynamic PHP project for blog management with MVC structure, including controllers, views, and request handling.",
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "Controllers/",
+            "Exceptions\\": "Exceptions/",
+            "Requests\\": "Requests/"
+        }
+    }
+}

@@ -1,12 +1,11 @@
 <?php
-namespace App\Controllers;
+namespace Controllers;
 
 use PDO;
 use Exception;
 use Requests\RegistrationRequest;
 use Exceptions\ValidationException;
 
-require_once __DIR__ . '/BaseController.php';
 
 class RegistrationController extends BaseController
 {
@@ -24,7 +23,6 @@ class RegistrationController extends BaseController
             ];
     
             try {
-                require_once __DIR__ . '/../Requests/RegistrationRequest.php';
 
                 RegistrationRequest::validateLogin($data);
     
@@ -35,7 +33,6 @@ class RegistrationController extends BaseController
                     $_SESSION['role'] = $user['role'];
                     redirect('/views/profile/profile');
                 } else {
-                    $_SESSION['messages']['errors'][] = "Invalid email or password!";
                     redirect('/views/registration/login');
                 }
             } catch (ValidationException $e) {
@@ -67,7 +64,6 @@ class RegistrationController extends BaseController
             ];
     
             try {
-                require_once __DIR__ . '/../Requests/RegistrationRequest.php';
                 RegistrationRequest::validateSignup($data);
     
                 $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = ? OR email = ?");

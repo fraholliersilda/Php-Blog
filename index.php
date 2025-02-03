@@ -1,4 +1,8 @@
 <?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+
 session_start();
 define('BASE_PATH', __DIR__);
 define('BASE_URL', '/ATIS');
@@ -24,17 +28,20 @@ $method = $_SERVER['REQUEST_METHOD'];
 $path = str_replace(BASE_URL, '', $request);
 
 
+use Controllers\ProfileController;
+use Controllers\RegistrationController;
+use Controllers\PostsController;
+use Controllers\AdminController;
 
-require_once BASE_PATH . '/controllers/ProfileController.php';
-require_once BASE_PATH . '/controllers/RegistrationController.php';
-require_once BASE_PATH . '/controllers/PostsController.php';
-require_once BASE_PATH . '/controllers/AdminController.php';
 require_once BASE_PATH . '/db.php';
 
-$profileController = new App\Controllers\ProfileController($conn);
-$registrationController = new App\Controllers\RegistrationController($conn);
-$postsController = new App\Controllers\PostsController($conn);
-$adminController = new App\Controllers\AdminController($conn);
+
+// requireDirectory(__DIR__ . '/controllers');
+
+$profileController = new ProfileController($conn);
+$registrationController = new RegistrationController($conn);
+$postsController = new PostsController($conn);
+$adminController = new AdminController($conn);
 
 
 $routes = [
@@ -78,6 +85,8 @@ foreach ($routes[$method] as $route => $action) {
                 require BASE_PATH . '/' . $action;
             }
             $routeFound = true;
+
+            // unset session error messages
         }
         catch(ValidationException $exception) {
             // return back

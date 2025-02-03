@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace Controllers;
 
 use PDO;
 use PDOException;
@@ -7,7 +7,6 @@ use Exception;
 use Requests\PostsRequest;
 use Exceptions\ValidationException;
 
-require_once __DIR__ . '/BaseController.php';
 
 class PostsController extends BaseController
 {
@@ -61,7 +60,6 @@ class PostsController extends BaseController
 
     public function editPost($postId)
     {
-        require_once __DIR__ . '/../Requests/PostsRequest.php';
     
         try {
             $query = "SELECT p.*, m.id AS media_id, m.user_id AS media_user_id, m.path AS cover_photo_path
@@ -117,16 +115,9 @@ class PostsController extends BaseController
     public function createPost()
     {
         $this->checkLoggedIn();
-        require_once __DIR__ . '/../Requests/PostsRequest.php';
     
         try {
-            PostsRequest::validate($_POST);
-    
-            if (isset($_FILES['cover_photo']) && $_FILES['cover_photo']['error'] === UPLOAD_ERR_OK) {
-                PostsRequest::validate(['cover_photo' => $_FILES['cover_photo']]);
-            } else {
-                throw new ValidationException("Cover photo is required.");
-            }
+            PostsRequest::validate($_POST + $_FILES);
     
             $postQuery = "INSERT INTO posts (title, description) VALUES (:title, :description)";
             $stmt = $this->conn->prepare($postQuery);
@@ -137,21 +128,17 @@ class PostsController extends BaseController
             $postId = $this->conn->lastInsertId();
     
             $mediaId = $this->uploadCoverPhoto($_FILES['cover_photo'], $postId);
-    
-            if ($mediaId !== null) {
-                header("Location: /ATIS/views/posts/blog");
-                exit();
-            } else {
-                throw new ValidationException("Failed to upload cover photo.");
-            }
-        } catch (ValidationException $e) {
-            $_SESSION['error_messages'] = ['validation' => $e->getMessage()];
-            header("Location: /ATIS/views/posts/new");
-            exit();
-        } catch (Exception $e) {
-            echo "Error: " . $e->getMessage();
-        }
+     
+        header("Location: /ATIS/views/posts/blog");
+        exit();
+    } catch (ValidationException $e) {
+        $_SESSION['error_messages'] = ['validation' => $e->getMessage()];
+        header("Location: /ATIS/views/posts/new");
+        exit();
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
     }
+}
     
        public function deletePost($postId)
     {
@@ -200,39 +187,39 @@ class PostsController extends BaseController
 
     private function uploadCoverPhoto($coverPhoto, $postId = null)
     {
-        $extension = strtolower(pathinfo($coverPhoto['name'], PATHINFO_EXTENSION));
-        $hashName = md5(uniqid(time(), true)) . "." . $extension;
-        $fileSize = $coverPhoto["size"];
-
-        if (!in_array($extension, ["jpg", "jpeg", "png", "gif"])) {
-            throw new Exception("Only JPG, JPEG, PNG & GIF files are allowed.");
+        if (!isset($coverPhoto['tmp_name']) || $coverPhoto['error'] !== UPLOAD_ERR_OK) {
+            throw new ValidationException("Error uploading the cover photo.");
         }
 
+        $extension = strtolower(pathinfo($coverPhoto['name'], PATHINFO_EXTENSION));
+
+    
         $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/ATIS/uploads/";
         if (!is_dir($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
-
+    
+        $hashName = md5(uniqid(time(), true)) . "." . $extension;
         $targetFile = $targetDir . $hashName;
         $path = "/ATIS/uploads/" . $hashName;
-
+    
         if (!move_uploaded_file($coverPhoto['tmp_name'], $targetFile)) {
-            throw new Exception("Failed to upload the cover photo.");
+            throw new ValidationException("Failed to upload the cover photo.");
         }
-
+    
         if ($postId) {
             $checkMediaQuery = "SELECT id FROM media WHERE post_id = :post_id AND photo_type = 'cover'";
             $stmt = $this->conn->prepare($checkMediaQuery);
             $stmt->execute([':post_id' => $postId]);
             $existingMedia = $stmt->fetch();
-
+    
             if ($existingMedia) {
                 $mediaId = $existingMedia['id'];
                 $deleteFile = $_SERVER['DOCUMENT_ROOT'] . $existingMedia['path'];
                 if (file_exists($deleteFile)) {
                     unlink($deleteFile);
                 }
-
+    
                 $deleteMediaQuery = "DELETE FROM media WHERE id = :media_id";
                 $stmt = $this->conn->prepare($deleteMediaQuery);
                 $stmt->execute([':media_id' => $mediaId]);
@@ -247,14 +234,13 @@ class PostsController extends BaseController
             ':original_name' => $coverPhoto['name'],
             ':hash_name' => $hashName,
             ':path' => $path,
-            ':size' => $fileSize,
+            ':size' => $coverPhoto["size"],
             ':extension' => $extension,
             ':user_id' => $_SESSION['user_id'],
             ':photo_type' => $photoType,
             ':post_id' => $postId
         ]);
-
+    
         return $this->conn->lastInsertId();
     }
-    }
-
+}

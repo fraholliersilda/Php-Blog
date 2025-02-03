@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace Controllers;
 
 use PDO;
 use PDOException;
@@ -22,12 +22,6 @@ class AdminController extends BaseController
         }
     }
 
-    private function handleValidationError($e)
-    {
-        $_SESSION['messages']['errors'][] = $e->getMessage();
-        header("Location: /ATIS/views/admin/users");
-        exit();
-    }
 
     public function fetchUsersByRole($role)
     {
@@ -80,10 +74,11 @@ class AdminController extends BaseController
         ];
 
         try {
-            require_once __DIR__ . '/../Requests/UpdateUsernameRequest.php';
             UpdateUsernameRequest::validate($data);
         } catch (ValidationException $e) {
-            $this->handleValidationError($e);
+            $_SESSION['messages']['errors'][] = $e->getMessage();
+            header("Location: /ATIS/views/admin/users");
+            exit();
         }
 
         $id = intval($_POST['id']);
@@ -126,7 +121,6 @@ class AdminController extends BaseController
             ];
 
             try {
-                require_once __DIR__ . '/../Requests/RegistrationRequest.php';
                 RegistrationRequest::validateLogin($data);
             } catch (ValidationException $e) {
                 $_SESSION['messages']['errors'][] = $e->getMessage();  

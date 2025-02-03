@@ -2,7 +2,7 @@
 
 namespace Requests;
 
-require_once 'BaseRequest.php';
+use Requests\BaseRequest;
 
 class UpdateUsernameRequest extends BaseRequest
 {

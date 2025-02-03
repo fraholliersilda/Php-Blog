@@ -1,7 +1,7 @@
 <?php
 
 namespace Requests;
-require_once  BASE_PATH .'/Exceptions/ValidationException.php';
+use Exceptions\ValidationException;
 
 class BaseRequest
 {
@@ -33,7 +33,7 @@ class BaseRequest
         if (!empty($errors)) {
             $_SESSION['errors'] = $errors;
             $firstError = array_values($errors)[0];
-            throw new \Exceptions\ValidationException($firstError);
+            throw new ValidationException($firstError);
         }
 
         return null;

@@ -21,17 +21,19 @@ class QueryBuilder
         $this->query = "SELECT $columnsList FROM {$this->table}";
         return $this;
     }
-
     public function where(string $column, string $operator, mixed $value): self
     {
-        $placeholder = '?';
-
-
+        $placeholder = "?";
         $this->query .= (str_contains($this->query, 'WHERE') ? " AND" : " WHERE") . " $column $operator $placeholder";
         $this->bindings[] = $value;
-
+    
+        error_log("WHERE Condition: $column $operator $value");
+        error_log("Current Query: " . $this->query);
+        error_log("Bindings: " . print_r($this->bindings, true));
+    
         return $this;
     }
+    
 
     public function insert(array $data): mixed
     {
@@ -61,15 +63,17 @@ class QueryBuilder
 
     public function delete(): self
     {
-        $this->query = "DELETE FROM {$this->table}";
-
-        if (!empty($this->bindings)) {
-            $whereClauses = array_map(fn($key) => str_replace(':', '', $key) . " = $key", array_keys($this->bindings));
-            $this->query .= " WHERE " . implode(" AND ", $whereClauses);
+        // Ensure WHERE conditions are not lost
+        if (!str_contains($this->query, "WHERE")) {
+            throw new PDOException("DELETE queries must include a WHERE clause to prevent accidental full-table deletions.");
         }
-
+    
+        // Prepend DELETE FROM before the WHERE clause
+        $this->query = "DELETE FROM {$this->table} " . strstr($this->query, "WHERE");
+    
         return $this;
     }
+    
 
     public function join(string $table, string $column1, string $operator, string $column2, string $type = "INNER"): static
     {
@@ -125,12 +129,6 @@ class QueryBuilder
     {
         $this->query .= " ORDER BY $column $direction";
         return $this;
-    }
-
-
-    public function getQuery(): string
-    {
-        return $this->query;
     }
 
 }

@@ -68,7 +68,6 @@ class PostsController extends BaseController
         }
     }
 
-
     public function editPost($postId)
     {
         try {

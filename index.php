@@ -43,7 +43,12 @@ $adminController = new AdminController($conn);
 
 $routes = [
     'GET' => [
-        '/logout' => fn() => $registrationController->logout(),
+        '/logout' =>  fn() => $registrationController->logout()
+        // [
+        //     fn() => $registrationController->logout(),
+        //     [IsAdminMiddleware::class]
+        // ]
+        ,
         '/views/admin/login' => fn() => $adminController->showAdminLogin(),
         '/views/posts/new' => fn() => $postsController->showNewPost(),
         '/views/posts/blog' => fn() => $postsController->listPosts(),
@@ -76,6 +81,7 @@ foreach ($routes[$method] as $route => $action) {
     if (preg_match("#^$pattern$#", $path, $matches)) {
         array_shift($matches); 
         try {
+            // Check middlewares
             if (is_callable($action)) {
                 $action(...$matches);
             } else {

@@ -1,0 +1,57 @@
+[04-Feb-2025 17:34:29 Europe/Berlin] WHERE Condition: u.email = ersildafraholli1@gmail.com
+[04-Feb-2025 17:34:29 Europe/Berlin] Current Query: SELECT u.id, u.password, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.email = ?
+[04-Feb-2025 17:34:29 Europe/Berlin] Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+)
+
+[04-Feb-2025 17:34:29 Europe/Berlin] WHERE Condition: r.role = admin
+[04-Feb-2025 17:34:29 Europe/Berlin] Current Query: SELECT u.id, u.password, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.email = ? AND r.role = ?
+[04-Feb-2025 17:34:29 Europe/Berlin] Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+    [1] => admin
+)
+
+[04-Feb-2025 17:34:29 Europe/Berlin] Executing Query: SELECT u.id, u.password, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.email = ? AND r.role = ?
+[04-Feb-2025 17:34:29 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+    [1] => admin
+)
+
+[04-Feb-2025 17:34:29 Europe/Berlin] WHERE Condition: u.id = 14
+[04-Feb-2025 17:34:29 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[04-Feb-2025 17:34:29 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[04-Feb-2025 17:34:29 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[04-Feb-2025 17:34:29 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[04-Feb-2025 17:34:29 Europe/Berlin] WHERE Condition: user_id = 14
+[04-Feb-2025 17:34:29 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[04-Feb-2025 17:34:29 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[04-Feb-2025 17:34:29 Europe/Berlin] WHERE Condition: photo_type = profile
+[04-Feb-2025 17:34:29 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[04-Feb-2025 17:34:29 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[04-Feb-2025 17:34:29 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[04-Feb-2025 17:34:29 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+

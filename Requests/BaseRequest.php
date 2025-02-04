@@ -43,7 +43,10 @@ class BaseRequest
     {
         switch ($rule) {
             case 'required':
-                return empty($value) ? ucfirst(str_replace('_', ' ', $field)) . ' is required.' : null;
+                if (empty($value) && (!isset($_FILES[$field]) || $_FILES[$field]['error'] !== UPLOAD_ERR_OK)) {
+                    return ucfirst(str_replace('_', ' ', $field)) . ' is required.';
+                }
+                return null;
 
             case 'string':
                 return !is_string($value) ? ucfirst(str_replace('_', ' ', $field)) . ' must be a string.' : null;

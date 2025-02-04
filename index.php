@@ -9,6 +9,9 @@ define('BASE_URL', '/ATIS');
 
 
 
+
+
+
 // user authenticated?
 function isAuthenticated() {
     return isset($_SESSION['user_id']);
@@ -29,10 +32,8 @@ use Controllers\RegistrationController;
 use Controllers\PostsController;
 use Controllers\AdminController;
 
-require_once BASE_PATH . '/db.php';
+require_once BASE_PATH . '/Database.php';
 
-
-// requireDirectory(__DIR__ . '/controllers');
 
 $profileController = new ProfileController($conn);
 $registrationController = new RegistrationController($conn);
@@ -83,14 +84,15 @@ foreach ($routes[$method] as $route => $action) {
             $routeFound = true;
 
             // unset session error messages
+            // unset($_SESSION['messages']['errors']);
         }
         catch(ValidationException $exception) {
             // return back
-            $_SESSION['errors'] = $exception->getMessage();
+            setErrors([$exception->getMessage()]);
             redirect($_SERVER['HTTP_REFERER']);
         }
          catch(Exception $exception) {
-            $_SESSION['error'] = 'Something went wrong. Please try again later.';
+            setErrors(['Something went wrong. Please try again later.']);
             redirect("/ATIS/views/500.php");
         }
         exit;

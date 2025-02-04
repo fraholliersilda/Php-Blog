@@ -14,7 +14,7 @@
 <div class="container">
     <h1 class="post-title"><?= htmlspecialchars($post['title']); ?></h1>
     <div class="post-author">
-        <p><em>By: <?= htmlspecialchars($post['username']); ?></em></p>
+    <p><em>By: <?= htmlspecialchars($post['username'] ?? 'Unknown'); ?></em></p>
     </div>
     <div class="post-image">
         <img src="<?= htmlspecialchars($post['cover_photo_path']); ?>" alt="Cover Photo" class="img-fluid">

@@ -8,7 +8,8 @@
         "psr-4": {
             "Controllers\\": "Controllers/",
             "Exceptions\\": "Exceptions/",
-            "Requests\\": "Requests/"
+            "Requests\\": "Requests/",
+            "QueryBuilder\\": "QueryBuilder/"
         }
     }
 }

@@ -25,7 +25,7 @@
                 </div>
                 <div class="post-details">
                     <h5 class="card-title"><?= htmlspecialchars($post['title']); ?></h5>
-                    <p class="card-text"><em>By: <?= htmlspecialchars($post['username']); ?></em></p>
+                    <p class="card-text"><em>By: <?= htmlspecialchars($post['username'] ?? 'Unknown'); ?></em></p>
                     <p class="card-text"><?= htmlspecialchars(substr($post['description'], 0, 150)); ?>...</p>
                     <a href="<?= BASE_URL ?>/views/posts/post/<?= $post['id']; ?>" class="btn btn-secondary">Read More</a>
                     <?php if ($is_admin || $_SESSION['user_id'] === $post['user_id']) { ?>

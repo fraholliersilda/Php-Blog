@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/db.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/Database.php';
 require_once 'redirect.php';
 
 function checkLoggedIn()

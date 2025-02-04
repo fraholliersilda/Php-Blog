@@ -3,9 +3,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/ATIS/functions.php';
 checkLoggedIn();
 $is_admin = isAdmin();
 
-
+$current_page = basename($_SERVER['REQUEST_URI']); 
 //nese do perdorej klasa BaseController
-// require __DIR__. '../../db.php';
+// require __DIR__. '../../Database.php';
 // use App\Controllers\BaseController;
 
 // $baseController = new BaseController($conn);

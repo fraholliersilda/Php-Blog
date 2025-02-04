@@ -1,6 +1,8 @@
 <?php 
 require_once 'errorHandler.php';
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

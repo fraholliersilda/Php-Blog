@@ -1,11 +1,15 @@
 <?php
 namespace Controllers;
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-use PDO;
+
 use PDOException;
 use Requests\RegistrationRequest;
 use Requests\UpdateUsernameRequest;
 use Exceptions\ValidationException;
+use QueryBuilder\QueryBuilder;
+use Database;
 
 require_once 'redirect.php';
 require_once 'errorHandler.php';
@@ -24,14 +28,28 @@ class AdminController extends BaseController
         }
     }
 
-
     public function fetchUsersByRole($role)
     {
-        $stmt = $this->conn->prepare("SELECT id, username, email FROM users WHERE role = (SELECT id FROM roles WHERE role = :role)");
-        $stmt->execute(['role' => $role]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $queryBuilder = new QueryBuilder();
+        
+        $roleId = (new QueryBuilder())
+            ->table('roles')
+            ->select(['id'])
+            ->where('role', '=', $role)
+            ->get();
+    
+        if (!empty($roleId)) {
+            return $queryBuilder
+                ->table('users')
+                ->select(['id', 'username', 'email'])
+                ->where('role', '=', $roleId[0]['id'])
+                ->get();
+        }
+    
+        return [];
     }
-
+    
+    
     public function listAdmins()
     {
         $this->checkAdmin();
@@ -72,44 +90,54 @@ class AdminController extends BaseController
             'username' => trim($_POST['username']),
             'email' => trim($_POST['email'])
         ];
-
+    
         try {
             UpdateUsernameRequest::validate($data);
         } catch (ValidationException $e) {
             setErrors([$e->getMessage()]);
             redirect("/ATIS/views/admin/users");
         }
-
+    
         $id = intval($_POST['id']);
-        $username = $data['username'];
-        $email = $data['email'];
-
-        $stmt = $this->conn->prepare("UPDATE users SET username = ?, email = ? WHERE id = ?");
-        $stmt->execute([$username, $email, $id]);
-
+    
+        $queryBuilder = new QueryBuilder();
+        $queryBuilder->table('users')
+            ->update($data)
+            ->where('id', '=', $id)
+            ->execute();
+    
         return null;
     }
+    
 
     private function deleteUser()
     {
         $id = intval($_POST['id']);
+    
         try {
-            $this->conn->beginTransaction();
-
-            $stmt = $this->conn->prepare("DELETE FROM media WHERE user_id = ?");
-            $stmt->execute([$id]);
-
-            $stmt = $this->conn->prepare("DELETE FROM users WHERE id = ?");
-            $stmt->execute([$id]);
-
-            $this->conn->commit();
+            Database::getConnection()->beginTransaction();
+    
+            (new QueryBuilder())
+                ->table('media')
+                ->where('user_id', '=', $id)
+                ->delete()
+                ->execute();
+    
+            (new QueryBuilder())
+                ->table('users')
+                ->where('id', '=', $id)
+                ->delete()
+                ->execute();
+    
+            Database::getConnection()->commit();
         } catch (PDOException $e) {
-            if ($this->conn->inTransaction()) {
-                $this->conn->rollBack();
+            if (Database::getConnection()->inTransaction()) {
+                Database::getConnection()->rollBack();
             }
-            setErrors(["Database error" . $e->getMessage()]);
+            setErrors(["Database error: " . $e->getMessage()]);
         }
     }
+    
 
     public function login()
     {
@@ -147,17 +175,29 @@ class AdminController extends BaseController
         exit();
     }
 
+
     private function authenticateAdmin($email, $password)
     {
-        $stmt = $this->conn->prepare("SELECT u.id, u.password, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.email = :email AND r.role = 'admin'");
-        $stmt->execute(['email' => $email]);
+        $queryBuilder = new QueryBuilder();
+        
+        $admin = $queryBuilder->table('users u')
+            ->select(['u.id', 'u.password', 'r.role'])
+            ->join('roles r', 'u.role', '=', 'r.id')
+            ->where('u.email', '=', $email)  
+            ->where('r.role', '=', 'admin')  
+            ->get();
+        
+        if ($admin) {
+            $admin = $admin[0];
 
-        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($admin && password_verify($password, $admin['password'])) {
-            return $admin;
+            if (password_verify($password, $admin['password'])) {
+                return $admin;
+            }
         }
-
+    
         return null;
     }
+
 }
+
+

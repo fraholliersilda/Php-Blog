@@ -650,7 +650,7 @@ svg {
         </g>
         <g
           class="raios"
-          stroke="#fdba55"
+          stroke="#fDatabasea55"
           stroke-linecap="round"
           stroke-width="1.8"
         >

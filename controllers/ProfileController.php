@@ -1,13 +1,15 @@
 <?php
 
 namespace Controllers;
-
-use PDO;
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 use Exception;
 use Requests\UpdateUsernameRequest;
 use Requests\UpdatePasswordRequest;
 use Requests\UpdateProfilePictureRequest;
 use Exceptions\ValidationException;
+use QueryBuilder\QueryBuilder;
+
 
 require_once 'redirect.php';
 require_once 'errorHandler.php';
@@ -86,139 +88,154 @@ class ProfileController extends BaseController
         }
     }
     
+    
     private function updateUsername($data)
-    {
-        $id = $data["id"] ?? null;
-        $username = trim($data['username'] ?? '');
-        $email = trim($data['email'] ?? '');
+{
+    $id = $data["id"] ?? null;
+    $username = trim($data['username'] ?? '');
+    $email = trim($data['email'] ?? '');
     
-        try {
-            UpdateUsernameRequest::validate($data); 
-
-            $sql = "UPDATE users SET username = :username, email = :email WHERE id = :id";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':id', $id);
+    try {
+        UpdateUsernameRequest::validate($data);
     
-            if (!$stmt->execute()) {
-                throw new Exception("Failed to update username or email.");
-            }
-        } catch (ValidationException $e) {
-            throw $e; 
-        } catch (Exception $e) {
-            setErrors([$e->getMessage()]);
-            redirect("/ATIS/views/profile/edit");
+        $queryBuilder = (new QueryBuilder)
+            ->table('users')
+            ->update([
+                'username' => $username,
+                'email' => $email
+            ])
+            ->where('id', '=', $id);  
+    
+        $result = $queryBuilder->execute();
+    
+        if (!$result) {
+            throw new Exception("Failed to update username or email.");
         }
+    } catch (ValidationException $e) {
+        throw $e; 
+    } catch (Exception $e) {
+        setErrors([$e->getMessage()]);
+        redirect("/ATIS/views/profile/edit");
     }
-    
+}
+
     private function updatePassword($data)
-    {
-        $id = $data["id"] ?? null;
-        $old_password = trim($data['old_password'] ?? '');
-        $new_password = trim($data['new_password'] ?? '');
-    
-        try {
-            UpdatePasswordRequest::validate($data); 
+{
+    $id = $data["id"] ?? null;
+    $old_password = trim($data['old_password'] ?? '');
+    $new_password = trim($data['new_password'] ?? '');
 
-            $sql = "SELECT password FROM users WHERE id = :id";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-            if (!password_verify($old_password, $user['password'])) {
-                throw new Exception("Incorrect old password.");
-            }
-    
-        
-            $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
-    
-            $sql = "UPDATE users SET password = :password WHERE id = :id";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':password', $hashedPassword);
-            $stmt->bindParam(':id', $id);
-    
-            if (!$stmt->execute()) {
-                throw new Exception("Failed to update password.");
-            }
-        } catch (ValidationException $e) {
-            throw $e; 
-        } catch (Exception $e) {
-            setErrors([$e->getMessage()]);
-            redirect("/ATIS/views/profile/edit");
+    try {
+        UpdatePasswordRequest::validate($data);
+
+        $user = (new QueryBuilder())
+            ->table('users')
+            ->select(['password'])
+            ->where('id', '=', $id)
+            ->get();
+
+        if (empty($user)) {
+            throw new Exception("User not found.");
         }
+
+        if (!password_verify($old_password, $user[0]['password'])) {
+            throw new Exception("Incorrect old password.");
+        }
+
+        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
+
+        $result = (new QueryBuilder())
+            ->table('users')
+            ->update(['password' => $hashedPassword])
+            ->where('id', '=', $id)
+            ->execute();
+
+        if (!$result) {
+            throw new Exception("Failed to update password.");
+        }
+    } catch (ValidationException $e) {
+        throw $e;
+    } catch (Exception $e) {
+        setErrors([$e->getMessage()]);
+        redirect("/ATIS/views/profile/edit");
     }
-    
+}
 
     private function updateProfilePicture($data, $files)
-    {
-        $id = $data["id"] ?? null;
-        $profilePicture = $files['profile_picture'] ?? null;
-    
-        try {
-            UpdateProfilePictureRequest::validate($data); 
-    
-            $originalName = basename($profilePicture["name"]);
-            $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
-            $fileSize = $profilePicture["size"];
-    
-    
-            $existingProfile = $this->getProfilePicture($id);
-    
-            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/ATIS/uploads/";
-            if (!is_dir($targetDir)) {
-                mkdir($targetDir, 0777, true);
-            }
-    
-            $hashName = md5(uniqid(time(), true)) . "." . $extension;
-            $targetFile = $targetDir . $hashName;
-    
-            if (!move_uploaded_file($profilePicture["tmp_name"], $targetFile)) {
-                throw new Exception("Failed to move uploaded file.");
-            }
-    
-            $path = "/ATIS/uploads/" . $hashName;
-    
-            if ($existingProfile && file_exists($_SERVER['DOCUMENT_ROOT'] . $existingProfile['path'])) {
-                unlink($_SERVER['DOCUMENT_ROOT'] . $existingProfile['path']);
-            }
-    
-            $sql = "INSERT INTO media (original_name, hash_name, path, size, extension, user_id, photo_type)
-                    VALUES (:original_name, :hash_name, :path, :size, :extension, :user_id, 'profile')";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':original_name', $originalName);
-            $stmt->bindParam(':hash_name', $hashName);
-            $stmt->bindParam(':path', $path);
-            $stmt->bindParam(':size', $fileSize);
-            $stmt->bindParam(':extension', $extension);
-            $stmt->bindParam(':user_id', $id);
-    
-            if (!$stmt->execute()) {
-                throw new Exception("Failed to insert file metadata.");
-            }
-        } catch (ValidationException $e) {
-            throw $e; 
-        } catch (Exception $e) {
-            setErrors([$e->getMessage()]);
-            redirect("/ATIS/views/profile/edit");
+{
+    $id = $data["id"] ?? null;
+    $profilePicture = $files['profile_picture'] ?? null;
+
+    error_log(print_r($files, true));
+
+
+    try {
+        UpdateProfilePictureRequest::validate($data); 
+
+        $originalName = basename($profilePicture["name"]);
+        $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+        $fileSize = $profilePicture["size"];
+
+        $existingProfile = $this->getProfilePicture($id);
+
+        $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/ATIS/uploads/";
+        if (!is_dir($targetDir)) {
+            mkdir($targetDir, 0777, true);
         }
-    }    
+
+        $hashName = md5(uniqid(time(), true)) . "." . $extension;
+        $targetFile = $targetDir . $hashName;
+
+        if (!move_uploaded_file($profilePicture["tmp_name"], $targetFile)) {
+            throw new Exception("Failed to move uploaded file.");
+        }
+
+        $path = "/ATIS/uploads/" . $hashName;
+
+        if ($existingProfile && file_exists($_SERVER['DOCUMENT_ROOT'] . $existingProfile['path'])) {
+            unlink($_SERVER['DOCUMENT_ROOT'] . $existingProfile['path']);
+        }
+
+        $queryBuilder = new QueryBuilder();
+        $queryBuilder->table('media')
+            ->insert([
+                'original_name' => $originalName,
+                'hash_name' => $hashName,
+                'path' => $path,
+                'size' => $fileSize,
+                'extension' => $extension,
+                'user_id' => $id,
+                'photo_type' => 'profile'
+            ]);
+
+    } catch (ValidationException $e) {
+        throw $e; 
+    } catch (Exception $e) {
+        setErrors([$e->getMessage()]);
+        redirect("/ATIS/views/profile/edit");
+    }
+}
+
 
     private function getProfilePicture($userId)
     {
-        $sql = "SELECT path FROM media WHERE user_id = :user_id AND photo_type = 'profile' ORDER BY id DESC LIMIT 1";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':user_id', $userId);
-        $stmt->execute();
-        $profilePicture = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        return $profilePicture ?: ['path' => '/ATIS/uploads/default.jpg'];
+        $profilePicture = (new QueryBuilder())
+            ->table('media')
+            ->select(['path'])
+            ->where('user_id', '=', $userId)
+            ->where('photo_type', '=', 'profile')
+            ->orderBy('id', 'DESC')
+            ->limit(1)
+            ->get();
+   
+        return $profilePicture[0] ?? ['path' => '/ATIS/uploads/default.jpg'];
     }
+    
 
     private function render($view, $data = [])
     {
         extract($data);
         require BASE_PATH . "/views/{$view}.php";
     }
+ 
 }

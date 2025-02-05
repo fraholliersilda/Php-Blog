@@ -1,7 +1,6 @@
 <?php
 namespace Controllers;
 
-use PDO;
 use QueryBuilder\QueryBuilder;
 require_once 'redirect.php';
 

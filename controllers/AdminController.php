@@ -8,7 +8,8 @@ use PDOException;
 use Requests\RegistrationRequest;
 use Requests\UpdateUsernameRequest;
 use Exceptions\ValidationException;
-use QueryBuilder\QueryBuilder;
+use Models\User;
+use Models\Roles;
 use Database;
 
 require_once 'redirect.php';
@@ -16,40 +17,35 @@ require_once 'errorHandler.php';
 
 class AdminController extends BaseController
 {
+    protected $roleModel;
+    protected $userModel;
+
     public function __construct($conn)
     {
         parent::__construct($conn);
+        $this->roleModel = new Roles();
+        $this->userModel = new User();
     }
 
     private function checkAdmin()
     {
-        if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+        if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 1) {
             redirect("/ATIS/views/profile/profile");
         }
     }
 
+
     public function fetchUsersByRole($role)
     {
-        $queryBuilder = new QueryBuilder();
-        
-        $roleId = (new QueryBuilder())
-            ->table('roles')
-            ->select(['id'])
-            ->where('role', '=', $role)
-            ->get();
-    
-        if (!empty($roleId)) {
-            return $queryBuilder
-                ->table('users')
-                ->select(['id', 'username', 'email'])
-                ->where('role', '=', $roleId[0]['id'])
-                ->get();
+        $roleId = $this->roleModel->findBy('role', $role)['id'] ?? null;
+
+        if ($roleId) {
+            return $this->userModel->findByRole($roleId);
         }
-    
+
         return [];
     }
-    
-    
+
     public function listAdmins()
     {
         $this->checkAdmin();
@@ -90,45 +86,29 @@ class AdminController extends BaseController
             'username' => trim($_POST['username']),
             'email' => trim($_POST['email'])
         ];
-    
+
         try {
             UpdateUsernameRequest::validate($data);
         } catch (ValidationException $e) {
             setErrors([$e->getMessage()]);
             redirect("/ATIS/views/admin/users");
         }
-    
+
         $id = intval($_POST['id']);
-    
-        $queryBuilder = new QueryBuilder();
-        $queryBuilder->table('users')
-            ->update($data)
-            ->where('id', '=', $id)
-            ->execute();
-    
+        $this->userModel->update($id, $data);
+
         return null;
     }
-    
 
     private function deleteUser()
     {
         $id = intval($_POST['id']);
-    
+
         try {
             Database::getConnection()->beginTransaction();
-    
-            (new QueryBuilder())
-                ->table('media')
-                ->where('user_id', '=', $id)
-                ->delete()
-                ->execute();
-    
-            (new QueryBuilder())
-                ->table('users')
-                ->where('id', '=', $id)
-                ->delete()
-                ->execute();
-    
+
+            $this->userModel->delete($id);
+
             Database::getConnection()->commit();
         } catch (PDOException $e) {
             if (Database::getConnection()->inTransaction()) {
@@ -137,7 +117,6 @@ class AdminController extends BaseController
             setErrors(["Database error: " . $e->getMessage()]);
         }
     }
-    
 
     public function login()
     {
@@ -158,7 +137,7 @@ class AdminController extends BaseController
 
             if ($admin) {
                 $_SESSION['user_id'] = $admin['id'];
-                $_SESSION['role'] = 'admin';
+                $_SESSION['role'] = 1;
                 redirect("/ATIS/views/profile/profile");
             } else {
                 setErrors(["Invalid email or password"]);
@@ -175,26 +154,16 @@ class AdminController extends BaseController
         exit();
     }
 
-
     private function authenticateAdmin($email, $password)
     {
-        $queryBuilder = new QueryBuilder();
-        
-        $admin = $queryBuilder->table('users u')
-            ->select(['u.id', 'u.password', 'r.role'])
-            ->join('roles r', 'u.role', '=', 'r.id')
-            ->where('u.email', '=', $email)  
-            ->where('r.role', '=', 'admin')  
-            ->get();
-        
-        if ($admin) {
-            $admin = $admin[0];
+        $user = $this->userModel->findByEmail($email);
 
-            if (password_verify($password, $admin['password'])) {
-                return $admin;
+        if ($user && $user['role'] === 1) {
+            if (password_verify($password, $user['password'])) {
+                return $user;
             }
         }
-    
+
         return null;
     }
 

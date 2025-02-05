@@ -63,12 +63,11 @@ class QueryBuilder
 
     public function delete(): self
     {
-        // Ensure WHERE conditions are not lost
+
         if (!str_contains($this->query, "WHERE")) {
             throw new PDOException("DELETE queries must include a WHERE clause to prevent accidental full-table deletions.");
         }
     
-        // Prepend DELETE FROM before the WHERE clause
         $this->query = "DELETE FROM {$this->table} " . strstr($this->query, "WHERE");
     
         return $this;

@@ -9,7 +9,8 @@
             "Controllers\\": "Controllers/",
             "Exceptions\\": "Exceptions/",
             "Requests\\": "Requests/",
-            "QueryBuilder\\": "QueryBuilder/"
+            "QueryBuilder\\": "QueryBuilder/",
+             "Models\\": "Models/"
         }
     }
 }

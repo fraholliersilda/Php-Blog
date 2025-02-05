@@ -7,16 +7,18 @@ use PDO;
 use Exception;
 use Requests\RegistrationRequest;
 use Exceptions\ValidationException;
-use QueryBuilder\QueryBuilder;
+use Models\User;
 
 require_once 'redirect.php';
 require_once 'errorHandler.php';
 
 class RegistrationController extends BaseController
 {
+    protected $user;
     public function __construct(PDO $conn)
     {
-        parent::__construct($conn); 
+        parent::__construct($conn);
+        $this->user = new User();
     }
 
     public function login()
@@ -26,18 +28,26 @@ class RegistrationController extends BaseController
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
             ];
-    
-            try {
 
+            try {
                 RegistrationRequest::validateLogin($data);
-    
-                $user = $this->authenticateUser($data['email'], $data['password']);
-    
-                if ($user) {
+
+                $user = $this->user->findByEmail($data['email']);
+
+
+                if ($user['role'] === 1) {
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['role'] = $user['role'];
+                    setErrors(["You are admin"]);
+                    redirect("/ATIS/views/registration/login");
+                    return;
+                }
+                if ($user && password_verify($data['password'], $user['password'])) {
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['role'] = $user['role'];
                     redirect("/ATIS/views/profile/profile");
                 } else {
+                    setErrors(["Invalid email or password!"]);
                     redirect("/ATIS/views/registration/login");
                 }
             } catch (ValidationException $e) {
@@ -51,7 +61,6 @@ class RegistrationController extends BaseController
             redirect("/ATIS/views/registration/login");
         }
     }
-    
 
     public function showLogin()
     {
@@ -67,53 +76,34 @@ class RegistrationController extends BaseController
                 'email' => $_POST['email'],
                 'password' => $_POST['password'],
             ];
-    
+
             try {
                 RegistrationRequest::validateSignup($data);
-    
-                $user = (new QueryBuilder())
-                    ->table('users')
-                    ->select(['*'])
-                    ->where('username', '=', $data['username'])
-                    ->where('email', '=', $data['email'])
-                    ->get();
-    
-                $errors = [];
-    
-                if (!empty($user)) {
-                    if ($user[0]['username'] === $data['username']) {
-                        $errors[] = "Username already exists.";
-                    }
-                    if ($user[0]['email'] === $data['email']) {
+
+                $existingUser = $this->user->findByEmail($data['email']) ?? $this->user->findByUsername($data['username']);
+
+                if ($existingUser) {
+                    $errors = [];
+
+                    if ($existingUser['email'] === $data['email']) {
                         $errors[] = "Email already exists.";
                     }
-                }
-    
-                if (empty($errors)) {
-                    $password = password_hash($data['password'], PASSWORD_DEFAULT);
-                    $role_id = 2;
-    
-                    $inserted = (new QueryBuilder())
-                        ->table('users')
-                        ->insert([
-                            'username' => $data['username'],
-                            'email' => $data['email'],
-                            'password' => $password,
-                            'role' => $role_id
-                        ]);
-    
-                    if ($inserted) {
-                        redirect("/ATIS/views/registration/login");
-                    } else {
-                        setErrors(["Error creating account."]);
+                    if ($existingUser['username'] === $data['username']) {
+                        $errors[] = "Username already exists.";
                     }
-                }
-    
-                if (!empty($errors)) {
+
                     setErrors($errors);
                     redirect("/ATIS/views/registration/signup");
                 }
-    
+
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                $data['role'] = 2;
+
+                if ($this->user->create($data)) {
+                    redirect("/ATIS/views/registration/login");
+                } else {
+                    setErrors(["Error creating account."]);
+                }
             } catch (ValidationException $e) {
                 setErrors([$e->getMessage()]);
                 redirect("/ATIS/views/registration/signup");
@@ -140,35 +130,5 @@ class RegistrationController extends BaseController
         redirect("/ATIS/views/registration/login");
     }
 
-    private function authenticateUser($email, $password)
-{
-    $queryBuilder = new QueryBuilder();
-    
-    $user = $queryBuilder->table('users')
-        ->select(['users.*', 'roles.role'])
-        ->join('roles', 'users.role', '=', 'roles.id')
-        ->where('email', '=', $email) 
-        ->limit(1)
-        ->get();
-
-    if ($user) {
-        $user = $user[0]; 
-
-        if ($user['role'] === 'admin') {
-            setErrors(["You are admin!"]);
-            return null;
-        }
-
-        if (password_verify($password, $user['password'])) {
-            return $user;
-        } else {
-            setErrors(["Invalid email or password!"]);
-        }
-    }
-
-    return null;
-    }
-    
 }
 
-    

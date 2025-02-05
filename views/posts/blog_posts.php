@@ -21,7 +21,7 @@
         <div class="col-md-12 post-card">
             <div class="post-content">
                 <div class="post-image">
-                    <img src="<?= htmlspecialchars($post['cover_photo_path']); ?>" alt="Cover Photo" class="card-img-top">
+                <img src="<?= htmlspecialchars($post['cover_photo_path'] ?? 'default_path.jpg'); ?>" alt="Cover Photo" class="card-img-top">
                 </div>
                 <div class="post-details">
                     <h5 class="card-title"><?= htmlspecialchars($post['title']); ?></h5>

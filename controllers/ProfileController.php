@@ -8,7 +8,8 @@ use Requests\UpdateUsernameRequest;
 use Requests\UpdatePasswordRequest;
 use Requests\UpdateProfilePictureRequest;
 use Exceptions\ValidationException;
-use QueryBuilder\QueryBuilder;
+use Models\Media;
+use Models\User;
 
 
 require_once 'redirect.php';
@@ -16,9 +17,14 @@ require_once 'errorHandler.php';
 
 class ProfileController extends BaseController
 {
+    protected $userModel;
+    protected $mediaModel;
+
     public function __construct($conn)
     {
         parent::__construct($conn);
+        $this->userModel = new User();
+        $this->mediaModel = new Media();
     }
 
     public function viewProfile()
@@ -26,9 +32,9 @@ class ProfileController extends BaseController
         $this->checkLoggedIn();
 
         try {
-            $user = $this->getLoggedInUser();
+            $user = $this->userModel->findBy('id', $this->getLoggedInUser()['id']);
+            $profilePicture = $this->mediaModel->getProfilePicture($user['id']) ?? ['path' => '/ATIS/uploads/default.jpg'];
 
-            $profilePicture = $this->getProfilePicture($user['id']);
             $this->render('profile/profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
             setErrors([$e->getMessage()]);
@@ -41,9 +47,9 @@ class ProfileController extends BaseController
         $this->checkLoggedIn();
 
         try {
-            $user = $this->getLoggedInUser();
+            $user = $this->userModel->findBy('id', $this->getLoggedInUser()['id']);
+            $profilePicture = $this->mediaModel->getProfilePicture($user['id']) ?? ['path' => '/ATIS/uploads/default.jpg'];
 
-            $profilePicture = $this->getProfilePicture($user['id']);
             $this->render('profile/edit_profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
             setErrors([$e->getMessage()]);
@@ -55,25 +61,25 @@ class ProfileController extends BaseController
     {
         $id = $data["id"] ?? null;
         $action = $data['action'] ?? null;
-    
+
         try {
             if (!$id || !$action) {
                 throw new Exception("Invalid user ID or no action specified.");
             }
-    
+
             switch ($action) {
                 case 'updateUsername':
                     $this->updateUsername($data);
                     break;
-    
+
                 case 'updatePassword':
                     $this->updatePassword($data);
                     break;
-    
+
                 case 'updateProfilePicture':
                     $this->updateProfilePicture($data, $files);
                     break;
-    
+
                 default:
                     throw new Exception("Unknown action: $action");
             }
@@ -87,118 +93,96 @@ class ProfileController extends BaseController
 
         }
     }
-    
-    
+
     private function updateUsername($data)
-{
-    $id = $data["id"] ?? null;
-    $username = trim($data['username'] ?? '');
-    $email = trim($data['email'] ?? '');
-    
-    try {
-        UpdateUsernameRequest::validate($data);
-    
-        $queryBuilder = (new QueryBuilder)
-            ->table('users')
-            ->update([
-                'username' => $username,
-                'email' => $email
-            ])
-            ->where('id', '=', $id);  
-    
-        $result = $queryBuilder->execute();
-    
-        if (!$result) {
-            throw new Exception("Failed to update username or email.");
+    {
+        $id = $data["id"] ?? null;
+        $username = trim($data['username'] ?? '');
+        $email = trim($data['email'] ?? '');
+
+        try {
+            UpdateUsernameRequest::validate($data);
+
+            $result = $this->userModel->update($id, ['username' => $username, 'email' => $email]);
+
+            if (!$result) {
+                throw new Exception("Failed to update username or email.");
+            }
+        } catch (ValidationException $e) {
+            throw $e;
+        } catch (Exception $e) {
+            setErrors([$e->getMessage()]);
+            redirect("/ATIS/views/profile/edit");
         }
-    } catch (ValidationException $e) {
-        throw $e; 
-    } catch (Exception $e) {
-        setErrors([$e->getMessage()]);
-        redirect("/ATIS/views/profile/edit");
     }
-}
 
     private function updatePassword($data)
-{
-    $id = $data["id"] ?? null;
-    $old_password = trim($data['old_password'] ?? '');
-    $new_password = trim($data['new_password'] ?? '');
+    {
+        $id = $data["id"] ?? null;
+        $old_password = trim($data['old_password'] ?? '');
+        $new_password = trim($data['new_password'] ?? '');
 
-    try {
-        UpdatePasswordRequest::validate($data);
+        try {
+            UpdatePasswordRequest::validate($data);
 
-        $user = (new QueryBuilder())
-            ->table('users')
-            ->select(['password'])
-            ->where('id', '=', $id)
-            ->get();
+            $user = $this->userModel->findBy('id', $id);
 
-        if (empty($user)) {
-            throw new Exception("User not found.");
+            if (empty($user)) {
+                throw new Exception("User not found.");
+            }
+
+            if (!password_verify($old_password, $user['password'])) {
+                throw new Exception("Incorrect old password.");
+            }
+
+            $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
+
+            $result = $this->userModel->update($id, ['password' => $hashedPassword]);
+
+            if (!$result) {
+                throw new Exception("Failed to update password.");
+            }
+        } catch (ValidationException $e) {
+            throw $e;
+        } catch (Exception $e) {
+            setErrors([$e->getMessage()]);
+            redirect("/ATIS/views/profile/edit");
         }
-
-        if (!password_verify($old_password, $user[0]['password'])) {
-            throw new Exception("Incorrect old password.");
-        }
-
-        $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
-
-        $result = (new QueryBuilder())
-            ->table('users')
-            ->update(['password' => $hashedPassword])
-            ->where('id', '=', $id)
-            ->execute();
-
-        if (!$result) {
-            throw new Exception("Failed to update password.");
-        }
-    } catch (ValidationException $e) {
-        throw $e;
-    } catch (Exception $e) {
-        setErrors([$e->getMessage()]);
-        redirect("/ATIS/views/profile/edit");
     }
-}
 
     private function updateProfilePicture($data, $files)
-{
-    $id = $data["id"] ?? null;
-    $profilePicture = $files['profile_picture'] ?? null;
+    {
+        $id = $data["id"] ?? null;
+        $profilePicture = $files['profile_picture'] ?? null;
 
-    error_log(print_r($files, true));
+        try {
+            UpdateProfilePictureRequest::validate($data);
 
+            $originalName = basename($profilePicture["name"]);
+            $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+            $fileSize = $profilePicture["size"];
 
-    try {
-        UpdateProfilePictureRequest::validate($data); 
+            $existingProfile = $this->mediaModel->getProfilePicture($id);
 
-        $originalName = basename($profilePicture["name"]);
-        $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
-        $fileSize = $profilePicture["size"];
+            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/ATIS/uploads/";
+            if (!is_dir($targetDir)) {
+                mkdir($targetDir, 0777, true);
+            }
 
-        $existingProfile = $this->getProfilePicture($id);
+            $hashName = md5(uniqid(time(), true)) . "." . $extension;
+            $targetFile = $targetDir . $hashName;
 
-        $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/ATIS/uploads/";
-        if (!is_dir($targetDir)) {
-            mkdir($targetDir, 0777, true);
-        }
+            if (!move_uploaded_file($profilePicture["tmp_name"], $targetFile)) {
+                throw new Exception("Failed to move uploaded file.");
+            }
 
-        $hashName = md5(uniqid(time(), true)) . "." . $extension;
-        $targetFile = $targetDir . $hashName;
+            $path = "/ATIS/uploads/" . $hashName;
 
-        if (!move_uploaded_file($profilePicture["tmp_name"], $targetFile)) {
-            throw new Exception("Failed to move uploaded file.");
-        }
+            if ($existingProfile && file_exists($_SERVER['DOCUMENT_ROOT'] . $existingProfile['path'])) {
+                unlink($_SERVER['DOCUMENT_ROOT'] . $existingProfile['path']);
+            }
 
-        $path = "/ATIS/uploads/" . $hashName;
-
-        if ($existingProfile && file_exists($_SERVER['DOCUMENT_ROOT'] . $existingProfile['path'])) {
-            unlink($_SERVER['DOCUMENT_ROOT'] . $existingProfile['path']);
-        }
-
-        $queryBuilder = new QueryBuilder();
-        $queryBuilder->table('media')
-            ->insert([
+            $this->mediaModel->create([
                 'original_name' => $originalName,
                 'hash_name' => $hashName,
                 'path' => $path,
@@ -207,35 +191,17 @@ class ProfileController extends BaseController
                 'user_id' => $id,
                 'photo_type' => 'profile'
             ]);
-
-    } catch (ValidationException $e) {
-        throw $e; 
-    } catch (Exception $e) {
-        setErrors([$e->getMessage()]);
-        redirect("/ATIS/views/profile/edit");
+        } catch (ValidationException $e) {
+            throw $e;
+        } catch (Exception $e) {
+            setErrors([$e->getMessage()]);
+            redirect("/ATIS/views/profile/edit");
+        }
     }
-}
-
-
-    private function getProfilePicture($userId)
-    {
-        $profilePicture = (new QueryBuilder())
-            ->table('media')
-            ->select(['path'])
-            ->where('user_id', '=', $userId)
-            ->where('photo_type', '=', 'profile')
-            ->orderBy('id', 'DESC')
-            ->limit(1)
-            ->get();
-   
-        return $profilePicture[0] ?? ['path' => '/ATIS/uploads/default.jpg'];
-    }
-    
-
     private function render($view, $data = [])
     {
         extract($data);
         require BASE_PATH . "/views/{$view}.php";
     }
- 
+
 }

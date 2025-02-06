@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-class Posts extends Model
+class Post extends Model
 {
     public $table = 'posts';
     public $fields = [
@@ -10,7 +10,7 @@ class Posts extends Model
         'description'
     ];
 
-    public function getAllPosts()
+    public function getAllPost()
     {
         return $this->queryBuilder
             ->table('posts')
@@ -21,7 +21,6 @@ class Posts extends Model
             ->orderBy('posts.created_at', 'DESC')
             ->get();
     }
-
     public function getPostById($postId)
     {
         $result = $this->queryBuilder
@@ -29,12 +28,13 @@ class Posts extends Model
             ->select(['posts.id', 'posts.title', 'posts.description', 'media.path AS cover_photo_path', 'users.username'])
             ->leftJoin('media', 'posts.id', '=', 'media.post_id')
             ->leftJoin('users', 'media.user_id', '=', 'users.id')
-            ->where('posts.id', '=', $postId)
-            ->limit(1)
+            ->where('posts.id', '=', $postId)  
+            ->limit(1) 
             ->get();
-
+    
         return !empty($result) ? $result[0] : null; 
     }
+    
 
     
 
@@ -60,12 +60,17 @@ class Posts extends Model
 
 public function deletePost($postId)
 {
+    error_log("Deleting post with ID: $postId");
     return $this->queryBuilder
-        ->table('posts') // Specify the table to perform the operation on (posts table)
-        ->where('id', '=', $postId) // Add a condition to identify the post by its ID
-        ->delete() // Delete the row matching the condition
-        ->execute(); // Execute the query
+        ->table('posts')
+        ->where('id', '=', $postId)
+        ->delete()
+        ->execute();
 }
+
+
+
+
 
 
 

@@ -1,823 +1,1610 @@
-[05-Feb-2025 16:56:45 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 16:56:45 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 16:56:45 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 16:56:45 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 16:56:45 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:03:34 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:03:34 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:03:34 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:03:34 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:03:34 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:18:41 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:18:41 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:18:41 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:18:41 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:18:41 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:18:57 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
-[05-Feb-2025 17:18:57 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
-[05-Feb-2025 17:18:57 Europe/Berlin] Bindings: Array
+[06-Feb-2025 11:44:54 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
+[06-Feb-2025 11:44:54 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 11:44:54 Europe/Berlin] Bindings: Array
 (
     [0] => xheni@gmail.com
 )
 
-[05-Feb-2025 17:18:57 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
-[05-Feb-2025 17:18:57 Europe/Berlin] Executing Bindings: Array
+[06-Feb-2025 11:44:54 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 11:44:54 Europe/Berlin] Executing Bindings: Array
 (
     [0] => xheni@gmail.com
 )
 
-[05-Feb-2025 17:18:57 Europe/Berlin] WHERE Condition: u.id = 16
-[05-Feb-2025 17:18:57 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
-[05-Feb-2025 17:18:57 Europe/Berlin] Bindings: Array
+[06-Feb-2025 11:44:54 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 11:44:54 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 11:44:54 Europe/Berlin] Bindings: Array
 (
     [0] => 16
 )
 
-[05-Feb-2025 17:18:57 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
-[05-Feb-2025 17:18:57 Europe/Berlin] Executing Bindings: Array
+[06-Feb-2025 11:44:54 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 11:44:54 Europe/Berlin] Executing Bindings: Array
 (
     [0] => 16
 )
 
-[05-Feb-2025 17:18:57 Europe/Berlin] WHERE Condition: id = 16
-[05-Feb-2025 17:18:57 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
-[05-Feb-2025 17:18:57 Europe/Berlin] Bindings: Array
+[06-Feb-2025 11:44:54 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 11:44:54 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 11:44:54 Europe/Berlin] Bindings: Array
 (
     [0] => 16
 )
 
-[05-Feb-2025 17:18:57 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
-[05-Feb-2025 17:18:57 Europe/Berlin] Executing Bindings: Array
+[06-Feb-2025 11:44:54 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 11:44:54 Europe/Berlin] Executing Bindings: Array
 (
     [0] => 16
 )
 
-[05-Feb-2025 17:18:57 Europe/Berlin] WHERE Condition: user_id = 16
-[05-Feb-2025 17:18:57 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
-[05-Feb-2025 17:18:57 Europe/Berlin] Bindings: Array
+[06-Feb-2025 11:44:54 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 11:44:54 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 11:44:54 Europe/Berlin] Bindings: Array
 (
     [0] => 16
 )
 
-[05-Feb-2025 17:18:57 Europe/Berlin] WHERE Condition: photo_type = profile
-[05-Feb-2025 17:18:57 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
-[05-Feb-2025 17:18:57 Europe/Berlin] Bindings: Array
-(
-    [0] => 16
-    [1] => profile
-)
-
-[05-Feb-2025 17:18:57 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
-[05-Feb-2025 17:18:57 Europe/Berlin] Executing Bindings: Array
+[06-Feb-2025 11:44:54 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 11:44:54 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 11:44:54 Europe/Berlin] Bindings: Array
 (
     [0] => 16
     [1] => profile
 )
 
-[05-Feb-2025 17:19:00 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:19:00 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:19:00 Europe/Berlin] Bindings: Array
+[06-Feb-2025 11:44:54 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 11:44:54 Europe/Berlin] Executing Bindings: Array
 (
-    [0] => 0
-)
-
-[05-Feb-2025 17:19:00 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:19:00 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:19:44 Europe/Berlin] PHP Warning:  include(C:\downlods\htdocs\ATIS/views/posts/create_post.php): Failed to open stream: No such file or directory in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:19:44 Europe/Berlin] PHP Warning:  include(): Failed opening 'C:\downlods\htdocs\ATIS/views/posts/create_post.php' for inclusion (include_path='C:\downlods\php\PEAR') in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:21:20 Europe/Berlin] PHP Warning:  include(C:\downlods\htdocs\ATIS/views/posts/new): Failed to open stream: No such file or directory in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:21:20 Europe/Berlin] PHP Warning:  include(): Failed opening 'C:\downlods\htdocs\ATIS/views/posts/new' for inclusion (include_path='C:\downlods\php\PEAR') in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:21:25 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:21:25 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:21:25 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:21:25 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:21:25 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:21:42 Europe/Berlin] PHP Warning:  include(C:\downlods\htdocs\ATIS/views/posts/new): Failed to open stream: No such file or directory in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:21:42 Europe/Berlin] PHP Warning:  include(): Failed opening 'C:\downlods\htdocs\ATIS/views/posts/new' for inclusion (include_path='C:\downlods\php\PEAR') in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:25:01 Europe/Berlin] PHP Warning:  include(C:\downlods\htdocs\ATIS/views/posts/new): Failed to open stream: No such file or directory in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:25:01 Europe/Berlin] PHP Warning:  include(): Failed opening 'C:\downlods\htdocs\ATIS/views/posts/new' for inclusion (include_path='C:\downlods\php\PEAR') in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:25:35 Europe/Berlin] PHP Warning:  include(C:\downlods\htdocs\ATIS/views/posts/new): Failed to open stream: No such file or directory in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:25:35 Europe/Berlin] PHP Warning:  include(): Failed opening 'C:\downlods\htdocs\ATIS/views/posts/new' for inclusion (include_path='C:\downlods\php\PEAR') in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:25:51 Europe/Berlin] PHP Warning:  include(C:\downlods\htdocs\ATIS/views/posts/new): Failed to open stream: No such file or directory in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:25:51 Europe/Berlin] PHP Warning:  include(): Failed opening 'C:\downlods\htdocs\ATIS/views/posts/new' for inclusion (include_path='C:\downlods\php\PEAR') in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:25:51 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:25:51 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:25:51 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:25:51 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:25:51 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:25:58 Europe/Berlin] WHERE Condition: posts.id = 81
-[05-Feb-2025 17:25:58 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
-[05-Feb-2025 17:25:58 Europe/Berlin] Bindings: Array
-(
-    [0] => 81
-)
-
-[05-Feb-2025 17:25:58 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
-[05-Feb-2025 17:25:58 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 81
-)
-
-[05-Feb-2025 17:25:58 Europe/Berlin] WHERE Condition: post_id = 81
-[05-Feb-2025 17:25:58 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
-[05-Feb-2025 17:25:58 Europe/Berlin] Bindings: Array
-(
-    [0] => 81
-)
-
-[05-Feb-2025 17:25:58 Europe/Berlin] WHERE Condition: photo_type = cover
-[05-Feb-2025 17:25:58 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
-[05-Feb-2025 17:25:58 Europe/Berlin] Bindings: Array
-(
-    [0] => 81
-    [1] => cover
-)
-
-[05-Feb-2025 17:25:58 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1
-[05-Feb-2025 17:25:58 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 81
-    [1] => cover
-)
-
-[05-Feb-2025 17:25:58 Europe/Berlin] WHERE Condition: id = 146
-[05-Feb-2025 17:25:58 Europe/Berlin] Current Query: DELETE FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1 AND id = ?
-[05-Feb-2025 17:25:58 Europe/Berlin] Bindings: Array
-(
-    [0] => 81
-    [1] => cover
-    [2] => 146
-)
-
-[05-Feb-2025 17:26:01 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:26:01 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:26:01 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:01 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:26:01 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:49 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:26:49 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:26:49 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:49 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:26:49 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:50 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:26:50 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:26:50 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:50 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:26:50 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:50 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:26:50 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:26:50 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:50 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:26:50 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:51 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:26:51 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:26:51 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:51 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:26:51 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:59 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:26:59 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:26:59 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:26:59 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:26:59 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:15 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:15 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:15 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:15 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:15 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:31 Europe/Berlin] PHP Warning:  include(C:\downlods\htdocs\ATIS/views/posts/new): Failed to open stream: No such file or directory in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:27:31 Europe/Berlin] PHP Warning:  include(): Failed opening 'C:\downlods\htdocs\ATIS/views/posts/new' for inclusion (include_path='C:\downlods\php\PEAR') in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 130
-[05-Feb-2025 17:27:31 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:31 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:31 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:31 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:31 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:38 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:38 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:38 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:38 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:38 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:39 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:39 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:39 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:39 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:39 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:39 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:39 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:39 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:39 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:39 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:39 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:40 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:40 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:40 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:40 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:40 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:40 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:27:40 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:27:40 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:27:40 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:27:40 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:40:57 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:40:57 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:40:57 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:40:57 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:40:57 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:51:49 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:51:49 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:51:49 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:51:49 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:51:49 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:52:19 Europe/Berlin] WHERE Condition: posts.id = 85
-[05-Feb-2025 17:52:19 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
-[05-Feb-2025 17:52:19 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:52:19 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
-[05-Feb-2025 17:52:19 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:52:19 Europe/Berlin] WHERE Condition: post_id = 85
-[05-Feb-2025 17:52:19 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
-[05-Feb-2025 17:52:19 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:52:19 Europe/Berlin] WHERE Condition: photo_type = cover
-[05-Feb-2025 17:52:19 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
-[05-Feb-2025 17:52:19 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-)
-
-[05-Feb-2025 17:52:19 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1
-[05-Feb-2025 17:52:19 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-)
-
-[05-Feb-2025 17:52:19 Europe/Berlin] WHERE Condition: id = 150
-[05-Feb-2025 17:52:19 Europe/Berlin] Current Query: DELETE FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1 AND id = ?
-[05-Feb-2025 17:52:19 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-    [2] => 150
-)
-
-[05-Feb-2025 17:52:21 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:52:21 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:52:21 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:52:21 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:52:21 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:52:24 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:52:24 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:52:24 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:52:24 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:52:24 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:52:57 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:52:57 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:52:57 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:52:57 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:52:57 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:53:00 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:53:00 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:53:00 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:53:00 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:53:00 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:53:03 Europe/Berlin] WHERE Condition: posts.id = 85
-[05-Feb-2025 17:53:03 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
-[05-Feb-2025 17:53:03 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:53:03 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
-[05-Feb-2025 17:53:03 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:53:03 Europe/Berlin] WHERE Condition: post_id = 85
-[05-Feb-2025 17:53:03 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
-[05-Feb-2025 17:53:03 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:53:03 Europe/Berlin] WHERE Condition: photo_type = cover
-[05-Feb-2025 17:53:03 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
-[05-Feb-2025 17:53:03 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-)
-
-[05-Feb-2025 17:53:03 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1
-[05-Feb-2025 17:53:03 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-)
-
-[05-Feb-2025 17:53:03 Europe/Berlin] WHERE Condition: id = 150
-[05-Feb-2025 17:53:03 Europe/Berlin] Current Query: DELETE FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1 AND id = ?
-[05-Feb-2025 17:53:03 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-    [2] => 150
-)
-
-[05-Feb-2025 17:53:06 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:53:06 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:53:06 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:53:06 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:53:06 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:53:10 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:53:10 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:53:10 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:53:10 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:53:10 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:53:36 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:53:36 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:53:36 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:53:36 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:53:36 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:53:40 Europe/Berlin] WHERE Condition: posts.id = 85
-[05-Feb-2025 17:53:40 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
-[05-Feb-2025 17:53:40 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:53:40 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
-[05-Feb-2025 17:53:40 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:53:40 Europe/Berlin] WHERE Condition: post_id = 85
-[05-Feb-2025 17:53:40 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
-[05-Feb-2025 17:53:40 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:53:40 Europe/Berlin] WHERE Condition: photo_type = cover
-[05-Feb-2025 17:53:40 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
-[05-Feb-2025 17:53:40 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-)
-
-[05-Feb-2025 17:53:40 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1
-[05-Feb-2025 17:53:40 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-)
-
-[05-Feb-2025 17:53:40 Europe/Berlin] WHERE Condition: id = 150
-[05-Feb-2025 17:53:40 Europe/Berlin] Current Query: DELETE FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1 AND id = ?
-[05-Feb-2025 17:53:40 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-    [2] => 150
-)
-
-[05-Feb-2025 17:55:23 Europe/Berlin] WHERE Condition: posts.id = 85
-[05-Feb-2025 17:55:23 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
-[05-Feb-2025 17:55:23 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:55:23 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
-[05-Feb-2025 17:55:23 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:55:23 Europe/Berlin] WHERE Condition: post_id = 85
-[05-Feb-2025 17:55:23 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
-[05-Feb-2025 17:55:23 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-)
-
-[05-Feb-2025 17:55:23 Europe/Berlin] WHERE Condition: photo_type = cover
-[05-Feb-2025 17:55:23 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
-[05-Feb-2025 17:55:23 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-)
-
-[05-Feb-2025 17:55:23 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1
-[05-Feb-2025 17:55:23 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-)
-
-[05-Feb-2025 17:55:23 Europe/Berlin] WHERE Condition: id = 150
-[05-Feb-2025 17:55:23 Europe/Berlin] Current Query: DELETE FROM media WHERE post_id = ? AND photo_type = ? LIMIT 1 AND id = ?
-[05-Feb-2025 17:55:23 Europe/Berlin] Bindings: Array
-(
-    [0] => 85
-    [1] => cover
-    [2] => 150
-)
-
-[05-Feb-2025 17:55:24 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:55:24 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:55:24 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:55:24 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:55:24 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:55:27 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:55:27 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:55:27 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:55:27 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:55:27 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:55:30 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:55:30 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:55:30 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:55:30 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:55:30 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:58:07 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:58:07 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:58:07 Europe/Berlin] Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:58:07 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:58:07 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 0
-)
-
-[05-Feb-2025 17:58:23 Europe/Berlin] WHERE Condition: email = ersildafraholli1@gmail.com
-[05-Feb-2025 17:58:23 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
-[05-Feb-2025 17:58:23 Europe/Berlin] Bindings: Array
-(
-    [0] => ersildafraholli1@gmail.com
-)
-
-[05-Feb-2025 17:58:23 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
-[05-Feb-2025 17:58:23 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => ersildafraholli1@gmail.com
-)
-
-[05-Feb-2025 17:58:23 Europe/Berlin] WHERE Condition: u.id = 14
-[05-Feb-2025 17:58:23 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
-[05-Feb-2025 17:58:23 Europe/Berlin] Bindings: Array
-(
-    [0] => 14
-)
-
-[05-Feb-2025 17:58:23 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
-[05-Feb-2025 17:58:23 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 14
-)
-
-[05-Feb-2025 17:58:23 Europe/Berlin] WHERE Condition: id = 14
-[05-Feb-2025 17:58:23 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
-[05-Feb-2025 17:58:23 Europe/Berlin] Bindings: Array
-(
-    [0] => 14
-)
-
-[05-Feb-2025 17:58:23 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
-[05-Feb-2025 17:58:23 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 14
-)
-
-[05-Feb-2025 17:58:23 Europe/Berlin] WHERE Condition: user_id = 14
-[05-Feb-2025 17:58:23 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
-[05-Feb-2025 17:58:23 Europe/Berlin] Bindings: Array
-(
-    [0] => 14
-)
-
-[05-Feb-2025 17:58:23 Europe/Berlin] WHERE Condition: photo_type = profile
-[05-Feb-2025 17:58:23 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
-[05-Feb-2025 17:58:23 Europe/Berlin] Bindings: Array
-(
-    [0] => 14
+    [0] => 16
     [1] => profile
 )
 
-[05-Feb-2025 17:58:23 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
-[05-Feb-2025 17:58:23 Europe/Berlin] Executing Bindings: Array
-(
-    [0] => 14
-    [1] => profile
-)
-
-[05-Feb-2025 17:58:25 Europe/Berlin] WHERE Condition: media.size > 0
-[05-Feb-2025 17:58:25 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
-[05-Feb-2025 17:58:25 Europe/Berlin] Bindings: Array
+[06-Feb-2025 11:44:58 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:44:58 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:44:58 Europe/Berlin] Bindings: Array
 (
     [0] => 0
 )
 
-[05-Feb-2025 17:58:25 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
-[05-Feb-2025 17:58:25 Europe/Berlin] Executing Bindings: Array
+[06-Feb-2025 11:44:58 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:44:58 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:44:58 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:44:58 Europe/Berlin] PHP Warning:  include(C:\downlods\htdocs\ATIS/views/Post/blog_Post.php): Failed to open stream: No such file or directory in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 27
+[06-Feb-2025 11:44:58 Europe/Berlin] PHP Warning:  include(): Failed opening 'C:\downlods\htdocs\ATIS/views/Post/blog_Post.php' for inclusion (include_path='C:\downlods\php\PEAR') in C:\downlods\htdocs\ATIS\controllers\PostsController.php on line 27
+[06-Feb-2025 11:45:55 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:45:55 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:45:55 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:45:55 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:45:55 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:45:55 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:11 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:11 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:11 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:11 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:11 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:11 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:12 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:12 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:12 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:12 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:12 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:12 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:12 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:12 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:12 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:12 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:12 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:12 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:12 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:16 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 11:47:16 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 11:47:16 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:47:16 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 11:47:16 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:47:16 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 11:47:16 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 11:47:16 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:47:16 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 11:47:16 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:47:16 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 11:47:16 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 11:47:16 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:47:16 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 11:47:16 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 11:47:16 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:47:16 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 11:47:16 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:47:17 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:17 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:17 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:17 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:17 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:17 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:57 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:57 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:57 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:57 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:57 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:58 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:58 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:58 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:58 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:58 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:58 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:58 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:58 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:58 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:58 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:58 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:58 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:58 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:58 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:58 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:58 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:58 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:58 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:58 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:58 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:58 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:58 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:58 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:58 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:47:59 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:47:59 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:47:59 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:59 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:47:59 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:47:59 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:48:00 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 11:48:00 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 11:48:00 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:00 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 11:48:00 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:00 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 11:48:00 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 11:48:00 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:00 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 11:48:00 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:00 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 11:48:00 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 11:48:00 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:00 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 11:48:00 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 11:48:00 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:00 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 11:48:00 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:47 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 11:48:47 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 11:48:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:47 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 11:48:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:47 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 11:48:47 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 11:48:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:47 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 11:48:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:47 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 11:48:47 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 11:48:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:47 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 11:48:47 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 11:48:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:47 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 11:48:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:49 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 11:48:49 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 11:48:49 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:49 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 11:48:49 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:49 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 11:48:49 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 11:48:49 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:49 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 11:48:49 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:49 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 11:48:49 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 11:48:49 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:49 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 11:48:49 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 11:48:49 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:49 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 11:48:49 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:50 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 11:48:50 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 11:48:50 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:50 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 11:48:50 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:50 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 11:48:50 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 11:48:50 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:50 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 11:48:50 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:50 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 11:48:50 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 11:48:50 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:50 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 11:48:50 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 11:48:50 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:50 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 11:48:50 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:52 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:48:52 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:48:52 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:48:52 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:48:52 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:48:52 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:48:57 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 11:48:57 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 11:48:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:57 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 11:48:57 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:57 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 11:48:57 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 11:48:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:57 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 11:48:57 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:57 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 11:48:57 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 11:48:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:48:57 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 11:48:57 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 11:48:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:57 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 11:48:57 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:48:57 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:48:57 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:48:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:48:57 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:48:57 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:48:57 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:49:24 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 11:49:24 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 11:49:24 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:49:24 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 11:49:24 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:49:24 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 11:49:24 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 11:49:24 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:49:24 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 11:49:24 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:49:24 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 11:49:24 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 11:49:24 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:49:24 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 11:49:24 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 11:49:24 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:49:24 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 11:49:24 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:49:26 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:49:26 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:49:26 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:49:26 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:49:26 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:49:26 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:49:26 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:49:26 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:49:26 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:49:26 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:49:26 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:49:26 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:49:26 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:49:26 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:49:26 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:49:26 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:49:26 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:49:26 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:50:21 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:50:21 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:50:21 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:50:21 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:50:21 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:50:21 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:51:43 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:51:43 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:51:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:43 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:51:43 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:43 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:51:46 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:51:46 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:51:46 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:46 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:51:46 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:46 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:51:46 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:51:46 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:51:46 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:46 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:51:46 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:46 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:51:46 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:51:46 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:51:46 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:46 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:51:46 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:46 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:51:47 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:51:47 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:51:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:47 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:51:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:47 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:51:47 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:51:47 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:51:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:47 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:51:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:47 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:51:47 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:51:47 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:51:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:47 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:51:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:47 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:51:47 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:51:47 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:51:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:47 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:51:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:47 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:51:58 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:51:58 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:51:58 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:58 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:51:58 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:51:58 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:52:42 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:52:42 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:52:42 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:52:42 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:52:42 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:52:42 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:52:44 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:52:44 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:52:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:52:44 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:52:44 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:52:44 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:52:44 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:52:44 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:52:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:52:44 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:52:44 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:52:44 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:53:25 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:53:25 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:53:25 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:25 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:53:25 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:25 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:53:25 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:53:25 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:53:25 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:25 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:53:25 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:25 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:53:26 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:53:26 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:53:26 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:53:26 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:53:26 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:53:26 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:53:26 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:53:26 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:53:26 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:53:26 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:53:26 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:53:26 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:53:26 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:53:26 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:53:26 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:53:26 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:53:26 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:53:26 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:53:26 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:53:26 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:55:41 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:55:41 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:55:41 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:55:41 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:55:41 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:55:41 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:56:42 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:56:42 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:56:42 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:56:42 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:56:42 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:56:42 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:56:43 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:56:43 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:56:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:56:43 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:56:43 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:56:43 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:56:56 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
+[06-Feb-2025 11:56:56 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 11:56:56 Europe/Berlin] Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 11:56:56 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 11:56:56 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 11:57:06 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
+[06-Feb-2025 11:57:06 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 11:57:06 Europe/Berlin] Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 11:57:06 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 11:57:06 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 11:57:06 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 11:57:06 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 11:57:06 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:57:06 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 11:57:06 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:57:06 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 11:57:06 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 11:57:06 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:57:06 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 11:57:06 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:57:06 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 11:57:06 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 11:57:06 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 11:57:06 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 11:57:06 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 11:57:06 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:57:06 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 11:57:06 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 11:57:09 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:57:09 Europe/Berlin] Current Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:57:09 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:57:09 Europe/Berlin] Executing Query: SELECT Post.id, Post.title, Post.description, media.path AS cover_photo_path, users.username, media.user_id FROM Post LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY Post.created_at DESC
+[06-Feb-2025 11:57:09 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:57:09 Europe/Berlin] SQL Error: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'users.post' doesn't exist
+[06-Feb-2025 11:58:08 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:58:08 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:58:08 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:08 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 11:58:08 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:08 Europe/Berlin] SQL Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Post.id' in 'on clause'
+[06-Feb-2025 11:58:09 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:58:09 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:58:09 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:09 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 11:58:09 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:09 Europe/Berlin] SQL Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Post.id' in 'on clause'
+[06-Feb-2025 11:58:10 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:58:10 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:58:10 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:10 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 11:58:10 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:10 Europe/Berlin] SQL Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Post.id' in 'on clause'
+[06-Feb-2025 11:58:11 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:58:11 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:58:11 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:11 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 11:58:11 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:11 Europe/Berlin] SQL Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Post.id' in 'on clause'
+[06-Feb-2025 11:58:11 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:58:11 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:58:11 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:11 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON Post.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 11:58:11 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:11 Europe/Berlin] SQL Error: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Post.id' in 'on clause'
+[06-Feb-2025 11:58:42 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:58:42 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:58:42 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:58:42 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 11:58:42 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:59:37 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:59:37 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:59:37 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:59:37 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 11:59:37 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:59:39 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 11:59:39 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 11:59:39 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:39 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 11:59:39 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:39 Europe/Berlin] WHERE Condition: post_id = 99
+[06-Feb-2025 11:59:39 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
+[06-Feb-2025 11:59:39 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:39 Europe/Berlin] WHERE Condition: photo_type = cover
+[06-Feb-2025 11:59:39 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:39 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 11:59:39 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:39 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 11:59:43 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 11:59:43 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 11:59:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:43 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 11:59:43 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:43 Europe/Berlin] WHERE Condition: post_id = 99
+[06-Feb-2025 11:59:43 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
+[06-Feb-2025 11:59:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:43 Europe/Berlin] WHERE Condition: photo_type = cover
+[06-Feb-2025 11:59:43 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 11:59:43 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:43 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 11:59:43 Europe/Berlin] WHERE Condition: id = 99
+[06-Feb-2025 11:59:43 Europe/Berlin] Current Query: UPDATE posts SET title = ?, description = ? WHERE id = ?
+[06-Feb-2025 11:59:43 Europe/Berlin] Bindings: Array
+(
+    [0] => Cats
+    [1] => The cat (Felis catus), also referred to as the domestic cat, is a small domesticated carnivorous mammal. It is the only domesticated species of the family Felidae. Advances in archaeology and genetics have shown that the domestication of the cat occurred in the Near East around 7500 BC. It is commonly kept as a pet and farm cat, but also ranges freely as a feral cat avoiding human contact. It is valued by humans for companionship and its ability to kill vermin. Its retractable claws are adapted to killing small prey species such as mice and rats. It has a strong, flexible body, quick reflexes, and sharp teeth, and its night vision and sense of smell are well developed. It is a social species, but a solitary hunter and a crepuscular predator. Cat communication includes vocalizations—including meowing, purring, trilling, hissing, growling, and grunting—as well as body language. It can hear sounds too faint or too high in frequency for human ears, such as those made by small mammals. It secretes and perceives pheromones.
+    [2] => 99
+)
+
+[06-Feb-2025 11:59:43 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 11:59:43 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 11:59:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:43 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 11:59:43 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:46 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:59:46 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:59:46 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:59:46 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 11:59:46 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:59:47 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 11:59:47 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 11:59:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:47 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 11:59:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:47 Europe/Berlin] WHERE Condition: post_id = 99
+[06-Feb-2025 11:59:47 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
+[06-Feb-2025 11:59:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:47 Europe/Berlin] WHERE Condition: photo_type = cover
+[06-Feb-2025 11:59:47 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 11:59:47 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 11:59:53 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 11:59:53 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 11:59:53 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:53 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 11:59:53 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:53 Europe/Berlin] WHERE Condition: post_id = 99
+[06-Feb-2025 11:59:53 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
+[06-Feb-2025 11:59:53 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:53 Europe/Berlin] WHERE Condition: photo_type = cover
+[06-Feb-2025 11:59:53 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:53 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 11:59:53 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:53 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 11:59:53 Europe/Berlin] WHERE Condition: id = 99
+[06-Feb-2025 11:59:53 Europe/Berlin] Current Query: UPDATE posts SET title = ?, description = ? WHERE id = ?
+[06-Feb-2025 11:59:53 Europe/Berlin] Bindings: Array
+(
+    [0] => Cats
+    [1] => The cat (Felis catus), also referred to as the domestic cat, is a small domesticated carnivorous mammal. It is the only domesticated species of the family Felidae. Advances in archaeology and genetics have shown that the domestication of the cat occurred in the Near East around 7500 BC. It is commonly kept as a pet and farm cat, but also ranges freely as a feral cat avoiding human contact. It is valued by humans for companionship and its ability to kill vermin. Its retractable claws are adapted to killing small prey species such as mice and rats. It has a strong, flexible body, quick reflexes, and sharp teeth, and its night vision and sense of smell are well developed. It is a social species, but a solitary hunter and a crepuscular predator. Cat communication includes vocalizations—including meowing, purring, trilling, hissing, growling, and grunting—as well as body language. It can hear sounds too faint or too high in frequency for human ears, such as those made by small mammals. It secretes and perceives pheromones.
+    [2] => 99
+)
+
+[06-Feb-2025 11:59:53 Europe/Berlin] WHERE Condition: id = 175
+[06-Feb-2025 11:59:53 Europe/Berlin] Current Query:  WHERE id = ?
+[06-Feb-2025 11:59:53 Europe/Berlin] Bindings: Array
+(
+    [0] => 175
+)
+
+[06-Feb-2025 11:59:53 Europe/Berlin] Generated DELETE Query:  WHERE id = ?
+[06-Feb-2025 11:59:53 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 11:59:53 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 11:59:53 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:53 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 11:59:53 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:55 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 11:59:55 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 11:59:55 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:59:55 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 11:59:55 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 11:59:56 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 11:59:56 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 11:59:56 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:56 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 11:59:56 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:56 Europe/Berlin] WHERE Condition: post_id = 99
+[06-Feb-2025 11:59:56 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
+[06-Feb-2025 11:59:56 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 11:59:56 Europe/Berlin] WHERE Condition: photo_type = cover
+[06-Feb-2025 11:59:56 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:56 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 11:59:56 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 11:59:56 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 12:00:03 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 12:00:03 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 12:00:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 12:00:03 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 12:00:03 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 12:00:03 Europe/Berlin] WHERE Condition: post_id = 99
+[06-Feb-2025 12:00:03 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
+[06-Feb-2025 12:00:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 12:00:03 Europe/Berlin] WHERE Condition: photo_type = cover
+[06-Feb-2025 12:00:03 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 12:00:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 12:00:03 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 12:00:03 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 12:00:03 Europe/Berlin] WHERE Condition: id = 99
+[06-Feb-2025 12:00:03 Europe/Berlin] Current Query: UPDATE posts SET title = ?, description = ? WHERE id = ?
+[06-Feb-2025 12:00:03 Europe/Berlin] Bindings: Array
+(
+    [0] => Cats
+    [1] => The cat (Felis catus), also referred to as the domestic cat, is a small domesticated carnivorous mammal. It is the only domesticated species of the family Felidae. Advances in archaeology and genetics have shown that the domestication of the cat occurred in the Near East around 7500 BC. It is commonly kept as a pet and farm cat, but also ranges freely as a feral cat avoiding human contact. It is valued by humans for companionship and its ability to kill vermin. Its retractable claws are adapted to killing small prey species such as mice and rats. It has a strong, flexible body, quick reflexes, and sharp teeth, and its night vision and sense of smell are well developed. It is a social species, but a solitary hunter and a crepuscular predator. Cat communication includes vocalizations—including meowing, purring, trilling, hissing, growling, and grunting—as well as body language. It can hear sounds too faint or too high in frequency for human ears, such as those made by small mammals. It secretes and perceives pheromones.
+    [2] => 99
+)
+
+[06-Feb-2025 12:00:03 Europe/Berlin] WHERE Condition: id = 178
+[06-Feb-2025 12:00:03 Europe/Berlin] Current Query:  WHERE id = ?
+[06-Feb-2025 12:00:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 178
+)
+
+[06-Feb-2025 12:00:03 Europe/Berlin] Generated DELETE Query:  WHERE id = ?
+[06-Feb-2025 12:00:03 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 12:00:03 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 12:00:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 12:00:03 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 12:00:03 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 12:00:04 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 12:00:04 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 12:00:04 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 12:00:04 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 12:00:04 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 12:00:07 Europe/Berlin] WHERE Condition: posts.id = 99
+[06-Feb-2025 12:00:07 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 12:00:07 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 12:00:07 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 12:00:07 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 12:00:07 Europe/Berlin] WHERE Condition: post_id = 99
+[06-Feb-2025 12:00:07 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
+[06-Feb-2025 12:00:07 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 12:00:07 Europe/Berlin] WHERE Condition: photo_type = cover
+[06-Feb-2025 12:00:07 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 12:00:07 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 12:00:07 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 12:00:07 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 99
+    [1] => cover
+)
+
+[06-Feb-2025 12:00:07 Europe/Berlin] WHERE Condition: id = 179
+[06-Feb-2025 12:00:07 Europe/Berlin] Current Query:  WHERE id = ?
+[06-Feb-2025 12:00:07 Europe/Berlin] Bindings: Array
+(
+    [0] => 179
+)
+
+[06-Feb-2025 12:00:07 Europe/Berlin] Generated DELETE Query:  WHERE id = ?
+[06-Feb-2025 12:00:07 Europe/Berlin] Before deleting post: 99
+[06-Feb-2025 12:00:07 Europe/Berlin] Deleting post with ID: 99
+[06-Feb-2025 12:00:07 Europe/Berlin] WHERE Condition: id = 99
+[06-Feb-2025 12:00:07 Europe/Berlin] Current Query:  WHERE id = ?
+[06-Feb-2025 12:00:07 Europe/Berlin] Bindings: Array
+(
+    [0] => 99
+)
+
+[06-Feb-2025 12:00:07 Europe/Berlin] Generated DELETE Query:  WHERE id = ?
+[06-Feb-2025 12:00:07 Europe/Berlin] Post deleted: 99
+[06-Feb-2025 12:00:07 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 12:00:07 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 12:00:07 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 12:00:07 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 12:00:07 Europe/Berlin] Executing Bindings: Array
 (
     [0] => 0
 )

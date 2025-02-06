@@ -60,18 +60,19 @@ class QueryBuilder
         return $this;
     }
 
-
     public function delete(): self
     {
-
         if (!str_contains($this->query, "WHERE")) {
             throw new PDOException("DELETE queries must include a WHERE clause to prevent accidental full-table deletions.");
         }
+    
+        error_log("Generated DELETE Query: " . $this->query);  
     
         $this->query = "DELETE FROM {$this->table} " . strstr($this->query, "WHERE");
     
         return $this;
     }
+    
     
 
     public function join(string $table, string $column1, string $operator, string $column2, string $type = "INNER"): static
@@ -88,10 +89,14 @@ class QueryBuilder
 
     public function limit(int $count): static
     {
+        $this->query = preg_replace('/\s+LIMIT\s+\d+/i', '', $this->query);
+    
         $this->query .= " LIMIT $count";
+        
         return $this;
     }
-
+    
+    
     public function execute(): bool
     {
         $pdo = Database::getConnection();

@@ -17,14 +17,10 @@ require_once 'errorHandler.php';
 
 class AdminController extends BaseController
 {
-    protected $roleModel;
-    protected $userModel;
 
     public function __construct($conn)
     {
         parent::__construct($conn);
-        $this->roleModel = new Roles();
-        $this->userModel = new User();
     }
 
     private function checkAdmin()
@@ -37,10 +33,10 @@ class AdminController extends BaseController
 
     public function fetchUsersByRole($role)
     {
-        $roleId = $this->roleModel->findBy('role', $role)['id'] ?? null;
+        $roleId = (new Roles)->findBy('role', $role)['id'] ?? null;
 
         if ($roleId) {
-            return $this->userModel->findByRole($roleId);
+            return (new User)->findByRole($roleId);
         }
 
         return [];
@@ -95,7 +91,7 @@ class AdminController extends BaseController
         }
 
         $id = intval($_POST['id']);
-        $this->userModel->update($id, $data);
+        (new User)->update($id, $data);
 
         return null;
     }
@@ -107,7 +103,7 @@ class AdminController extends BaseController
         try {
             Database::getConnection()->beginTransaction();
 
-            $this->userModel->delete($id);
+            (new User)->delete($id);
 
             Database::getConnection()->commit();
         } catch (PDOException $e) {
@@ -156,7 +152,7 @@ class AdminController extends BaseController
 
     private function authenticateAdmin($email, $password)
     {
-        $user = $this->userModel->findByEmail($email);
+        $user =(new User)->findByEmail($email);
 
         if ($user && $user['role'] === 1) {
             if (password_verify($password, $user['password'])) {

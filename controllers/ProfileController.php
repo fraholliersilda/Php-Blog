@@ -17,14 +17,10 @@ require_once 'errorHandler.php';
 
 class ProfileController extends BaseController
 {
-    protected $userModel;
-    protected $mediaModel;
 
     public function __construct($conn)
     {
         parent::__construct($conn);
-        $this->userModel = new User();
-        $this->mediaModel = new Media();
     }
 
     public function viewProfile()
@@ -32,8 +28,8 @@ class ProfileController extends BaseController
         $this->checkLoggedIn();
 
         try {
-            $user = $this->userModel->findBy('id', $this->getLoggedInUser()['id']);
-            $profilePicture = $this->mediaModel->getProfilePicture($user['id']) ?? ['path' => '/ATIS/uploads/default.jpg'];
+            $user = (new User)->findBy('id', $this->getLoggedInUser()['id']);
+            $profilePicture = (new Media)->getProfilePicture($user['id']) ?? ['path' => '/ATIS/uploads/default.jpg'];
 
             $this->render('profile/profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
@@ -47,8 +43,8 @@ class ProfileController extends BaseController
         $this->checkLoggedIn();
 
         try {
-            $user = $this->userModel->findBy('id', $this->getLoggedInUser()['id']);
-            $profilePicture = $this->mediaModel->getProfilePicture($user['id']) ?? ['path' => '/ATIS/uploads/default.jpg'];
+            $user =(new User)->findBy('id', $this->getLoggedInUser()['id']);
+            $profilePicture = (new Media)->getProfilePicture($user['id']) ?? ['path' => '/ATIS/uploads/default.jpg'];
 
             $this->render('profile/edit_profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
@@ -103,7 +99,7 @@ class ProfileController extends BaseController
         try {
             UpdateUsernameRequest::validate($data);
 
-            $result = $this->userModel->update($id, ['username' => $username, 'email' => $email]);
+            $result =(new User)->update($id, ['username' => $username, 'email' => $email]);
 
             if (!$result) {
                 throw new Exception("Failed to update username or email.");
@@ -125,7 +121,7 @@ class ProfileController extends BaseController
         try {
             UpdatePasswordRequest::validate($data);
 
-            $user = $this->userModel->findBy('id', $id);
+            $user =(new User)->findBy('id', $id);
 
             if (empty($user)) {
                 throw new Exception("User not found.");
@@ -137,7 +133,7 @@ class ProfileController extends BaseController
 
             $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
 
-            $result = $this->userModel->update($id, ['password' => $hashedPassword]);
+            $result =(new User)->update($id, ['password' => $hashedPassword]);
 
             if (!$result) {
                 throw new Exception("Failed to update password.");
@@ -162,7 +158,7 @@ class ProfileController extends BaseController
             $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
             $fileSize = $profilePicture["size"];
 
-            $existingProfile = $this->mediaModel->getProfilePicture($id);
+            $existingProfile = (new Media)->getProfilePicture($id);
 
             $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/ATIS/uploads/";
             if (!is_dir($targetDir)) {
@@ -182,7 +178,7 @@ class ProfileController extends BaseController
                 unlink($_SERVER['DOCUMENT_ROOT'] . $existingProfile['path']);
             }
 
-            $this->mediaModel->create([
+            (new Media)->create([
                 'original_name' => $originalName,
                 'hash_name' => $hashName,
                 'path' => $path,

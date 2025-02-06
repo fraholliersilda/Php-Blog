@@ -1,5 +1,6 @@
 <?php
 namespace Models;
+use PDOException;
 
 class Media extends Model
 {
@@ -29,16 +30,14 @@ class Media extends Model
     }
 
     public function getCoverPhotoByPostId($postId)
-{
-    return $this->queryBuilder
-        ->table('media')
-        ->select(['id', 'path'])
-        ->where('post_id', '=', $postId)
-        ->where('photo_type', '=', 'cover')
-        ->limit(1)
-        ->getOne();
-}
-
+    {
+        return $this->queryBuilder
+            ->table('media')
+            ->select(['id', 'path'])
+            ->where('post_id', '=', $postId)
+            ->where('photo_type', '=', 'cover')
+            ->getOne();
+    }
 
     public function updateCoverPhoto($coverPhoto, $path, $postId)
     {
@@ -54,21 +53,25 @@ class Media extends Model
             if (file_exists($deleteFile)) {
                 unlink($deleteFile);
             }
-
+    
             $this->queryBuilder
                 ->table('media')
-                ->delete()
                 ->where('id', '=', $existingMedia['id'])
+                ->delete()
                 ->execute();
         }
+        error_log("Cover photo path: " . $path);
+
+
     }
+    
     public function saveCoverPhoto($coverPhoto, $postId)
     {
         $hashName = md5(uniqid(time(), true)) . "." . strtolower(pathinfo($coverPhoto['name'], PATHINFO_EXTENSION));
-        
-        $path = '/ATIS/uploads/' . $hashName; 
+    
+        $path = '/ATIS/uploads/' . $hashName;
         move_uploaded_file($coverPhoto['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . $path);
-
+    
         return $this->queryBuilder
             ->table('media')
             ->insert([
@@ -77,22 +80,26 @@ class Media extends Model
                 'path' => $path,
                 'size' => $coverPhoto['size'],
                 'extension' => strtolower(pathinfo($coverPhoto['name'], PATHINFO_EXTENSION)),
-                'user_id' => $_SESSION['user_id'],  
+                'user_id' => $_SESSION['user_id'],
                 'photo_type' => 'cover',
                 'post_id' => $postId
             ]);
+            
+            
     }
-
-
+    
     public function deleteMediaById($mediaId)
-{
-    return $this->queryBuilder
-        ->table('media')
-        ->delete()
-        ->where('id', '=', $mediaId)
-        ->execute();
-}
-
-
+    {
+        try {
+            $this->queryBuilder
+                ->table('media')
+                ->where('id', '=', $mediaId)
+                ->delete()
+                ->execute();
+        } catch (PDOException $e) {
+            error_log("Error deleting media: " . $e->getMessage());
+            throw $e;
+        }
+    }
 
 }

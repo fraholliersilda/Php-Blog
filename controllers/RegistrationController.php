@@ -14,11 +14,9 @@ require_once 'errorHandler.php';
 
 class RegistrationController extends BaseController
 {
-    protected $user;
     public function __construct(PDO $conn)
     {
         parent::__construct($conn);
-        $this->user = new User();
     }
 
     public function login()
@@ -32,7 +30,7 @@ class RegistrationController extends BaseController
             try {
                 RegistrationRequest::validateLogin($data);
 
-                $user = $this->user->findByEmail($data['email']);
+                $user =(new User)->findByEmail($data['email']);
 
 
                 if ($user['role'] === 1) {
@@ -80,7 +78,7 @@ class RegistrationController extends BaseController
             try {
                 RegistrationRequest::validateSignup($data);
 
-                $existingUser = $this->user->findByEmail($data['email']) ?? $this->user->findByUsername($data['username']);
+                $existingUser =(new User)->findByEmail($data['email']) ??(new User)->findByUsername($data['username']);
 
                 if ($existingUser) {
                     $errors = [];
@@ -99,7 +97,7 @@ class RegistrationController extends BaseController
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $data['role'] = 2;
 
-                if ($this->user->create($data)) {
+                if ((new User)->create($data)) {
                     redirect("/ATIS/views/registration/login");
                 } else {
                     setErrors(["Error creating account."]);

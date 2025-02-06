@@ -10,7 +10,9 @@
             "Exceptions\\": "Exceptions/",
             "Requests\\": "Requests/",
             "QueryBuilder\\": "QueryBuilder/",
-             "Models\\": "Models/"
+            "Models\\": "Models/",
+            "core\\": "core/",
+            "Middlewares\\" : "Middlewares/"
         }
     }
 }

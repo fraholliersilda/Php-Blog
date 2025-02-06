@@ -1609,3 +1609,1909 @@
     [0] => 0
 )
 
+[06-Feb-2025 14:30:21 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
+[06-Feb-2025 14:30:21 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 14:30:21 Europe/Berlin] Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 14:30:21 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 14:30:21 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 14:30:21 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 14:30:21 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 14:30:21 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:21 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 14:30:21 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:21 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 14:30:21 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 14:30:21 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:21 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 14:30:21 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:21 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 14:30:21 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 14:30:21 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:21 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 14:30:21 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 14:30:21 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 14:30:21 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 14:30:21 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 14:30:24 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 14:30:24 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 14:30:24 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:24 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 14:30:24 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:24 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 14:30:24 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 14:30:24 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:24 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 14:30:24 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:24 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 14:30:24 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 14:30:24 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 14:30:24 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 14:30:24 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 14:30:24 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 14:30:24 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 14:30:24 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 14:30:27 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 14:30:27 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 14:30:27 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 14:30:27 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 14:30:27 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 14:31:02 Europe/Berlin] WHERE Condition: email = ersildafraholli1@gmail.com
+[06-Feb-2025 14:31:02 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 14:31:02 Europe/Berlin] Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+)
+
+[06-Feb-2025 14:31:02 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 14:31:02 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+)
+
+[06-Feb-2025 14:31:02 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 14:31:02 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 14:31:02 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 14:31:02 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 14:31:02 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 14:31:02 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 14:31:02 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 14:31:02 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 14:31:02 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 14:31:02 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 14:31:02 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 14:31:02 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 14:31:02 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 14:31:02 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 14:31:02 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 14:31:02 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 14:31:02 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 14:31:02 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 14:31:04 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 14:31:04 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 14:31:04 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 14:31:04 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 14:31:04 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 14:31:09 Europe/Berlin] WHERE Condition: posts.id = 47
+[06-Feb-2025 14:31:09 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 14:31:09 Europe/Berlin] Bindings: Array
+(
+    [0] => 47
+)
+
+[06-Feb-2025 14:31:09 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 14:31:09 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 47
+)
+
+[06-Feb-2025 14:31:09 Europe/Berlin] WHERE Condition: post_id = 47
+[06-Feb-2025 14:31:09 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
+[06-Feb-2025 14:31:09 Europe/Berlin] Bindings: Array
+(
+    [0] => 47
+)
+
+[06-Feb-2025 14:31:09 Europe/Berlin] WHERE Condition: photo_type = cover
+[06-Feb-2025 14:31:09 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 14:31:09 Europe/Berlin] Bindings: Array
+(
+    [0] => 47
+    [1] => cover
+)
+
+[06-Feb-2025 14:31:09 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 14:31:09 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 47
+    [1] => cover
+)
+
+[06-Feb-2025 14:31:09 Europe/Berlin] WHERE Condition: id = 95
+[06-Feb-2025 14:31:09 Europe/Berlin] Current Query:  WHERE id = ?
+[06-Feb-2025 14:31:09 Europe/Berlin] Bindings: Array
+(
+    [0] => 95
+)
+
+[06-Feb-2025 14:31:09 Europe/Berlin] Generated DELETE Query:  WHERE id = ?
+[06-Feb-2025 14:31:09 Europe/Berlin] Before deleting post: 47
+[06-Feb-2025 14:31:09 Europe/Berlin] Deleting post with ID: 47
+[06-Feb-2025 14:31:09 Europe/Berlin] WHERE Condition: id = 47
+[06-Feb-2025 14:31:09 Europe/Berlin] Current Query:  WHERE id = ?
+[06-Feb-2025 14:31:09 Europe/Berlin] Bindings: Array
+(
+    [0] => 47
+)
+
+[06-Feb-2025 14:31:09 Europe/Berlin] Generated DELETE Query:  WHERE id = ?
+[06-Feb-2025 14:31:09 Europe/Berlin] Post deleted: 47
+[06-Feb-2025 14:31:09 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 14:31:09 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 14:31:09 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 14:31:09 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 14:31:09 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 15:02:41 Europe/Berlin] WHERE Condition: email = olti@gmail.com
+[06-Feb-2025 15:02:41 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 15:02:41 Europe/Berlin] Bindings: Array
+(
+    [0] => olti@gmail.com
+)
+
+[06-Feb-2025 15:02:41 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 15:02:41 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => olti@gmail.com
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] WHERE Condition: email = olti@gmail.com
+[06-Feb-2025 15:02:50 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 15:02:50 Europe/Berlin] Bindings: Array
+(
+    [0] => olti@gmail.com
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 15:02:50 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => olti@gmail.com
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] WHERE Condition: u.id = 26
+[06-Feb-2025 15:02:50 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:02:50 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:02:50 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] WHERE Condition: id = 26
+[06-Feb-2025 15:02:50 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:02:50 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:02:50 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] WHERE Condition: user_id = 26
+[06-Feb-2025 15:02:50 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:02:50 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:02:50 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:02:50 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+    [1] => profile
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:02:50 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 26
+    [1] => profile
+)
+
+[06-Feb-2025 15:02:50 Europe/Berlin] PHP Warning:  Undefined array key "path" in C:\downlods\htdocs\ATIS\views\profile\profile.php on line 22
+[06-Feb-2025 15:02:50 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\downlods\htdocs\ATIS\views\profile\profile.php on line 22
+[06-Feb-2025 15:02:55 Europe/Berlin] WHERE Condition: u.id = 26
+[06-Feb-2025 15:02:55 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:02:55 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:55 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:02:55 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:55 Europe/Berlin] WHERE Condition: id = 26
+[06-Feb-2025 15:02:55 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:02:55 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:55 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:02:55 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:55 Europe/Berlin] WHERE Condition: user_id = 26
+[06-Feb-2025 15:02:55 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:02:55 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:02:55 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:02:55 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:02:55 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+    [1] => profile
+)
+
+[06-Feb-2025 15:02:55 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:02:55 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 26
+    [1] => profile
+)
+
+[06-Feb-2025 15:02:55 Europe/Berlin] PHP Warning:  Undefined array key "path" in C:\downlods\htdocs\ATIS\views\profile\profile.php on line 22
+[06-Feb-2025 15:02:55 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\downlods\htdocs\ATIS\views\profile\profile.php on line 22
+[06-Feb-2025 15:03:03 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
+[06-Feb-2025 15:03:03 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 15:03:03 Europe/Berlin] Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 15:03:03 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 15:03:03 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 15:03:03 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 15:03:03 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:03:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:03:03 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:03:03 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:03:03 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 15:03:03 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:03:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:03:03 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:03:03 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:03:03 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 15:03:03 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:03:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:03:03 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:03:03 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:03:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 15:03:03 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:03:03 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] WHERE Condition: email = olti@gmail.com
+[06-Feb-2025 15:03:14 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 15:03:14 Europe/Berlin] Bindings: Array
+(
+    [0] => olti@gmail.com
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 15:03:14 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => olti@gmail.com
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] WHERE Condition: u.id = 26
+[06-Feb-2025 15:03:14 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:03:14 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:03:14 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] WHERE Condition: id = 26
+[06-Feb-2025 15:03:14 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:03:14 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:03:14 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] WHERE Condition: user_id = 26
+[06-Feb-2025 15:03:14 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:03:14 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:03:14 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:03:14 Europe/Berlin] Bindings: Array
+(
+    [0] => 26
+    [1] => profile
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:03:14 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 26
+    [1] => profile
+)
+
+[06-Feb-2025 15:03:14 Europe/Berlin] PHP Warning:  Undefined array key "path" in C:\downlods\htdocs\ATIS\views\profile\profile.php on line 22
+[06-Feb-2025 15:03:14 Europe/Berlin] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in C:\downlods\htdocs\ATIS\views\profile\profile.php on line 22
+[06-Feb-2025 15:20:48 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
+[06-Feb-2025 15:20:48 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 15:20:48 Europe/Berlin] Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 15:20:48 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 15:20:48 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 15:20:48 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 15:20:48 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:20:48 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:20:48 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:20:48 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:20:48 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 15:20:48 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:20:48 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:20:48 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:20:48 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:20:48 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 15:20:48 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:20:48 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:20:48 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:20:48 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:20:48 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 15:20:48 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:20:48 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 15:21:09 Europe/Berlin] WHERE Condition: email = ersildafraholli1@gmail.com
+[06-Feb-2025 15:21:09 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 15:21:09 Europe/Berlin] Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+)
+
+[06-Feb-2025 15:21:09 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 15:21:09 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+)
+
+[06-Feb-2025 15:21:15 Europe/Berlin] WHERE Condition: email = ersildafraholli1@gmail.com
+[06-Feb-2025 15:21:15 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 15:21:15 Europe/Berlin] Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+)
+
+[06-Feb-2025 15:21:15 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 15:21:15 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+)
+
+[06-Feb-2025 15:21:15 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 15:21:15 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:21:15 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:15 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:21:15 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:15 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 15:21:15 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:21:15 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:15 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:21:15 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:15 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 15:21:15 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:21:15 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:15 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:21:15 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:21:15 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 15:21:15 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:21:15 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 15:21:17 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 15:21:17 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:21:17 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:17 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:21:17 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:17 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 15:21:17 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:21:17 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:17 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:21:17 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:17 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 15:21:17 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:21:17 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:17 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:21:17 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:21:17 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 15:21:17 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:21:17 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 15:21:20 Europe/Berlin] WHERE Condition: role = user
+[06-Feb-2025 15:21:20 Europe/Berlin] Current Query: SELECT * FROM roles WHERE role = ?
+[06-Feb-2025 15:21:20 Europe/Berlin] Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 15:21:20 Europe/Berlin] Executing Query: SELECT * FROM roles WHERE role = ? LIMIT 1
+[06-Feb-2025 15:21:20 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 15:21:20 Europe/Berlin] WHERE Condition: role = 2
+[06-Feb-2025 15:21:20 Europe/Berlin] Current Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 15:21:20 Europe/Berlin] Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 15:21:20 Europe/Berlin] Executing Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 15:21:20 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 15:21:30 Europe/Berlin] WHERE Condition: role = user
+[06-Feb-2025 15:21:30 Europe/Berlin] Current Query: SELECT * FROM roles WHERE role = ?
+[06-Feb-2025 15:21:30 Europe/Berlin] Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 15:21:30 Europe/Berlin] Executing Query: SELECT * FROM roles WHERE role = ? LIMIT 1
+[06-Feb-2025 15:21:30 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 15:21:30 Europe/Berlin] WHERE Condition: role = 2
+[06-Feb-2025 15:21:30 Europe/Berlin] Current Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 15:21:30 Europe/Berlin] Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 15:21:30 Europe/Berlin] Executing Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 15:21:30 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 15:21:39 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 15:21:39 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:21:39 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:39 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:21:39 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:39 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 15:21:39 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:21:39 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:39 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:21:39 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:39 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 15:21:39 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:21:39 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 15:21:39 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:21:39 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:21:39 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 15:21:39 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:21:39 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 15:21:57 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
+[06-Feb-2025 15:21:57 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 15:21:57 Europe/Berlin] Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 15:21:57 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 15:21:57 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 15:21:57 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 15:21:57 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:21:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:21:57 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:21:57 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:21:57 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 15:21:57 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:21:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:21:57 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:21:57 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:21:57 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 15:21:57 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:21:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:21:57 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:21:57 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:21:57 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 15:21:57 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:21:57 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] WHERE Condition: role = user
+[06-Feb-2025 15:22:12 Europe/Berlin] Current Query: SELECT * FROM roles WHERE role = ?
+[06-Feb-2025 15:22:12 Europe/Berlin] Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Query: SELECT * FROM roles WHERE role = ? LIMIT 1
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] WHERE Condition: role = 2
+[06-Feb-2025 15:22:12 Europe/Berlin] Current Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 15:22:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 15:22:12 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:22:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 15:22:12 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:22:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 15:22:12 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:22:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:22:12 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:22:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:22:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] WHERE Condition: role = user
+[06-Feb-2025 15:22:23 Europe/Berlin] Current Query: SELECT * FROM roles WHERE role = ?
+[06-Feb-2025 15:22:23 Europe/Berlin] Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Query: SELECT * FROM roles WHERE role = ? LIMIT 1
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] WHERE Condition: role = 2
+[06-Feb-2025 15:22:23 Europe/Berlin] Current Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 15:22:23 Europe/Berlin] Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 15:22:23 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 15:22:23 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 15:22:23 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 15:22:23 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 15:22:23 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 15:22:23 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 15:22:23 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 15:22:23 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 15:22:23 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:00:22 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "core\MiddlewareHandler" not found in C:\downlods\htdocs\ATIS\index.php:120
+Stack trace:
+#0 {main}
+  thrown in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:00:24 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "core\MiddlewareHandler" not found in C:\downlods\htdocs\ATIS\index.php:120
+Stack trace:
+#0 {main}
+  thrown in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:02:25 Europe/Berlin] PHP Fatal error:  Uncaught Error: Class "core\MiddlewareHandler" not found in C:\downlods\htdocs\ATIS\index.php:120
+Stack trace:
+#0 {main}
+  thrown in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:41:05 Europe/Berlin] PHP Warning:  Undefined variable $middlewares in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:41:05 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: core\MiddlewareHandler::run(): Argument #1 ($middlewares) must be of type array, null given, called in C:\downlods\htdocs\ATIS\index.php on line 120 and defined in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php:6
+Stack trace:
+#0 C:\downlods\htdocs\ATIS\index.php(120): core\MiddlewareHandler::run(NULL)
+#1 {main}
+  thrown in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php on line 6
+[06-Feb-2025 16:41:19 Europe/Berlin] PHP Warning:  Undefined variable $middlewares in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:41:19 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: core\MiddlewareHandler::run(): Argument #1 ($middlewares) must be of type array, null given, called in C:\downlods\htdocs\ATIS\index.php on line 120 and defined in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php:6
+Stack trace:
+#0 C:\downlods\htdocs\ATIS\index.php(120): core\MiddlewareHandler::run(NULL)
+#1 {main}
+  thrown in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php on line 6
+[06-Feb-2025 16:42:03 Europe/Berlin] PHP Warning:  Undefined variable $middlewares in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:42:03 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: core\MiddlewareHandler::run(): Argument #1 ($middlewares) must be of type array, null given, called in C:\downlods\htdocs\ATIS\index.php on line 120 and defined in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php:6
+Stack trace:
+#0 C:\downlods\htdocs\ATIS\index.php(120): core\MiddlewareHandler::run(NULL)
+#1 {main}
+  thrown in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php on line 6
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Warning:  Undefined variable $middlewares in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: core\MiddlewareHandler::run(): Argument #1 ($middlewares) must be of type array, null given, called in C:\downlods\htdocs\ATIS\index.php on line 120 and defined in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php:6
+Stack trace:
+#0 C:\downlods\htdocs\ATIS\index.php(120): core\MiddlewareHandler::run(NULL)
+#1 {main}
+  thrown in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php on line 6
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Warning:  Undefined variable $middlewares in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: core\MiddlewareHandler::run(): Argument #1 ($middlewares) must be of type array, null given, called in C:\downlods\htdocs\ATIS\index.php on line 120 and defined in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php:6
+Stack trace:
+#0 C:\downlods\htdocs\ATIS\index.php(120): core\MiddlewareHandler::run(NULL)
+#1 {main}
+  thrown in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php on line 6
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Warning:  Undefined variable $middlewares in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: core\MiddlewareHandler::run(): Argument #1 ($middlewares) must be of type array, null given, called in C:\downlods\htdocs\ATIS\index.php on line 120 and defined in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php:6
+Stack trace:
+#0 C:\downlods\htdocs\ATIS\index.php(120): core\MiddlewareHandler::run(NULL)
+#1 {main}
+  thrown in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php on line 6
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Warning:  Undefined variable $middlewares in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: core\MiddlewareHandler::run(): Argument #1 ($middlewares) must be of type array, null given, called in C:\downlods\htdocs\ATIS\index.php on line 120 and defined in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php:6
+Stack trace:
+#0 C:\downlods\htdocs\ATIS\index.php(120): core\MiddlewareHandler::run(NULL)
+#1 {main}
+  thrown in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php on line 6
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Warning:  Undefined variable $middlewares in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:42:04 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: core\MiddlewareHandler::run(): Argument #1 ($middlewares) must be of type array, null given, called in C:\downlods\htdocs\ATIS\index.php on line 120 and defined in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php:6
+Stack trace:
+#0 C:\downlods\htdocs\ATIS\index.php(120): core\MiddlewareHandler::run(NULL)
+#1 {main}
+  thrown in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php on line 6
+[06-Feb-2025 16:42:07 Europe/Berlin] PHP Warning:  Undefined variable $middlewares in C:\downlods\htdocs\ATIS\index.php on line 120
+[06-Feb-2025 16:42:07 Europe/Berlin] PHP Fatal error:  Uncaught TypeError: core\MiddlewareHandler::run(): Argument #1 ($middlewares) must be of type array, null given, called in C:\downlods\htdocs\ATIS\index.php on line 120 and defined in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php:6
+Stack trace:
+#0 C:\downlods\htdocs\ATIS\index.php(120): core\MiddlewareHandler::run(NULL)
+#1 {main}
+  thrown in C:\downlods\htdocs\ATIS\core\MiddlewareHandler.php on line 6
+[06-Feb-2025 16:45:56 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
+[06-Feb-2025 16:45:56 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 16:45:56 Europe/Berlin] Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 16:45:56 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 16:45:56 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 16:45:56 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\downlods\htdocs\ATIS\middlewares\AuthMiddleware.php on line 9
+[06-Feb-2025 16:45:56 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 16:45:56 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:45:56 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:45:56 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:45:56 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:45:56 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 16:45:56 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:45:56 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:45:56 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:45:56 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:45:56 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 16:45:56 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:45:56 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:45:56 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:45:56 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:45:56 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:45:56 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:45:56 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:46:12 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 16:46:12 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:46:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:12 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:46:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:12 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 16:46:12 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:46:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:12 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:46:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:12 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 16:46:12 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:46:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:12 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:46:12 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:46:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:46:12 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:46:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:46:15 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 16:46:15 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:46:15 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:15 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:46:15 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:15 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 16:46:15 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:46:15 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:15 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:46:15 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:15 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 16:46:15 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:46:15 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:46:15 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:46:15 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:46:15 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:46:15 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:46:15 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:46:19 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 16:46:19 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 16:46:19 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 16:46:19 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 16:46:19 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 16:46:50 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 16:46:50 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 16:46:50 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 16:46:50 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 16:46:50 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 16:46:52 Europe/Berlin] WHERE Condition: posts.id = 102
+[06-Feb-2025 16:46:52 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ?
+[06-Feb-2025 16:46:52 Europe/Berlin] Bindings: Array
+(
+    [0] => 102
+)
+
+[06-Feb-2025 16:46:52 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE posts.id = ? LIMIT 1
+[06-Feb-2025 16:46:52 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 102
+)
+
+[06-Feb-2025 16:46:52 Europe/Berlin] WHERE Condition: post_id = 102
+[06-Feb-2025 16:46:52 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ?
+[06-Feb-2025 16:46:52 Europe/Berlin] Bindings: Array
+(
+    [0] => 102
+)
+
+[06-Feb-2025 16:46:52 Europe/Berlin] WHERE Condition: photo_type = cover
+[06-Feb-2025 16:46:52 Europe/Berlin] Current Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 16:46:52 Europe/Berlin] Bindings: Array
+(
+    [0] => 102
+    [1] => cover
+)
+
+[06-Feb-2025 16:46:52 Europe/Berlin] Executing Query: SELECT id, path FROM media WHERE post_id = ? AND photo_type = ?
+[06-Feb-2025 16:46:52 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 102
+    [1] => cover
+)
+
+[06-Feb-2025 16:46:54 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 16:46:54 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 16:46:54 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 16:46:54 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 16:46:54 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 16:47:13 Europe/Berlin] WHERE Condition: email = ersildafraholli1@gmail.com
+[06-Feb-2025 16:47:13 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 16:47:13 Europe/Berlin] Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+)
+
+[06-Feb-2025 16:47:13 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 16:47:13 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => ersildafraholli1@gmail.com
+)
+
+[06-Feb-2025 16:47:14 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 16:47:14 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:47:14 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:47:14 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:47:14 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:47:14 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 16:47:14 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:47:14 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:47:14 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:47:14 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:47:14 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 16:47:14 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:47:14 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:47:14 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:47:14 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:47:14 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:47:14 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:47:14 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:49:47 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 16:49:47 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:49:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:49:47 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:49:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:49:47 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 16:49:47 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:49:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:49:47 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:49:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:49:47 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 16:49:47 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:49:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:49:47 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:49:47 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:49:47 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:49:47 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:49:47 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:50:13 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 16:50:13 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:50:13 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:13 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:50:13 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:13 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 16:50:13 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:50:13 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:13 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:50:13 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:13 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 16:50:13 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:50:13 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:13 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:50:13 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:50:13 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:50:13 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:50:13 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:50:15 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\downlods\htdocs\ATIS\middlewares\IsAdminMiddleware.php on line 8
+[06-Feb-2025 16:50:43 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 16:50:43 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:50:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 16:50:44 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:50:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 16:50:44 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:50:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:50:44 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:50:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 16:50:44 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:50:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 16:50:44 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:50:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 16:50:44 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:50:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:50:44 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:50:44 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:50:44 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:50:46 Europe/Berlin] PHP Notice:  session_start(): Ignoring session_start() because a session is already active in C:\downlods\htdocs\ATIS\middlewares\IsAdminMiddleware.php on line 8
+[06-Feb-2025 16:50:46 Europe/Berlin] WHERE Condition: role = user
+[06-Feb-2025 16:50:46 Europe/Berlin] Current Query: SELECT * FROM roles WHERE role = ?
+[06-Feb-2025 16:50:46 Europe/Berlin] Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 16:50:46 Europe/Berlin] Executing Query: SELECT * FROM roles WHERE role = ? LIMIT 1
+[06-Feb-2025 16:50:46 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 16:50:46 Europe/Berlin] WHERE Condition: role = 2
+[06-Feb-2025 16:50:46 Europe/Berlin] Current Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:50:46 Europe/Berlin] Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 16:50:46 Europe/Berlin] Executing Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:50:46 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 16:51:01 Europe/Berlin] WHERE Condition: role = user
+[06-Feb-2025 16:51:01 Europe/Berlin] Current Query: SELECT * FROM roles WHERE role = ?
+[06-Feb-2025 16:51:01 Europe/Berlin] Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 16:51:01 Europe/Berlin] Executing Query: SELECT * FROM roles WHERE role = ? LIMIT 1
+[06-Feb-2025 16:51:01 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 16:51:01 Europe/Berlin] WHERE Condition: role = 2
+[06-Feb-2025 16:51:01 Europe/Berlin] Current Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:51:01 Europe/Berlin] Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 16:51:01 Europe/Berlin] Executing Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:51:01 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 16:51:03 Europe/Berlin] WHERE Condition: role = admin
+[06-Feb-2025 16:51:03 Europe/Berlin] Current Query: SELECT * FROM roles WHERE role = ?
+[06-Feb-2025 16:51:03 Europe/Berlin] Bindings: Array
+(
+    [0] => admin
+)
+
+[06-Feb-2025 16:51:03 Europe/Berlin] Executing Query: SELECT * FROM roles WHERE role = ? LIMIT 1
+[06-Feb-2025 16:51:03 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => admin
+)
+
+[06-Feb-2025 16:51:03 Europe/Berlin] WHERE Condition: role = 1
+[06-Feb-2025 16:51:03 Europe/Berlin] Current Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:51:03 Europe/Berlin] Bindings: Array
+(
+    [0] => 1
+)
+
+[06-Feb-2025 16:51:03 Europe/Berlin] Executing Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:51:03 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 1
+)
+
+[06-Feb-2025 16:51:12 Europe/Berlin] WHERE Condition: media.size > 0
+[06-Feb-2025 16:51:12 Europe/Berlin] Current Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ?
+[06-Feb-2025 16:51:12 Europe/Berlin] Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 16:51:12 Europe/Berlin] Executing Query: SELECT posts.id, posts.title, posts.description, media.path AS cover_photo_path, users.username, media.user_id FROM posts LEFT JOIN media ON posts.id = media.post_id LEFT JOIN users ON media.user_id = users.id WHERE media.size > ? ORDER BY posts.created_at DESC
+[06-Feb-2025 16:51:12 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 0
+)
+
+[06-Feb-2025 16:51:16 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 16:51:16 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:51:16 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:16 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:51:16 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:16 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 16:51:16 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:51:16 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:16 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:51:16 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:16 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 16:51:16 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:51:16 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:16 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:51:16 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:51:16 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:51:16 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:51:16 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:51:18 Europe/Berlin] WHERE Condition: role = admin
+[06-Feb-2025 16:51:18 Europe/Berlin] Current Query: SELECT * FROM roles WHERE role = ?
+[06-Feb-2025 16:51:18 Europe/Berlin] Bindings: Array
+(
+    [0] => admin
+)
+
+[06-Feb-2025 16:51:18 Europe/Berlin] Executing Query: SELECT * FROM roles WHERE role = ? LIMIT 1
+[06-Feb-2025 16:51:18 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => admin
+)
+
+[06-Feb-2025 16:51:18 Europe/Berlin] WHERE Condition: role = 1
+[06-Feb-2025 16:51:18 Europe/Berlin] Current Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:51:18 Europe/Berlin] Bindings: Array
+(
+    [0] => 1
+)
+
+[06-Feb-2025 16:51:18 Europe/Berlin] Executing Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:51:18 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 1
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] WHERE Condition: role = user
+[06-Feb-2025 16:51:20 Europe/Berlin] Current Query: SELECT * FROM roles WHERE role = ?
+[06-Feb-2025 16:51:20 Europe/Berlin] Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Query: SELECT * FROM roles WHERE role = ? LIMIT 1
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => user
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] WHERE Condition: role = 2
+[06-Feb-2025 16:51:20 Europe/Berlin] Current Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:51:20 Europe/Berlin] Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Query: SELECT id, username, email FROM users WHERE role = ?
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 2
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] WHERE Condition: u.id = 14
+[06-Feb-2025 16:51:20 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:51:20 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] WHERE Condition: id = 14
+[06-Feb-2025 16:51:20 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:51:20 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] WHERE Condition: user_id = 14
+[06-Feb-2025 16:51:20 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:51:20 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:51:20 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:51:20 Europe/Berlin] Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:51:20 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 14
+    [1] => profile
+)
+
+[06-Feb-2025 16:51:29 Europe/Berlin] WHERE Condition: email = xheni@gmail.com
+[06-Feb-2025 16:51:29 Europe/Berlin] Current Query: SELECT * FROM users WHERE email = ?
+[06-Feb-2025 16:51:29 Europe/Berlin] Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 16:51:29 Europe/Berlin] Executing Query: SELECT * FROM users WHERE email = ? LIMIT 1
+[06-Feb-2025 16:51:29 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => xheni@gmail.com
+)
+
+[06-Feb-2025 16:51:29 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 16:51:29 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:51:29 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:29 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:51:29 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:29 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 16:51:29 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:51:29 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:29 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:51:29 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:29 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 16:51:29 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:51:29 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:29 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:51:29 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:51:29 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:51:29 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:51:29 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:51:43 Europe/Berlin] WHERE Condition: u.id = 16
+[06-Feb-2025 16:51:43 Europe/Berlin] Current Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ?
+[06-Feb-2025 16:51:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:43 Europe/Berlin] Executing Query: SELECT u.*, r.role FROM users u INNER JOIN roles r ON u.role = r.id WHERE u.id = ? LIMIT 1
+[06-Feb-2025 16:51:43 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:43 Europe/Berlin] WHERE Condition: id = 16
+[06-Feb-2025 16:51:43 Europe/Berlin] Current Query: SELECT * FROM users WHERE id = ?
+[06-Feb-2025 16:51:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:43 Europe/Berlin] Executing Query: SELECT * FROM users WHERE id = ? LIMIT 1
+[06-Feb-2025 16:51:43 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:43 Europe/Berlin] WHERE Condition: user_id = 16
+[06-Feb-2025 16:51:43 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ?
+[06-Feb-2025 16:51:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+)
+
+[06-Feb-2025 16:51:43 Europe/Berlin] WHERE Condition: photo_type = profile
+[06-Feb-2025 16:51:43 Europe/Berlin] Current Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ?
+[06-Feb-2025 16:51:43 Europe/Berlin] Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+
+[06-Feb-2025 16:51:43 Europe/Berlin] Executing Query: SELECT path FROM media WHERE user_id = ? AND photo_type = ? ORDER BY id DESC LIMIT 1
+[06-Feb-2025 16:51:43 Europe/Berlin] Executing Bindings: Array
+(
+    [0] => 16
+    [1] => profile
+)
+

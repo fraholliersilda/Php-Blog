@@ -26,17 +26,22 @@ class ProfileController extends BaseController
     public function viewProfile()
     {
         $this->checkLoggedIn();
-
+    
         try {
             $user = (new User)->findBy('id', $this->getLoggedInUser()['id']);
-            $profilePicture = (new Media)->getProfilePicture($user['id']) ?? ['path' => '/ATIS/uploads/default.jpg'];
-
+            $profilePicture = (new Media)->getProfilePicture($user['id']);
+            
+            if (!$profilePicture || !isset($profilePicture['path'])) {
+                $profilePicture = ['path' => '/ATIS/uploads/default.png'];
+            }
+    
             $this->render('profile/profile', ['user' => $user, 'profilePicture' => $profilePicture]);
         } catch (Exception $e) {
             setErrors([$e->getMessage()]);
             redirect("/ATIS/views/profile/edit");
         }
     }
+    
 
     public function editProfile()
     {

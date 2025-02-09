@@ -16,6 +16,10 @@ require_once 'redirect.php';
 use core\MiddlewareHandler;
 use Middlewares\AuthMiddleware;
 use Middlewares\IsAdminMiddleware;
+use Middlewares\IsUserMiddleware;
+use Middlewares\GuestMiddleware;
+use Middlewares\AdminEditUserRoleMiddleware;
+use Middlewares\PostOwnershipMiddleware;
 use Exceptions\ValidationException;
 use Controllers\ProfileController;
 use Controllers\RegistrationController;
@@ -39,18 +43,22 @@ $routes = [
             [AuthMiddleware::class]
         ]
         ,
-        '/views/admin/login' =>[fn() => $adminController->showAdminLogin(),[]], 
+        '/views/admin/login' =>
+        [
+            fn() => $adminController->showAdminLogin(),
+            [GuestMiddleware::class]
+        ], 
         '/views/posts/new' => 
         [
             fn() => $postsController->showNewPost(), 
-            [AuthMiddleware::class]
+            [AuthMiddleware::class, IsUserMiddleware::class]
         ],
         '/views/posts/blog' => [fn() => $postsController->listPosts(),[]],
         '/views/posts/post/{id}' => [fn($id) => $postsController->viewPost($id),[]],
         '/views/posts/edit/{id}' =>
         [
             fn($id) => $postsController->editPost($id), 
-            [AuthMiddleware::class]
+            [AuthMiddleware::class, PostOwnershipMiddleware::class]
         ],
         '/views/admin/admins' =>
         [
@@ -60,7 +68,7 @@ $routes = [
         '/views/admin/users' => 
         [
             fn() => $adminController->listUsers(), 
-            [AuthMiddleware::class, IsAdminMiddleware::class]
+            [AuthMiddleware::class, IsAdminMiddleware::class, AdminEditUserRoleMiddleware::class ]
         ],
         '/views/profile/edit' => 
         [
@@ -72,8 +80,8 @@ $routes = [
             fn() => $profileController->viewProfile(),
             [AuthMiddleware::class]
         ],
-        '/views/registration/login' => [fn() => $registrationController->showLogin(),[]],
-        '/views/registration/signup' => [fn() => $registrationController->showSignup(),[]],
+        '/views/registration/login' => [fn() => $registrationController->showLogin(),[GuestMiddleware::class]],
+        '/views/registration/signup' => [fn() => $registrationController->showSignup(),[GuestMiddleware::class]],
     ],
     'POST' => [
         '/views/registration/login' => [fn() => $registrationController->login(),[]],
@@ -82,22 +90,22 @@ $routes = [
         '/views/posts/new' => 
         [
             fn() => $postsController->createPost(), 
-            [AuthMiddleware::class]
+            [AuthMiddleware::class, IsUserMiddleware::class]
         ],
         '/views/posts/edit/{id}' =>  
         [
             fn() => $postsController->editPost($_POST['id']),
-            [AuthMiddleware::class]
+            [AuthMiddleware::class, PostOwnershipMiddleware::class]
         ],
         '/posts/delete/{id}' => 
         [
             fn($id) => $postsController->deletePost($id),
-            [AuthMiddleware::class, IsAdminMiddleware::class]
+            [AuthMiddleware::class, IsAdminMiddleware::class, PostOwnershipMiddleware::class]
         ],
         '/views/admin/users' => 
         [
             fn() => $adminController->handleUserActions(),
-            [AuthMiddleware::class, IsAdminMiddleware::class]
+            [AuthMiddleware::class, IsAdminMiddleware::class, AdminEditUserRoleMiddleware::class]
         ],
         '/views/profile/edit' => 
         [

@@ -1,3 +1,6 @@
+<?php 
+require_once 'successHandler.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +15,7 @@
 
 <body>
 <?php include BASE_PATH . '/navbar/navbar.php'; ?>
-
+<?php displaySuccessMessages(); ?>
     <div class="container">
         <h1><b>BLOG POSTS</b></h1>
         <div class="row">

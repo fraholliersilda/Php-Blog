@@ -11,6 +11,7 @@ use Models\Media;
 
 require_once 'redirect.php';
 require_once 'errorHandler.php';
+require_once 'successHandler.php';
 
 class PostsController extends BaseController
 {
@@ -34,8 +35,10 @@ class PostsController extends BaseController
     {
         try {
             $post = (new Post)->getPostById($postId);
-
+            
             if ($post) {
+                // Fetch the latest posts except the current one
+                $latestPosts = (new Post)->getLatestPosts();
                 include BASE_PATH . '/views/posts/post.php';
             } else {
                 setErrors(["Post not found."]);
@@ -44,6 +47,9 @@ class PostsController extends BaseController
             setErrors(["Error: " . $e->getMessage()]);
         }
     }
+
+    
+
 
     public function editPost($postId)
     {
@@ -77,6 +83,7 @@ class PostsController extends BaseController
 
                         (new Media)->saveCoverPhoto($_FILES['cover_photo'], $postId);
                     }
+                    setSuccessMessages(['Post updated!']);
                     redirect("/ATIS/views/posts/post/$postId");
                 } catch (ValidationException $e) {
                     setErrors([$e->getMessage()]);
@@ -112,6 +119,7 @@ class PostsController extends BaseController
                 } else {
                     setErrors(['Failed to create post.']);
                 }
+                setSuccessMessages(['Post created!']);
             } catch (Exception $e) {
                 setErrors(["Error: " . $e->getMessage()]);
             }
@@ -152,6 +160,7 @@ class PostsController extends BaseController
                 (new Post)->deletePost($postId);
                 error_log("Post deleted: $postId");
 
+                setSuccessMessages(['Post deleted!']);
                 redirect('/ATIS/views/posts/blog');
             } catch (Exception $e) {
                 setErrors(["Error: " . $e->getMessage()]);

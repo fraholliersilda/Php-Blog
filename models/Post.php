@@ -21,6 +21,22 @@ class Post extends Model
             ->orderBy('posts.created_at', 'DESC')
             ->get();
     }
+
+    public function getLatestPosts()
+{
+    return $this->queryBuilder
+    ->table('posts')
+    ->select(['posts.id', 'posts.title', 'posts.description', 'media.path AS cover_photo_path', 'users.username', 'media.user_id'])
+    ->leftJoin('media', 'posts.id', '=', 'media.post_id')
+    ->leftJoin('users', 'media.user_id', '=', 'users.id')
+    ->where('media.size', '>', 0)
+    ->orderBy('posts.created_at', 'DESC')
+    ->limit(2)
+    ->get();
+
+}
+
+
     public function getPostById($postId)
     {
         $result = $this->queryBuilder

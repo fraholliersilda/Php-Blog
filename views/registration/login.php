@@ -1,5 +1,6 @@
 <?php
 require_once 'errorHandler.php';
+require_once 'successHandler.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,15 @@ require_once 'errorHandler.php';
 <body>
     <div class="wrapper">
         <div class="title"><span>Login Form</span></div>
+
         <form method="POST" action="/ATIS/views/registration/login">
+            <?php
+            if (isset($_SESSION['messages']['success']) && !empty($_SESSION['messages']['success'])) {
+                echo '<div style="color: #0f5132; background-color: #d1e7dd; border: 1px solid #badbcc; padding: 10px; border-radius: 4px;">';
+                displaySuccessMessages();
+                echo '</div>';
+            }
+            ?>
             <div class="row">
                 <i class="fa-solid fa-envelope"></i>
                 <input type="email" name="email" placeholder="Email">

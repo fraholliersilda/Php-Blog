@@ -407,6 +407,11 @@ body {
   border-radius: 8px;
 }
 
+.coverphoto img{
+  width: 700px;
+  height: 400px;
+}
+
 /* Post details */
 .post-details {
   flex: 1;
@@ -527,6 +532,9 @@ body {
   margin: 20px 0; /* Margin above and below */
   font-style: italic; /* Italic text for quotes */
   color: #555; /* Color for the quote text */
+}
+.posting-details{
+  width: 200px;
 }
 
 /* Responsive Design for Post Page */

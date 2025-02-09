@@ -33,14 +33,14 @@ class BaseController
         return null;
     }
     
-    public function isAdmin()
-    {
-        $user = $this->getLoggedInUser();
+    // public function isAdmin()
+    // {
+    //     $user = $this->getLoggedInUser();
 
-        // if($user->notAdmin()) {
-        //     redirect back
-        // }
-        return $user && $user['role'] === 'admin';
-    }
+    //     // if($user->notAdmin()) {
+    //     //     redirect back
+    //     // }
+    //     return $user && $user['role'] === 'admin';
+    // }
 
 }

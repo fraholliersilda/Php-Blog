@@ -14,6 +14,7 @@ use Models\User;
 
 require_once 'redirect.php';
 require_once 'errorHandler.php';
+require_once 'successHandler.php';
 
 class ProfileController extends BaseController
 {
@@ -52,6 +53,7 @@ class ProfileController extends BaseController
             $profilePicture = (new Media)->getProfilePicture($user['id']) ?? ['path' => '/ATIS/uploads/default.jpg'];
 
             $this->render('profile/edit_profile', ['user' => $user, 'profilePicture' => $profilePicture]);
+            
         } catch (Exception $e) {
             setErrors([$e->getMessage()]);
             redirect("/ATIS/views/profile/profile");
@@ -105,7 +107,7 @@ class ProfileController extends BaseController
             UpdateUsernameRequest::validate($data);
 
             $result =(new User)->update($id, ['username' => $username, 'email' => $email]);
-
+            setSuccessMessages(['Profile updated!']);
             if (!$result) {
                 throw new Exception("Failed to update username or email.");
             }
@@ -139,6 +141,7 @@ class ProfileController extends BaseController
             $hashedPassword = password_hash($new_password, PASSWORD_DEFAULT);
 
             $result =(new User)->update($id, ['password' => $hashedPassword]);
+            setSuccessMessages(['Password updated!']);
 
             if (!$result) {
                 throw new Exception("Failed to update password.");
@@ -192,6 +195,7 @@ class ProfileController extends BaseController
                 'user_id' => $id,
                 'photo_type' => 'profile'
             ]);
+            setSuccessMessages(['Profile photo updated!']);
         } catch (ValidationException $e) {
             throw $e;
         } catch (Exception $e) {

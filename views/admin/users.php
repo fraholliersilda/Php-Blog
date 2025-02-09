@@ -1,5 +1,6 @@
 <?php 
 require_once 'errorHandler.php';
+require_once 'successHandler.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,16 +17,17 @@ require_once 'errorHandler.php';
 <?php include BASE_PATH . '/navbar/navbar.php'; ?>
     <div class="admin_dashboard">
         <h1><b>Users</b></h1>
+            <!-- Display errors using displayErrors function -->
+            <?php
+                displayErrors();
+                displaySuccessMessages();
+            ?>
         <div class="user-cards">
             <?php foreach ($users as $user): ?>
                 <?php if ($user['id'] === $_SESSION['user_id']): ?>
                     <?php continue; ?><?php endif; ?>
                 <div class="user-card">
                
-            <!-- Display errors using displayErrors function -->
-            <?php
-                displayErrors();
-            ?>
                     <h3><?= htmlspecialchars($user['username']) ?></h3>
                     <p>Email: <?= htmlspecialchars($user['email']) ?></p>
 

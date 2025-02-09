@@ -11,6 +11,7 @@ use Models\User;
 
 require_once 'redirect.php';
 require_once 'errorHandler.php';
+require_once 'successHandler.php';
 
 class RegistrationController extends BaseController
 {
@@ -98,7 +99,9 @@ class RegistrationController extends BaseController
                 $data['role'] = 2;
 
                 if ((new User)->create($data)) {
+                    setSuccessMessages(['User created!']);
                     redirect("/ATIS/views/registration/login");
+                    
                 } else {
                     setErrors(["Error creating account."]);
                 }
@@ -125,6 +128,7 @@ class RegistrationController extends BaseController
         }
 
         session_destroy();
+        setSuccessMessages(['User logged out!']);
         redirect("/ATIS/views/registration/login");
     }
 

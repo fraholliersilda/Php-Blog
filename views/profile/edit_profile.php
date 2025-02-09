@@ -1,6 +1,5 @@
 <?php 
 require_once 'errorHandler.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +16,6 @@ require_once 'errorHandler.php';
 
 <body>
 <?php include BASE_PATH . '/navbar/navbar.php'; ?>
-
         <div class="prov">
             <div class="row">
                 <div class="col-lg-8">

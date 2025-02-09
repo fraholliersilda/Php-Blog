@@ -14,6 +14,7 @@ use Database;
 
 require_once 'redirect.php';
 require_once 'errorHandler.php';
+require_once 'successHandler.php';
 
 class AdminController extends BaseController
 {
@@ -67,8 +68,10 @@ class AdminController extends BaseController
                 if ($errors) {
                     setErrors([$errors]);
                 }
+                setSuccessMessages(['User updated!']);
             } elseif ($action === 'delete') {
                 $this->deleteUser();
+                setSuccessMessages(['User deleted!']);
             }
             redirect("/ATIS/views/admin/users");
         } else {

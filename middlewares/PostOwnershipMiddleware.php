@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Middlewares;
 
 use core\Middleware;
@@ -12,6 +12,11 @@ class PostOwnershipMiddleware implements Middleware {
             die("Unauthorized access.");
         }
 
+        // If the user is an admin, they can access any post
+        if ($_SESSION['role'] == 1) {
+            return; // Admins can bypass the ownership check
+        }
+
         $url = $_SERVER['REQUEST_URI'];
         preg_match('/edit\/(\d+)/', $url, $matches);
         $postId = $matches[1] ?? null; 
@@ -23,9 +28,8 @@ class PostOwnershipMiddleware implements Middleware {
     
         $queryBuilder = new QueryBuilder();
         $post = $queryBuilder->table('posts')
-            ->select(['media.user_id']) 
-            ->join('media', 'posts.id', '=', 'media.post_id') 
-            ->where('posts.id', '=', $postId)
+            ->select(['user_id']) // Assuming this is the column that links the post to the user
+            ->where('id', '=', $postId)
             ->getOne();
     
         if (!$post || $post['user_id'] !== $_SESSION['user_id']) {
@@ -33,5 +37,4 @@ class PostOwnershipMiddleware implements Middleware {
             redirect("/ATIS/views/posts/blog");
         }
     }
-    
 }

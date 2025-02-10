@@ -35,13 +35,13 @@ require_once 'successHandler.php';
     <div class="row">
         <?php if (!empty($latestPosts)) { ?>
             <?php foreach ($latestPosts as $latestPost) { ?>
-                <div class="col-md-6 post-card">
+                <div class="col-md-5 post-card">
                     <div class="post-content">
                         <div class="post-image">
                             <img src="<?= htmlspecialchars($latestPost['cover_photo_path'] ?? 'default_path.jpg'); ?>" alt="Cover Photo" class="card-img-top">
                         </div>
                         <div class="posting-details">
-                            <h5 class="card-title"><?= htmlspecialchars($latestPost['title']); ?></h5>
+                            <h5 class="card-title"><b><?= htmlspecialchars($latestPost['title']); ?></b></h5>
                             <p class="card-text"><em>By: <?= htmlspecialchars($latestPost['username']); ?></em></p>
                             <a href="<?= BASE_URL ?>/views/posts/post/<?= $latestPost['id']; ?>" class="btn btn-secondary">Read More</a>
                         </div>

@@ -6,13 +6,13 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Controllers\\": "Controllers/",
+            "Controllers\\": "controllers/",
             "Exceptions\\": "Exceptions/",
             "Requests\\": "Requests/",
             "QueryBuilder\\": "QueryBuilder/",
-            "Models\\": "Models/",
+            "Models\\": "models/",
             "core\\": "core/",
-            "Middlewares\\" : "Middlewares/"
+            "Middlewares\\" : "middlewares/"
         }
     }
 }

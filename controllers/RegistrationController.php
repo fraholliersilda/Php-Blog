@@ -27,26 +27,30 @@ class RegistrationController extends BaseController
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
             ];
-
+    
             try {
                 RegistrationRequest::validateLogin($data);
-
-                $user =(new User)->findByEmail($data['email']);
-
-
-                if ($user['role'] === 1) {
-                    $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['role'] = $user['role'];
-                    setErrors(["You are admin"]);
-                    redirect("/ATIS/views/registration/login");
-                    return;
-                }
-                if ($user && password_verify($data['password'], $user['password'])) {
-                    $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['role'] = $user['role'];
-                    redirect("/ATIS/views/profile/profile");
+    
+                $user = (new User)->findByEmail($data['email']);
+    
+                if ($user) {
+                    // Check if the user is an admin first
+                    if ($user['role'] === 1) {
+                        setErrors(["You are admin"]);
+                        redirect("/ATIS/views/registration/login");
+                        return; // Ensure no further processing happens for admins
+                    }
+    
+                    if (password_verify($data['password'], $user['password'])) {
+                        $_SESSION['user_id'] = $user['id'];
+                        $_SESSION['role'] = $user['role'];
+                        redirect("/ATIS/views/profile/profile");
+                    } else {
+                        setErrors(["Invalid email or password!"]);
+                        redirect("/ATIS/views/registration/login");
+                    }
                 } else {
-                    setErrors(["Invalid email or password!"]);
+                    setErrors(["User not found."]);
                     redirect("/ATIS/views/registration/login");
                 }
             } catch (ValidationException $e) {
@@ -60,6 +64,7 @@ class RegistrationController extends BaseController
             redirect("/ATIS/views/registration/login");
         }
     }
+    
 
     public function showLogin()
     {

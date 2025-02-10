@@ -1,5 +1,5 @@
 <?php 
-require_once 'errorHandler.php';
+require_once __DIR__ . '/../../errorHandler.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

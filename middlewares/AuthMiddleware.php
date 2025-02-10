@@ -7,7 +7,6 @@ require_once 'redirect.php';
 
 class AuthMiddleware implements Middleware{
     public function handle(){
-        // session_start();
         if(!isset($_SESSION['user_id'])){
             redirect('/ATIS/views/registration/login');
             exit();

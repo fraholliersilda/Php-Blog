@@ -29,8 +29,8 @@ class Database
 // Database credentials
 $host = 'localhost';
 $databaseName = 'users';
-$username = 'root';
-$password = '';
+$username = 'phpmyadmin';
+$password = '1234';
 
 // Establish connection
 Database::connect($host, $databaseName, $username, $password);

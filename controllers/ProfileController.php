@@ -1,8 +1,8 @@
 <?php
 
 namespace Controllers;
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 use Exception;
 use Requests\UpdateUsernameRequest;
 use Requests\UpdatePasswordRequest;

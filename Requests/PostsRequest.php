@@ -7,7 +7,7 @@ class PostsRequest extends BaseRequest
 {
     protected static $rules = [
         'title' => ['required', 'string', 'min:3'],
-        'description' => ['required', 'string', 'max:1500']
+        'description' => ['required', 'string', 'max:5000']
     ];
 
     protected static $creationRules = [

@@ -58,7 +58,7 @@ $routes = [
         '/views/posts/edit/{id}' =>
         [
             fn($id) => $postsController->editPost($id), 
-            [AuthMiddleware::class, PostOwnershipMiddleware::class]
+            [AuthMiddleware::class, PostOwnershipMiddleware::class, IsAdminMiddleware::class]
         ],
         '/views/admin/admins' =>
         [
